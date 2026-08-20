@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "candidate": "prompt-optimizer 0.1.0",
+  "product_revision_sha256": "07b2947b185d3a9e2dbfdc30fc67761f0523d6bf0394a552285e9537aa501452",
+  "status": "pass",
+  "verification_type": "controlled_static_replay",
+  "skill_path": "plugins/prompt-optimizer/skills/prompt-optimizer/SKILL.md",
+  "skill_sha256": "a42c5d2cf61e6605f7d3314b4ac4861e64682cda91a539a6f99f7f75fa8674e4",
+  "transcript_path": "validation/Skill Boundary Transcript 120826.md",
+  "transcript_sha256": "b186e83eaeab171f990f0cb86e6cb3dfc22cb6092c7b58d904a3f1f4039e45b7",
+  "compiled_artifact_returned": true,
+  "packet_returned": true,
+  "packet_validation": "pass",
+  "source_task_executed": false,
+  "cli_model_call_observed": false,
+  "cli_network_call_observed": false,
+  "publication_action": "none"
+}

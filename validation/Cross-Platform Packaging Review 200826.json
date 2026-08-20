@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "review_type": "local_cross_platform_packaging_delta_review",
+  "reviewer_type": "codex_root_deterministic_and_manual",
+  "base_private_review_revision_sha256": "26a52cff0551e550b6567920c163c8ccfe98af3dd31d87fe51df7b26ac461efb",
+  "product_revision_sha256": "07b2947b185d3a9e2dbfdc30fc67761f0523d6bf0394a552285e9537aa501452",
+  "status": "pass",
+  "scope": "Non-visual GitHub, OpenAI/Codex, and Claude plugin packaging, funding, public policy/support documentation, submission test cases, launch measurement, and the future Agent Smith Router bridge.",
+  "core_behavior_changed": false,
+  "compiler_schema_changed": false,
+  "logo_assets_changed": false,
+  "reviewed_changes": [
+    "Added Claude plugin and marketplace manifests.",
+    "Updated OpenAI/Codex public metadata with privacy and terms URLs.",
+    "Added GitHub FUNDING.yml for SpannDaMan only.",
+    "Added public privacy, terms, support, install, submission, measurement, and Router bridge surfaces.",
+    "Added package-relative CLI guidance to the public skill.",
+    "Extended the release validator and tests for cross-platform packaging."
+  ],
+  "verification": {
+    "unit_tests": "40/40 pass",
+    "native_deterministic_eval": "13/13 pass at score 1.0",
+    "clean_package_and_install": "pass",
+    "codex_plugin_validation": "pass",
+    "claude_marketplace_validation": "pass",
+    "claude_plugin_validation": "pass",
+    "json_schema_validation": "pass",
+    "text_safety_and_private_marker_scan": "pass",
+    "logo_provenance": "unchanged and pass"
+  },
+  "claim_review": {
+    "router_relationship": "A clearer validated packet can reduce routing ambiguity; no guaranteed routing improvement is claimed.",
+    "sponsors_boundary": "FUNDING.yml configures a target but does not prove GitHub Sponsors enrollment.",
+    "marketplace_boundary": "Local manifest validation does not prove marketplace acceptance or hosted installation.",
+    "publication_boundary": "No repository, marketplace, release, or launch action occurred."
+  },
+  "remaining_gates": [
+    "Operator selection and promotion of the final logo.",
+    "Completed private maintainer pilot and day-30 decision unless the operator later changes that product contract.",
+    "GitHub Sponsors enrollment confirmation or funding-target removal.",
+    "Separate approval for GitHub publication, marketplace submissions, tags, releases, settings, and launch posts.",
+    "Hosted installation and listing verification after publication."
+  ],
+  "publication_action": "none"
+}

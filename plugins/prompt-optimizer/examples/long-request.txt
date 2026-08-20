@@ -1,0 +1,5 @@
+Audit this repository feature and identify the failing behavior.
+Fix only the defect and preserve existing user changes.
+Run the relevant tests and report the exact validation results.
+Do not publish, push, change credentials, or widen scope.
+Return the changed files, remaining risks, and any manual decision.

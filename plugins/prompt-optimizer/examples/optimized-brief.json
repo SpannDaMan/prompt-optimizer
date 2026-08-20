@@ -1,0 +1,105 @@
+{
+  "schema_version": "1.0",
+  "status": "ready",
+  "source_sha256": "4d9954be977a8d586e02e11dd548b50fe59fc59231bb7985eeff838bb3a221eb",
+  "original_prompt": "Audit this repository feature and identify the failing behavior.\nFix only the defect and preserve existing user changes.\nRun the relevant tests and report the exact validation results.\nDo not publish, push, change credentials, or widen scope.\nReturn the changed files, remaining risks, and any manual decision.\n",
+  "sentence_count": 5,
+  "trigger_decision": "optimize",
+  "skip_reason": "",
+  "target_surface": "codex",
+  "candidate_constraints": [
+    "Fix only the defect and preserve existing user changes.",
+    "Do not publish, push, change credentials, or widen scope."
+  ],
+  "compiled_prompt": {
+    "text": "Audit the repository feature, identify the failing behavior, and repair only that defect.\n\nWork in the current repository.\n\nFix only the defect and preserve existing user changes.\nDo not publish, push, change credentials, or widen scope.\n\nRun the relevant tests and report the exact validation results.\n\nReturn the changed files, remaining risks, and any manual decision.\n\nBefore finishing, confirm that the requested defect is fixed and existing user changes remain intact.",
+    "sections": [
+      {
+        "id": "outcome",
+        "decision": "include",
+        "content": "Audit the repository feature, identify the failing behavior, and repair only that defect.",
+        "reason": ""
+      },
+      {
+        "id": "relevant_context",
+        "decision": "include",
+        "content": "Work in the current repository.",
+        "reason": ""
+      },
+      {
+        "id": "must_preserve_constraints",
+        "decision": "include",
+        "content": "Fix only the defect and preserve existing user changes.\nDo not publish, push, change credentials, or widen scope.",
+        "reason": ""
+      },
+      {
+        "id": "evidence_and_success",
+        "decision": "include",
+        "content": "Run the relevant tests and report the exact validation results.",
+        "reason": ""
+      },
+      {
+        "id": "output_contract",
+        "decision": "include",
+        "content": "Return the changed files, remaining risks, and any manual decision.",
+        "reason": ""
+      },
+      {
+        "id": "task_shape_routing",
+        "decision": "omit",
+        "content": "",
+        "reason": "The source request does not require a special routing mechanism."
+      },
+      {
+        "id": "final_verification",
+        "decision": "include",
+        "content": "Before finishing, confirm that the requested defect is fixed and existing user changes remain intact.",
+        "reason": ""
+      }
+    ]
+  },
+  "must_preserve_constraints": [
+    "Fix only the defect and preserve existing user changes.",
+    "Do not publish, push, change credentials, or widen scope."
+  ],
+  "constraint_map": [
+    {
+      "id": "constraint-1",
+      "source_text": "Fix only the defect and preserve existing user changes.",
+      "disposition": "verbatim",
+      "compiled_text": "Fix only the defect and preserve existing user changes.",
+      "compiled_section": "must_preserve_constraints"
+    },
+    {
+      "id": "constraint-2",
+      "source_text": "Do not publish, push, change credentials, or widen scope.",
+      "disposition": "verbatim",
+      "compiled_text": "Do not publish, push, change credentials, or widen scope.",
+      "compiled_section": "must_preserve_constraints"
+    }
+  ],
+  "authorization_boundary": {
+    "local_reversible_execution": "allowed",
+    "external_actions": "gated",
+    "scope_expansion": "gated",
+    "gated_actions": [
+      "publish",
+      "push",
+      "change credentials",
+      "widen scope"
+    ],
+    "approval_evidence": [
+      {
+        "id": "approval-1",
+        "boundary": "local_reversible_execution",
+        "action_text": "Fix only the defect",
+        "source_text": "Fix only the defect and preserve existing user changes."
+      }
+    ]
+  },
+  "validation_plan": [
+    "Run the relevant automated tests.",
+    "Confirm that only the failing behavior changed.",
+    "Report the exact validation results and remaining manual decisions."
+  ]
+}

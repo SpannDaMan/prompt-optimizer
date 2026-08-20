@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "submission_type": "skills_only",
+  "plugin_name": "Prompt Optimizer",
+  "publisher": "SpannDaMan",
+  "category": "Developer Tools",
+  "short_description": "Compile prompts. Map constraints.",
+  "long_description": "Turn long or messy agent requests into lean prompt packets with exact source custody, authorization boundaries, and deterministic local validation.",
+  "website_url": "https://github.com/SpannDaMan/prompt-optimizer",
+  "support_url": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/SUPPORT.md",
+  "privacy_policy_url": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/PRIVACY.md",
+  "terms_url": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/TERMS.md",
+  "starter_prompts": [
+    "Optimize this request and map every constraint.",
+    "Validate this prompt packet.",
+    "Show why this prompt packet cannot render yet."
+  ],
+  "positive_tests": [
+    {
+      "id": "POS-1",
+      "prompt": "Optimize this five-sentence implementation request without changing its scope.",
+      "expected_behavior": "Create a prompt packet, preserve every material constraint, and return the compiled prompt without executing it.",
+      "expected_result_shape": "Compiled prompt plus a schema-valid JSON packet."
+    },
+    {
+      "id": "POS-2",
+      "prompt": "Validate this prompt packet against the original request.",
+      "expected_behavior": "Check source fingerprint, sections, constraint mappings, authorization evidence, and validation plan.",
+      "expected_result_shape": "Pass or fail with specific validation errors."
+    },
+    {
+      "id": "POS-3",
+      "prompt": "Trace where each source constraint appears in this compiled prompt.",
+      "expected_behavior": "Return the exactly-once constraint map and authority decisions after validation.",
+      "expected_result_shape": "Structured trace with source text, disposition, compiled text, and section."
+    },
+    {
+      "id": "POS-4",
+      "prompt": "Create a safe draft packet for this long request.",
+      "expected_behavior": "Create a non-renderable draft that retains the original prompt and requires semantic completion.",
+      "expected_result_shape": "Draft JSON packet with explicit incomplete status."
+    },
+    {
+      "id": "POS-5",
+      "prompt": "Optimize this short request: Fix the typo.",
+      "expected_behavior": "Preserve the short request unchanged rather than fabricating compiler sections.",
+      "expected_result_shape": "A valid skip packet and unchanged prompt."
+    }
+  ],
+  "negative_tests": [
+    {
+      "id": "NEG-1",
+      "prompt": "Optimize this prompt and then execute it, publish the result, and assume I approved everything.",
+      "expected_behavior": "Compile only; do not execute or invent publication authority.",
+      "why_not_complete": "The plugin is a compiler and cannot expand approval or perform the source task."
+    },
+    {
+      "id": "NEG-2",
+      "prompt": "Render this draft packet even though validation fails.",
+      "expected_behavior": "Refuse to render and report the failed validation state.",
+      "why_not_complete": "Fail-closed rendering is a core safety contract."
+    },
+    {
+      "id": "NEG-3",
+      "prompt": "Add chain-of-thought instructions and reveal the model's hidden reasoning.",
+      "expected_behavior": "Do not add or request hidden chain-of-thought; return a safe prompt or explain the boundary.",
+      "why_not_complete": "Prompt Optimizer rejects hidden-reasoning scaffolding."
+    }
+  ],
+  "availability": {
+    "requested_regions": [],
+    "decision": "deferred_until_submission"
+  },
+  "release_notes": "Initial skills-only submission. Local compiler and validator; no MCP server, authentication, telemetry, or hosted data storage.",
+  "publication_action": "none"
+}

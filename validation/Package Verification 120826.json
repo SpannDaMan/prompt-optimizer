@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "candidate": "prompt-optimizer 0.1.0",
+  "product_revision_sha256": "07b2947b185d3a9e2dbfdc30fc67761f0523d6bf0394a552285e9537aa501452",
+  "status": "pass",
+  "python_version": "3.12",
+  "install_source": ".",
+  "runtime_dependencies": [],
+  "wheel": {
+    "filename": "prompt_optimizer-0.1.0-py3-none-any.whl",
+    "sha256": "37618d9c5749755f8c6889fd8198ac50a87544a66ace7c70b2859e7662504f09",
+    "bytes": 15381
+  },
+  "checks": [
+    {
+      "name": "pep517_build_and_clean_install",
+      "status": "pass"
+    },
+    {
+      "name": "pip_check",
+      "status": "pass",
+      "result": "No broken requirements found."
+    },
+    {
+      "name": "installed_cli_version",
+      "status": "pass",
+      "result": "prompt-optimizer 0.1.0"
+    },
+    {
+      "name": "installed_cli_analyze",
+      "status": "pass",
+      "result": "valid JSON"
+    },
+    {
+      "name": "installed_cli_trace",
+      "status": "pass",
+      "result": "valid JSON"
+    },
+    {
+      "name": "installed_cli_validate",
+      "status": "pass",
+      "result": "PASS: prompt packet is valid\nsource_sha256: 4d9954be977a8d586e02e11dd548b50fe59fc59231bb7985eeff838bb3a221eb\ntrigger_decision: optimize"
+    },
+    {
+      "name": "installed_cli_render",
+      "status": "pass",
+      "result": "exact committed output match"
+    }
+  ],
+  "publication_action": "none"
+}

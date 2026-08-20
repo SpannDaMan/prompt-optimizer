@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0",
+  "brand": "Prompt Optimizer",
+  "colors": {
+    "signal_violet": "#7C3AED",
+    "clean_cyan": "#22D3EE",
+    "deep_ink": "#111827",
+    "cloud_white": "#F8FAFC",
+    "slate": "#64748B",
+    "pass": "#16A34A",
+    "hold": "#D97706",
+    "fail": "#DC2626"
+  },
+  "typography": {
+    "sans": "Inter, ui-sans-serif, system-ui, sans-serif",
+    "mono": "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace"
+  },
+  "shape": {
+    "card_radius_px": 12,
+    "line_cap": "round",
+    "forward_bias_degrees": 12
+  },
+  "icon_sizes_px": [16, 24, 32, 64, 128, 512, 1024]
+}

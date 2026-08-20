@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "candidate": "prompt-optimizer 0.1.0",
+  "product_revision_sha256": "07b2947b185d3a9e2dbfdc30fc67761f0523d6bf0394a552285e9537aa501452",
+  "status": "pass",
+  "validated_paths": [
+    ".",
+    "plugins/prompt-optimizer"
+  ],
+  "checks": [
+    {
+      "name": "claude_marketplace_manifest",
+      "exit_code": 0,
+      "output": "Claude marketplace manifest validation passed"
+    },
+    {
+      "name": "claude_plugin_manifest",
+      "exit_code": 0,
+      "output": "Claude plugin manifest validation passed"
+    }
+  ],
+  "tool": {
+    "name": "Claude Code CLI",
+    "identity": "sha256",
+    "path": "claude.cmd",
+    "sha256": "7999fba95dbffe167d9e0a043f29057979a0518ebe89b60c4fcfc6401ea8c424",
+    "bytes": 160
+  },
+  "publication_action": "none"
+}

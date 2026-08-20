@@ -1,0 +1,12 @@
+Audit the repository feature, identify the failing behavior, and repair only that defect.
+
+Work in the current repository.
+
+Fix only the defect and preserve existing user changes.
+Do not publish, push, change credentials, or widen scope.
+
+Run the relevant tests and report the exact validation results.
+
+Return the changed files, remaining risks, and any manual decision.
+
+Before finishing, confirm that the requested defect is fixed and existing user changes remain intact.

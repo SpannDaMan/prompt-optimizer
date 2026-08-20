@@ -1,0 +1,20 @@
+{
+  "name": "prompt-optimizer",
+  "interface": {
+    "displayName": "Prompt Optimizer"
+  },
+  "plugins": [
+    {
+      "name": "prompt-optimizer",
+      "source": {
+        "source": "local",
+        "path": "./plugins/prompt-optimizer"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "suite_id": "prompt-optimizer-public-candidate-v0.1.0",
+  "pass_threshold": 1.0,
+  "runner": {
+    "command": [
+      "python",
+      "evals/run_eval_case.py"
+    ],
+    "timeout_seconds": 30,
+    "require_exit_zero": true
+  },
+  "cases": [
+    {
+      "id": "long-prompt-triggers-optimization",
+      "runner_args": ["long-analysis"],
+      "checks": [
+        {"type": "json_field_equals", "field": "trigger_decision", "expected": "optimize", "critical": true},
+        {"type": "json_field_equals", "field": "sentence_count", "expected": 5},
+        {"type": "must_include", "value": "No model was called", "critical": true}
+      ]
+    },
+    {
+      "id": "short-prompt-remains-unchanged",
+      "runner_args": ["short-skip"],
+      "checks": [
+        {"type": "json_field_equals", "field": "trigger_decision", "expected": "skip", "critical": true},
+        {"type": "json_field_equals", "field": "unchanged", "expected": true, "critical": true},
+        {"type": "json_field_equals", "field": "valid", "expected": true}
+      ]
+    },
+    {
+      "id": "explicit-skip-wins",
+      "runner_args": ["explicit-skip"],
+      "checks": [
+        {"type": "json_field_equals", "field": "trigger_decision", "expected": "skip", "critical": true},
+        {"type": "json_field_equals", "field": "skip_reason", "expected": "explicit_skip"},
+        {"type": "json_field_equals", "field": "unchanged", "expected": true, "critical": true}
+      ]
+    },
+    {
+      "id": "ignored-skip-cannot-bypass-compilation",
+      "runner_args": ["ignored-skip"],
+      "checks": [
+        {"type": "json_field_equals", "field": "trigger_decision", "expected": "optimize", "critical": true},
+        {"type": "json_field_equals", "field": "status", "expected": "draft", "critical": true},
+        {"type": "json_field_equals", "field": "valid", "expected": false, "critical": true}
+      ]
+    },
+    {
+      "id": "complete-example-validates",
+      "runner_args": ["valid-example"],
+      "checks": [
+        {"type": "json_field_equals", "field": "valid", "expected": true, "critical": true},
+        {"type": "json_field_equals", "field": "trigger_decision", "expected": "optimize"}
+      ]
+    },
+    {
+      "id": "source-mismatch-fails-closed",
+      "runner_args": ["source-mismatch"],
+      "checks": [
+        {"type": "json_field_equals", "field": "valid", "expected": false, "critical": true},
+        {"type": "must_include", "value": "source_fingerprint_mismatch", "critical": true},
+        {"type": "must_include", "value": "original_prompt_mismatch"}
+      ]
+    },
+    {
+      "id": "draft-cannot-render",
+      "runner_args": ["draft-closed"],
+      "checks": [
+        {"type": "json_field_equals", "field": "valid", "expected": false, "critical": true},
+        {"type": "must_include", "value": "brief_not_ready", "critical": true}
+      ]
+    },
+    {
+      "id": "unknown-fields-fail-closed",
+      "runner_args": ["unknown-field"],
+      "checks": [
+        {"type": "json_field_equals", "field": "valid", "expected": false, "critical": true},
+        {"type": "must_include", "value": "unknown_top_level_fields", "critical": true}
+      ]
+    },
+    {
+      "id": "external-authority-needs-evidence",
+      "runner_args": ["external-auth"],
+      "checks": [
+        {"type": "json_field_equals", "field": "valid", "expected": false, "critical": true},
+        {"type": "must_include", "value": "approval_evidence_missing", "critical": true}
+      ]
+    },
+    {
+      "id": "render-matches-validated-packet",
+      "runner_args": ["render-parity"],
+      "checks": [
+        {"type": "json_field_equals", "field": "matches", "expected": true, "critical": true},
+        {"type": "word_count_at_least", "value": 2}
+      ]
+    },
+    {
+      "id": "trace-exposes-exact-custody",
+      "runner_args": ["trace-custody"],
+      "checks": [
+        {"type": "json_field_equals", "field": "valid", "expected": true, "critical": true},
+        {"type": "json_field_equals", "field": "constraint_count", "expected": 2},
+        {"type": "json_field_equals", "field": "constraints_match", "expected": true, "critical": true},
+        {"type": "json_field_equals", "field": "external_actions", "expected": "gated", "critical": true},
+        {"type": "must_include", "value": "not semantic equivalence", "critical": true}
+      ]
+    },
+    {
+      "id": "analysis-is-deterministic",
+      "runner_args": ["determinism"],
+      "checks": [
+        {"type": "json_field_equals", "field": "matches", "expected": true, "critical": true}
+      ]
+    },
+    {
+      "id": "analysis-is-model-free",
+      "runner_args": ["model-free-boundary"],
+      "checks": [
+        {"type": "json_field_equals", "field": "network_required", "expected": false, "critical": true},
+        {"type": "must_include", "value": "No model was called", "critical": true}
+      ]
+    }
+  ]
+}

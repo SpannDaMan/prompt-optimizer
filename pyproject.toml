@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "prompt-optimizer"
+version = "0.1.0"
+description = "Constraint-safe prompt compilation for agent workflows with deterministic local validation"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "SpannDaMan"}]
+keywords = ["codex", "claude-code", "prompts", "prompt-engineering", "agents", "validation"]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/SpannDaMan/prompt-optimizer"
+Repository = "https://github.com/SpannDaMan/prompt-optimizer"
+Issues = "https://github.com/SpannDaMan/prompt-optimizer/issues"
+
+[project.scripts]
+prompt-optimizer = "prompt_optimizer:main"
+
+[tool.setuptools]
+py-modules = ["prompt_optimizer"]
+package-dir = {"" = "plugins/prompt-optimizer/scripts"}
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
