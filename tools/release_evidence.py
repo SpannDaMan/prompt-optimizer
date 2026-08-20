@@ -7,6 +7,7 @@ from pathlib import Path
 
 
 EXCLUDED_PARTS = {".git", "__pycache__", "build", "validation"}
+TEXT_SUFFIXES = {".json", ".md", ".py", ".ps1", ".toml", ".txt", ".yml", ".yaml"}
 
 
 def file_sha256(path: Path) -> str:
@@ -35,6 +36,15 @@ def product_files(root: Path) -> list[Path]:
     return sorted(files, key=lambda item: item.relative_to(root).as_posix())
 
 
+def product_file_identity(path: Path) -> tuple[int, str]:
+    """Return a platform-stable size and digest for one product file."""
+
+    data = path.read_bytes()
+    if path.suffix.casefold() in TEXT_SUFFIXES or path.name == "LICENSE":
+        data = data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    return len(data), hashlib.sha256(data).hexdigest()
+
+
 def product_revision(root: Path) -> tuple[str, list[dict[str, object]]]:
     """Return the product digest and its ordered file manifest."""
 
@@ -42,8 +52,7 @@ def product_revision(root: Path) -> tuple[str, list[dict[str, object]]]:
     manifest: list[dict[str, object]] = []
     for path in product_files(root):
         relative = path.relative_to(root).as_posix()
-        size = path.stat().st_size
-        digest = file_sha256(path)
+        size, digest = product_file_identity(path)
         records.extend(f"{relative}\t{size}\t{digest}\n".encode("utf-8"))
         manifest.append({"path": relative, "bytes": size, "sha256": digest})
     return hashlib.sha256(records).hexdigest(), manifest

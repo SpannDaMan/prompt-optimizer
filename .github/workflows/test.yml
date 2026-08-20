@@ -9,6 +9,8 @@ permissions:
 
 jobs:
   test:
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
     strategy:
       fail-fast: false
       matrix:
@@ -23,13 +25,13 @@ jobs:
       - name: Run unit and regression tests
         run: python -B -m unittest discover -s tests -v
       - name: Run one-command demo
-        run: python tools/demo.py
+        run: python -B tools/demo.py
       - name: Run deterministic prompt-packet evals
-        run: python tools/run_evals.py
+        run: python -B tools/run_evals.py
       - name: Validate the example against the public JSON Schema
-        run: python tools/validate_json_schema.py --schema plugins/prompt-optimizer/brief.schema.json --instance plugins/prompt-optimizer/examples/optimized-brief.json
+        run: python -B tools/validate_json_schema.py --schema plugins/prompt-optimizer/brief.schema.json --instance plugins/prompt-optimizer/examples/optimized-brief.json
       - name: Validate release shape
-        run: python tools/validate_release_candidate.py --json
+        run: python -B tools/validate_release_candidate.py --json
       - name: Build and install package
         run: python -m pip install .
       - name: Smoke installed CLI

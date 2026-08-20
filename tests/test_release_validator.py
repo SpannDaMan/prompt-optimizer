@@ -180,6 +180,18 @@ class ReleaseValidatorTests(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertNotEqual(second, third)
 
+    def test_product_revision_normalizes_text_line_endings(self) -> None:
+        """Keep the product revision stable across LF and CRLF Git checkouts."""
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            text = root / "README.md"
+            text.write_bytes(b"one\ntwo\n")
+            lf_revision, _manifest = release_validator.product_revision(root)
+            text.write_bytes(b"one\r\ntwo\r\n")
+            crlf_revision, _manifest = release_validator.product_revision(root)
+        self.assertEqual(lf_revision, crlf_revision)
+
     def test_stale_receipt_revision_is_rejected(self) -> None:
         """Reject a receipt retained after any product revision change."""
 

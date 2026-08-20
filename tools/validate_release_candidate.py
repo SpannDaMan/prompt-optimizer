@@ -33,6 +33,7 @@ from release_evidence import file_sha256, product_revision  # noqa: E402
 
 REQUIRED_FILES = (
     ".gitignore",
+    ".gitattributes",
     "LICENSE",
     "README.md",
     "BRAND.md",
@@ -313,6 +314,8 @@ def validate_file_shape() -> list[str]:
     errors: list[str] = []
     for path in ROOT.rglob("*"):
         relative = path.relative_to(ROOT)
+        if ".git" in relative.parts:
+            continue
         if path.is_symlink():
             errors.append(f"symlink is not allowed: {relative}")
             continue
@@ -330,6 +333,9 @@ def validate_text_safety() -> list[str]:
 
     errors: list[str] = []
     for path in ROOT.rglob("*"):
+        relative = path.relative_to(ROOT)
+        if ".git" in relative.parts:
+            continue
         if not path.is_file() or (path.suffix.lower() not in TEXT_SUFFIXES and path.name != "LICENSE"):
             continue
         try:
@@ -339,16 +345,16 @@ def validate_text_safety() -> list[str]:
         lower = text.lower()
         for marker in PRIVATE_MARKERS:
             if marker in lower:
-                errors.append(f"private marker {marker!r} found in {path.relative_to(ROOT)}")
+                errors.append(f"private marker {marker!r} found in {relative}")
         for pattern in SECRET_PATTERNS:
             if pattern.search(text):
-                errors.append(f"secret-like value matched {pattern.pattern!r} in {path.relative_to(ROOT)}")
+                errors.append(f"secret-like value matched {pattern.pattern!r} in {relative}")
         for pattern in ABSOLUTE_PATH_PATTERNS:
             if pattern.search(text):
-                errors.append(f"absolute user path matched {pattern.pattern!r} in {path.relative_to(ROOT)}")
+                errors.append(f"absolute user path matched {pattern.pattern!r} in {relative}")
         placeholders = ("[" + "todo:", "[" + "todo]")
         if any(marker in lower for marker in placeholders):
-            errors.append(f"TODO placeholder found in {path.relative_to(ROOT)}")
+            errors.append(f"TODO placeholder found in {relative}")
     return errors
 
 
