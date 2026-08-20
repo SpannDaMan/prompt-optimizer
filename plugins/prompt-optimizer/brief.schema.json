@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/plugins/prompt-optimizer/brief.schema.json",
+  "title": "Prompt Optimizer Brief",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "source_sha256",
+    "original_prompt",
+    "sentence_count",
+    "trigger_decision",
+    "skip_reason",
+    "target_surface",
+    "candidate_constraints",
+    "compiled_prompt",
+    "must_preserve_constraints",
+    "constraint_map",
+    "authorization_boundary",
+    "validation_plan"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "status": {"enum": ["draft", "ready"]},
+    "source_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "original_prompt": {"type": "string"},
+    "sentence_count": {"type": "integer", "minimum": 0},
+    "trigger_decision": {"enum": ["optimize", "skip"]},
+    "skip_reason": {"type": "string"},
+    "target_surface": {"enum": ["codex", "chatgpt", "openai_api", "other", "unknown"]},
+    "candidate_constraints": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "compiled_prompt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "sections"],
+      "properties": {
+        "text": {"type": "string"},
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "decision", "content", "reason"],
+            "properties": {
+              "id": {"enum": ["outcome", "relevant_context", "must_preserve_constraints", "evidence_and_success", "output_contract", "task_shape_routing", "final_verification"]},
+              "decision": {"enum": ["include", "omit"]},
+              "content": {"type": "string"},
+              "reason": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+    "must_preserve_constraints": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "constraint_map": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "source_text", "disposition", "compiled_text", "compiled_section"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "source_text": {"type": "string", "minLength": 1},
+          "disposition": {"enum": ["verbatim", "semantic"]},
+          "compiled_text": {"type": "string", "minLength": 1},
+          "compiled_section": {"enum": ["outcome", "relevant_context", "must_preserve_constraints", "evidence_and_success", "output_contract", "task_shape_routing", "final_verification"]}
+        }
+      }
+    },
+    "authorization_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["local_reversible_execution", "external_actions", "scope_expansion", "gated_actions", "approval_evidence"],
+      "properties": {
+        "local_reversible_execution": {"enum": ["allowed", "not_authorized"]},
+        "external_actions": {"enum": ["gated", "explicitly_authorized"]},
+        "scope_expansion": {"enum": ["gated", "explicitly_authorized"]},
+        "gated_actions": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "approval_evidence": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "boundary", "action_text", "source_text"],
+            "properties": {
+              "id": {"type": "string", "minLength": 1},
+              "boundary": {"enum": ["local_reversible_execution", "external_actions", "scope_expansion"]},
+              "action_text": {"type": "string", "minLength": 1},
+              "source_text": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    },
+    "validation_plan": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+  }
+}

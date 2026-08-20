@@ -1,0 +1,18 @@
+{
+  "name": "prompt-optimizer",
+  "description": "Compile long agent requests into lean prompt packets with explicit constraint and authority mapping.",
+  "version": "0.1.0",
+  "author": {
+    "name": "SpannDaMan"
+  },
+  "homepage": "https://github.com/SpannDaMan/prompt-optimizer",
+  "repository": "https://github.com/SpannDaMan/prompt-optimizer",
+  "license": "MIT",
+  "keywords": [
+    "prompts",
+    "prompt-engineering",
+    "agents",
+    "validation",
+    "claude-code"
+  ]
+}

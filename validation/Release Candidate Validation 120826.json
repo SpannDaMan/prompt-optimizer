@@ -1,0 +1,53 @@
+{
+  "status": "pass",
+  "candidate": "prompt-optimizer 0.1.0",
+  "product_revision_sha256": "5f563f848d0d34653b6ddd719f80bdef16c23cffd81cf6e5be38d5c74583acce",
+  "root": ".",
+  "checks": {
+    "required_files": "pass",
+    "portable_file_shape": "pass",
+    "text_safety": "pass",
+    "metadata": "pass",
+    "cross_platform_packaging": "pass",
+    "json_artifacts": "pass",
+    "logo_provenance": "pass",
+    "logo_selection_evidence": "pass",
+    "sample_analysis": "pass",
+    "sample_trace": "pass",
+    "one_command_demo": "pass",
+    "native_prompt_agent_eval": "pass",
+    "package_evidence": "pass",
+    "codex_plugin_evidence": "pass",
+    "claude_plugin_evidence": "pass",
+    "json_schema_evidence": "pass",
+    "skill_boundary": "pass",
+    "claims_integrity": "pass",
+    "private_pilot_contract": "pass",
+    "review_evidence": "pass",
+    "png_assets": "pass"
+  },
+  "asset_sha256": {
+    "plugins/prompt-optimizer/assets/Prompt Optimizer Voice-to-Prompt GPT Image 2 Master 200826.png": "65896dac00e0c9361122b33f290f928783e4d7f7f1f65e8f180986b1601b6d28",
+    "plugins/prompt-optimizer/assets/icon.png": "e0efca5e358d54007038cf1c11484a691a9c14b87a20586121eea7fb846ef2e2",
+    "plugins/prompt-optimizer/assets/logo.png": "379d3fa61e1559494fa518c0ed04e3ff6d876ad2eab252b88980a77541c1d702",
+    "plugins/prompt-optimizer/assets/logo-dark.png": "03f7e1ac04b22f37b2202bec5f02e4685b4e5c5bf6dbe4d43cfbd14666e22c13",
+    "plugins/prompt-optimizer/assets/screenshot1.png": "416d3eac5db6fe628e0fcdeb99c00ef55f35fb1e296e27f28f06b7ba19bdba38",
+    "plugins/prompt-optimizer/assets/social-preview.png": "e9ba1d14c70158fb921e524c8afde8ab469862c8251cbbb5c8253c49efe35e1f"
+  },
+  "evidence_sha256": {
+    "validation/Community Review Change Ledger 120826.json": "ed869ac2d64f024edd9407ac9bcca63e710679eeda8b2c5d76045c42ceda9170",
+    "validation/Prompt Optimizer Eval Result 120826.json": "d67a15aac96d949e4c749a4d276755ccf2cff04e175d0277a5465f6426715519",
+    "validation/Package Verification 120826.json": "e28e00b81c1aa24a5492f10b9a29be16a9be4932194327b9807e6e6201a2bf18",
+    "validation/Codex Plugin Verification 120826.json": "238efce467adc2d746a4d9913b16624053cd33662be0db880bd0ecf3cf56dbbe",
+    "validation/Claude Plugin Verification 200826.json": "ae0b46ae7207d7bf13442715c122f33ab677a4ab49b504f647dbfdd3f0c07af8",
+    "validation/JSON Schema Verification 120826.json": "bfd123fb86c313b6426546a7046e3518393ec688a2b8a4bfdf7f26bb343475fa",
+    "validation/Skill Boundary Transcript 120826.md": "b186e83eaeab171f990f0cb86e6cb3dfc22cb6092c7b58d904a3f1f4039e45b7",
+    "validation/Skill Boundary Verification 120826.json": "c09b770d6dae66d914db9d3f321c099787e48acb46d36d932036d0eeea38836d",
+    "validation/Veteran Maintainer Review 120826.json": "56d2611dd50d7794b7ad2fa5ec6dc1127e7e013e02c8bc8b1d3e58dad5fbf999",
+    "validation/Logo Selection and Promotion 200826.json": "688c40d0425da80664d47c4b00bcd00ac9dd0c7e1c04727467649a3ad0baa029"
+  },
+  "errors": [],
+  "maintainer_pilot_timing": "post_release",
+  "publication_authority": "explicit_operator_override",
+  "publication_action": "authorized_pending_external_execution"
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-08-20T16:44:13-04:00",
+  "timezone": "New York Eastern Time (America/New_York)",
+  "status": "pass",
+  "candidate": "prompt-optimizer 0.1.0",
+  "product_revision_sha256": "91d7460c8dcc59191395b21894aafb8830371bb6a5aa9c28b5193423260073fd",
+  "selected_identity": "Voice-to-Prompt",
+  "checks": {
+    "required_files": "pass",
+    "portable_file_shape": "pass",
+    "text_safety": "pass",
+    "metadata": "pass",
+    "cross_platform_packaging": "pass",
+    "json_artifacts": "pass",
+    "logo_provenance": "pass",
+    "logo_selection_evidence": "pass",
+    "sample_analysis": "pass",
+    "sample_trace": "pass",
+    "one_command_demo": "pass",
+    "native_prompt_agent_eval": "pass",
+    "package_evidence": "pass",
+    "codex_plugin_evidence": "pass",
+    "claude_plugin_evidence": "pass",
+    "json_schema_evidence": "pass",
+    "skill_boundary": "pass",
+    "claims_integrity": "pass",
+    "private_pilot_contract": "pass",
+    "review_evidence": "pass",
+    "png_assets": "pass"
+  },
+  "asset_sha256": {
+    "plugins/prompt-optimizer/assets/Prompt Optimizer Voice-to-Prompt GPT Image 2 Master 200826.png": "65896dac00e0c9361122b33f290f928783e4d7f7f1f65e8f180986b1601b6d28",
+    "plugins/prompt-optimizer/assets/icon.png": "e0efca5e358d54007038cf1c11484a691a9c14b87a20586121eea7fb846ef2e2",
+    "plugins/prompt-optimizer/assets/logo.png": "379d3fa61e1559494fa518c0ed04e3ff6d876ad2eab252b88980a77541c1d702",
+    "plugins/prompt-optimizer/assets/logo-dark.png": "03f7e1ac04b22f37b2202bec5f02e4685b4e5c5bf6dbe4d43cfbd14666e22c13",
+    "plugins/prompt-optimizer/assets/screenshot1.png": "416d3eac5db6fe628e0fcdeb99c00ef55f35fb1e296e27f28f06b7ba19bdba38",
+    "plugins/prompt-optimizer/assets/social-preview.png": "e9ba1d14c70158fb921e524c8afde8ab469862c8251cbbb5c8253c49efe35e1f"
+  },
+  "focused_unit_tests": "9 passed, 3 subtests passed",
+  "machine_receipts": "6/6 regenerated for the frozen product revision",
+  "portable_residue": {
+    "__pycache__": 0,
+    "pyc": 0,
+    "status": "pass"
+  },
+  "errors": [],
+  "private_pilot_status": "not_started",
+  "publication_action": "none"
+}

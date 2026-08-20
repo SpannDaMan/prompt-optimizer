@@ -1,0 +1,50 @@
+{
+  "tool": "prompt-optimizer",
+  "version": "0.1.0",
+  "valid": true,
+  "source_sha256": "4d9954be977a8d586e02e11dd548b50fe59fc59231bb7985eeff838bb3a221eb",
+  "trigger_decision": "optimize",
+  "constraint_count": 2,
+  "constraints": [
+    {
+      "id": "constraint-1",
+      "source_text": "Fix only the defect and preserve existing user changes.",
+      "disposition": "verbatim",
+      "compiled_text": "Fix only the defect and preserve existing user changes.",
+      "compiled_section": "must_preserve_constraints"
+    },
+    {
+      "id": "constraint-2",
+      "source_text": "Do not publish, push, change credentials, or widen scope.",
+      "disposition": "verbatim",
+      "compiled_text": "Do not publish, push, change credentials, or widen scope.",
+      "compiled_section": "must_preserve_constraints"
+    }
+  ],
+  "authorization_boundary": {
+    "local_reversible_execution": "allowed",
+    "external_actions": "gated",
+    "scope_expansion": "gated",
+    "gated_actions": [
+      "publish",
+      "push",
+      "change credentials",
+      "widen scope"
+    ],
+    "approval_evidence": [
+      {
+        "id": "approval-1",
+        "boundary": "local_reversible_execution",
+        "action_text": "Fix only the defect",
+        "source_text": "Fix only the defect and preserve existing user changes."
+      }
+    ]
+  },
+  "validation_plan": [
+    "Run the relevant automated tests.",
+    "Confirm that only the failing behavior changed.",
+    "Report the exact validation results and remaining manual decisions."
+  ],
+  "privacy_notice": "This trace may include exact source constraint text. Keep it local and do not store secrets in prompt packets.",
+  "evidence_boundary": "This proves packet custody and validation, not semantic equivalence or downstream model compliance."
+}

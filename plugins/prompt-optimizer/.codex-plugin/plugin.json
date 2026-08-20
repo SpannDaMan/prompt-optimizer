@@ -1,0 +1,35 @@
+{
+  "name": "prompt-optimizer",
+  "version": "0.1.0",
+  "description": "Compile long agent requests with explicit constraint and authority mapping for review.",
+  "author": {
+    "name": "SpannDaMan",
+    "url": "https://github.com/SpannDaMan"
+  },
+  "homepage": "https://github.com/SpannDaMan/prompt-optimizer",
+  "repository": "https://github.com/SpannDaMan/prompt-optimizer",
+  "license": "MIT",
+  "keywords": ["codex", "claude-code", "prompts", "prompt-engineering", "agents", "validation"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Prompt Optimizer",
+    "shortDescription": "Compile prompts. Map constraints.",
+    "longDescription": "Turn long or messy agent requests into lean prompt packets with exact source custody, authorization boundaries, and deterministic local validation.",
+    "developerName": "SpannDaMan",
+    "category": "Developer Tools",
+    "capabilities": ["Local", "Prompt compilation", "Constraint custody", "No credentials"],
+    "websiteURL": "https://github.com/SpannDaMan/prompt-optimizer",
+    "privacyPolicyURL": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/TERMS.md",
+    "defaultPrompt": [
+      "Optimize this request and map every declared constraint for review.",
+      "Validate this prompt packet.",
+      "Show why this prompt packet cannot render yet."
+    ],
+    "brandColor": "#7C3AED",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "logoDark": "./assets/logo-dark.png",
+    "screenshots": ["./assets/screenshot1.png"]
+  }
+}

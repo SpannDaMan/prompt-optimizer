@@ -1,0 +1,31 @@
+name: Feature request
+description: Propose a bounded improvement to the public contract.
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: User problem
+      description: Describe the observable problem before proposing a solution.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or minimal example
+    validations:
+      required: true
+  - type: textarea
+    id: smallest_change
+    attributes:
+      label: Smallest useful change
+    validations:
+      required: true
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This does not require a hosted service, model gateway, MCP server, browser extension, or full evaluation framework.
+          required: true

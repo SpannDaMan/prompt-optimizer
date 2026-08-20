@@ -1,0 +1,30 @@
+{
+  "schema_version": "1.0",
+  "review_type": "maintainer_publication_override",
+  "status": "pass",
+  "candidate": "prompt-optimizer 0.1.0",
+  "product_revision_sha256": "5f563f848d0d34653b6ddd719f80bdef16c23cffd81cf6e5be38d5c74583acce",
+  "previous_gate": "Complete a 30-day private maintainer pilot before public release.",
+  "decision": "Publish v0.1.0 now and run the 30-day maintainer pilot after release.",
+  "decision_authority": "explicit operator instruction",
+  "risk": "Early public defects, installer confusion, or avoidable support and reputation debt.",
+  "mitigations": [
+    "Frozen-candidate local release gate",
+    "Private-first PR publication",
+    "Remote CI and mergeability verification",
+    "Public Git, Codex, Claude, and Python install smoke tests",
+    "Post-release 30-day maintainer pilot",
+    "No public-history rewrite after release"
+  ],
+  "open_p0_p1_p2": {"P0": [], "P1": [], "P2": []},
+  "sponsors_enrollment": "inactive_redirects_to_profile",
+  "adjacent_actions_not_authorized": [
+    "Sponsors enrollment or payment changes",
+    "permission or OAuth/API-scope broadening",
+    "credential changes",
+    "paid promotion",
+    "unrelated launch posts",
+    "Agent Smith Router publication"
+  ],
+  "publication_action": "authorized_pending_external_execution"
+}

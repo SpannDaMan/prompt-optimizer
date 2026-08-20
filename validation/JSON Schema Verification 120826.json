@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0",
+  "candidate": "prompt-optimizer 0.1.0",
+  "product_revision_sha256": "5f563f848d0d34653b6ddd719f80bdef16c23cffd81cf6e5be38d5c74583acce",
+  "status": "pass",
+  "exit_code": 0,
+  "errors": [],
+  "working_directory": ".",
+  "command": [
+    "python",
+    "-B",
+    "tools/validate_json_schema.py",
+    "--schema",
+    "plugins/prompt-optimizer/brief.schema.json",
+    "--instance",
+    "plugins/prompt-optimizer/examples/optimized-brief.json"
+  ],
+  "schema": {
+    "path": "plugins/prompt-optimizer/brief.schema.json",
+    "sha256": "7bd08c026dc9e047926402f1d9d9eaf2408bd81a2fb40b7ce428516e050bc8af"
+  },
+  "instance": {
+    "path": "plugins/prompt-optimizer/examples/optimized-brief.json",
+    "sha256": "c3192d96baad4c3f3f9b86c58da1ee4417edf940d469e2f7d11637d7f7379a9d"
+  },
+  "publication_action": "none"
+}

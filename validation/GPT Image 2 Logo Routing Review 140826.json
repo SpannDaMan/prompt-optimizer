@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.1",
+  "product": "Prompt Optimizer",
+  "product_revision_sha256": "26a52cff0551e550b6567920c163c8ccfe98af3dd31d87fe51df7b26ac461efb",
+  "master_sha256": "3237bdf7a922a9943b91b8b7f513cd9c74853e44d7176701ac10fa40dc63e37b",
+  "direct_actual_size_qa_sha256": "47a18781360a9e71771e9dfb0d48a417ae41f057fde977c30f15c8e78266827e",
+  "route": "premium_super",
+  "provider_id": "nemotron_3_super",
+  "fallback_used": false,
+  "initial_review_sha256": "98d39eb4c1c47a71b27224f0d0224b286a01ae3e01019a11e1227823479f5f03",
+  "delta_review_sha256": "39e20e564e9863c6e8959ebc56b2b2ec6539f70c6940b3111efca2a0831cf792",
+  "final_contrast_review_sha256": "2896a196f4cf711c27e6a3b610f21fc3459bb7f26919228b9b3a1df28845f8f8",
+  "final_contrast_review_type": "independent_text_evidence_review",
+  "final_contrast_review_request_id": "0c7d697dc2a84f1c86599d1a75160cc9",
+  "four_vs_five_defect_status": "closed",
+  "dark_surface_contrast_defect_status": "closed",
+  "receipt_binding_decision": true,
+  "open_p0_p1_p2": {"P0": [], "P1": [], "P2": []},
+  "verdict": "private_pilot_ready",
+  "evidence_boundary": "Nemotron reviewed supplied hashes and root direct-inspection claims as text evidence; it did not inspect pixels and is not a human audit or real-user study.",
+  "public_release_ready": false,
+  "publication_action": "none"
+}

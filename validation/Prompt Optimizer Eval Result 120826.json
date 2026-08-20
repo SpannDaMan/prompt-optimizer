@@ -1,0 +1,529 @@
+{
+  "suite_id": "prompt-optimizer-public-candidate-v0.1.0",
+  "product_revision_sha256": "5f563f848d0d34653b6ddd719f80bdef16c23cffd81cf6e5be38d5c74583acce",
+  "pass": true,
+  "pass_threshold": 1.0,
+  "score": 1.0,
+  "case_count": 13,
+  "critical_failure_cases": [],
+  "error_cases": [],
+  "cases": [
+    {
+      "id": "long-prompt-triggers-optimization",
+      "pass": true,
+      "score": 1.0,
+      "passed_weight": 3.0,
+      "total_weight": 3.0,
+      "critical_failures": [],
+      "errors": [],
+      "checks": [
+        {
+          "type": "json_field_equals",
+          "detail": "json field `trigger_decision` equals `optimize`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "json_field_equals",
+          "detail": "json field `sentence_count` equals `5`",
+          "weight": 1.0,
+          "critical": false,
+          "pass": true
+        },
+        {
+          "type": "must_include",
+          "detail": "must include `No model was called`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        }
+      ],
+      "runner": {
+        "command": [
+          "python",
+          "evals/run_eval_case.py",
+          "long-analysis"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "require_exit_zero": true
+      },
+      "output_excerpt": "{\"tool\": \"prompt-optimizer\", \"version\": \"0.1.0\", \"source_sha256\": \"4d9954be977a8d586e02e11dd548b50fe59fc59231bb7985eeff838bb3a221eb\", \"sentence_count\": 5, \"explicit_skip\": false, \"trigger_decision\": \"optimize\", \"candidate_constraints\": [\"Fix only the defect and preserve existing user changes.\", \"Do "
+    },
+    {
+      "id": "short-prompt-remains-unchanged",
+      "pass": true,
+      "score": 1.0,
+      "passed_weight": 3.0,
+      "total_weight": 3.0,
+      "critical_failures": [],
+      "errors": [],
+      "checks": [
+        {
+          "type": "json_field_equals",
+          "detail": "json field `trigger_decision` equals `skip`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "json_field_equals",
+          "detail": "json field `unchanged` equals `True`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "json_field_equals",
+          "detail": "json field `valid` equals `True`",
+          "weight": 1.0,
+          "critical": false,
+          "pass": true
+        }
+      ],
+      "runner": {
+        "command": [
+          "python",
+          "evals/run_eval_case.py",
+          "short-skip"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "require_exit_zero": true
+      },
+      "output_excerpt": "{\"trigger_decision\": \"skip\", \"status\": \"ready\", \"unchanged\": true, \"valid\": true}\n"
+    },
+    {
+      "id": "explicit-skip-wins",
+      "pass": true,
+      "score": 1.0,
+      "passed_weight": 3.0,
+      "total_weight": 3.0,
+      "critical_failures": [],
+      "errors": [],
+      "checks": [
+        {
+          "type": "json_field_equals",
+          "detail": "json field `trigger_decision` equals `skip`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "json_field_equals",
+          "detail": "json field `skip_reason` equals `explicit_skip`",
+          "weight": 1.0,
+          "critical": false,
+          "pass": true
+        },
+        {
+          "type": "json_field_equals",
+          "detail": "json field `unchanged` equals `True`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        }
+      ],
+      "runner": {
+        "command": [
+          "python",
+          "evals/run_eval_case.py",
+          "explicit-skip"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "require_exit_zero": true
+      },
+      "output_excerpt": "{\"trigger_decision\": \"skip\", \"skip_reason\": \"explicit_skip\", \"unchanged\": true}\n"
+    },
+    {
+      "id": "ignored-skip-cannot-bypass-compilation",
+      "pass": true,
+      "score": 1.0,
+      "passed_weight": 3.0,
+      "total_weight": 3.0,
+      "critical_failures": [],
+      "errors": [],
+      "checks": [
+        {
+          "type": "json_field_equals",
+          "detail": "json field `trigger_decision` equals `optimize`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "json_field_equals",
+          "detail": "json field `status` equals `draft`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "json_field_equals",
+          "detail": "json field `valid` equals `False`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        }
+      ],
+      "runner": {
+        "command": [
+          "python",
+          "evals/run_eval_case.py",
+          "ignored-skip"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "require_exit_zero": true
+      },
+      "output_excerpt": "{\"trigger_decision\": \"optimize\", \"status\": \"draft\", \"valid\": false}\n"
+    },
+    {
+      "id": "complete-example-validates",
+      "pass": true,
+      "score": 1.0,
+      "passed_weight": 2.0,
+      "total_weight": 2.0,
+      "critical_failures": [],
+      "errors": [],
+      "checks": [
+        {
+          "type": "json_field_equals",
+          "detail": "json field `valid` equals `True`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "json_field_equals",
+          "detail": "json field `trigger_decision` equals `optimize`",
+          "weight": 1.0,
+          "critical": false,
+          "pass": true
+        }
+      ],
+      "runner": {
+        "command": [
+          "python",
+          "evals/run_eval_case.py",
+          "valid-example"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "require_exit_zero": true
+      },
+      "output_excerpt": "{\"valid\": true, \"trigger_decision\": \"optimize\", \"error_codes\": []}\n"
+    },
+    {
+      "id": "source-mismatch-fails-closed",
+      "pass": true,
+      "score": 1.0,
+      "passed_weight": 3.0,
+      "total_weight": 3.0,
+      "critical_failures": [],
+      "errors": [],
+      "checks": [
+        {
+          "type": "json_field_equals",
+          "detail": "json field `valid` equals `False`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "must_include",
+          "detail": "must include `source_fingerprint_mismatch`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "must_include",
+          "detail": "must include `original_prompt_mismatch`",
+          "weight": 1.0,
+          "critical": false,
+          "pass": true
+        }
+      ],
+      "runner": {
+        "command": [
+          "python",
+          "evals/run_eval_case.py",
+          "source-mismatch"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "require_exit_zero": true
+      },
+      "output_excerpt": "{\"valid\": false, \"trigger_decision\": \"optimize\", \"error_codes\": [\"original_prompt_mismatch\", \"source_fingerprint_mismatch\", \"sentence_count_mismatch\"]}\n"
+    },
+    {
+      "id": "draft-cannot-render",
+      "pass": true,
+      "score": 1.0,
+      "passed_weight": 2.0,
+      "total_weight": 2.0,
+      "critical_failures": [],
+      "errors": [],
+      "checks": [
+        {
+          "type": "json_field_equals",
+          "detail": "json field `valid` equals `False`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "must_include",
+          "detail": "must include `brief_not_ready`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        }
+      ],
+      "runner": {
+        "command": [
+          "python",
+          "evals/run_eval_case.py",
+          "draft-closed"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "require_exit_zero": true
+      },
+      "output_excerpt": "{\"valid\": false, \"trigger_decision\": \"optimize\", \"error_codes\": [\"brief_not_ready\"]}\n"
+    },
+    {
+      "id": "unknown-fields-fail-closed",
+      "pass": true,
+      "score": 1.0,
+      "passed_weight": 2.0,
+      "total_weight": 2.0,
+      "critical_failures": [],
+      "errors": [],
+      "checks": [
+        {
+          "type": "json_field_equals",
+          "detail": "json field `valid` equals `False`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "must_include",
+          "detail": "must include `unknown_top_level_fields`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        }
+      ],
+      "runner": {
+        "command": [
+          "python",
+          "evals/run_eval_case.py",
+          "unknown-field"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "require_exit_zero": true
+      },
+      "output_excerpt": "{\"valid\": false, \"trigger_decision\": \"optimize\", \"error_codes\": [\"unknown_top_level_fields\"]}\n"
+    },
+    {
+      "id": "external-authority-needs-evidence",
+      "pass": true,
+      "score": 1.0,
+      "passed_weight": 2.0,
+      "total_weight": 2.0,
+      "critical_failures": [],
+      "errors": [],
+      "checks": [
+        {
+          "type": "json_field_equals",
+          "detail": "json field `valid` equals `False`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "must_include",
+          "detail": "must include `approval_evidence_missing`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        }
+      ],
+      "runner": {
+        "command": [
+          "python",
+          "evals/run_eval_case.py",
+          "external-auth"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "require_exit_zero": true
+      },
+      "output_excerpt": "{\"valid\": false, \"trigger_decision\": \"optimize\", \"error_codes\": [\"approval_evidence_missing\"]}\n"
+    },
+    {
+      "id": "render-matches-validated-packet",
+      "pass": true,
+      "score": 1.0,
+      "passed_weight": 2.0,
+      "total_weight": 2.0,
+      "critical_failures": [],
+      "errors": [],
+      "checks": [
+        {
+          "type": "json_field_equals",
+          "detail": "json field `matches` equals `True`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "word_count_at_least",
+          "detail": "word count >= 2",
+          "weight": 1.0,
+          "critical": false,
+          "pass": true
+        }
+      ],
+      "runner": {
+        "command": [
+          "python",
+          "evals/run_eval_case.py",
+          "render-parity"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "require_exit_zero": true
+      },
+      "output_excerpt": "{\"matches\": true, \"length\": 474}\n"
+    },
+    {
+      "id": "trace-exposes-exact-custody",
+      "pass": true,
+      "score": 1.0,
+      "passed_weight": 5.0,
+      "total_weight": 5.0,
+      "critical_failures": [],
+      "errors": [],
+      "checks": [
+        {
+          "type": "json_field_equals",
+          "detail": "json field `valid` equals `True`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "json_field_equals",
+          "detail": "json field `constraint_count` equals `2`",
+          "weight": 1.0,
+          "critical": false,
+          "pass": true
+        },
+        {
+          "type": "json_field_equals",
+          "detail": "json field `constraints_match` equals `True`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "json_field_equals",
+          "detail": "json field `external_actions` equals `gated`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "must_include",
+          "detail": "must include `not semantic equivalence`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        }
+      ],
+      "runner": {
+        "command": [
+          "python",
+          "evals/run_eval_case.py",
+          "trace-custody"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "require_exit_zero": true
+      },
+      "output_excerpt": "{\"valid\": true, \"constraint_count\": 2, \"constraints_match\": true, \"external_actions\": \"gated\", \"evidence_boundary\": \"This proves packet custody and validation, not semantic equivalence or downstream model compliance.\"}\n"
+    },
+    {
+      "id": "analysis-is-deterministic",
+      "pass": true,
+      "score": 1.0,
+      "passed_weight": 1.0,
+      "total_weight": 1.0,
+      "critical_failures": [],
+      "errors": [],
+      "checks": [
+        {
+          "type": "json_field_equals",
+          "detail": "json field `matches` equals `True`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        }
+      ],
+      "runner": {
+        "command": [
+          "python",
+          "evals/run_eval_case.py",
+          "determinism"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "require_exit_zero": true
+      },
+      "output_excerpt": "{\"matches\": true}\n"
+    },
+    {
+      "id": "analysis-is-model-free",
+      "pass": true,
+      "score": 1.0,
+      "passed_weight": 2.0,
+      "total_weight": 2.0,
+      "critical_failures": [],
+      "errors": [],
+      "checks": [
+        {
+          "type": "json_field_equals",
+          "detail": "json field `network_required` equals `False`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        },
+        {
+          "type": "must_include",
+          "detail": "must include `No model was called`",
+          "weight": 1.0,
+          "critical": true,
+          "pass": true
+        }
+      ],
+      "runner": {
+        "command": [
+          "python",
+          "evals/run_eval_case.py",
+          "model-free-boundary"
+        ],
+        "exit_code": 0,
+        "stderr": "",
+        "require_exit_zero": true
+      },
+      "output_excerpt": "{\"boundary\": \"Deterministic analysis only. No model was called and no prompt was executed.\", \"runtime_dependencies\": [], \"network_required\": false}\n"
+    }
+  ]
+}
