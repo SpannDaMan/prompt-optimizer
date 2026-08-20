@@ -6,7 +6,7 @@ import hashlib
 from pathlib import Path
 
 
-EXCLUDED_PARTS = {".git", "__pycache__", "build", "validation"}
+EXCLUDED_PARTS = {".git", ".pytest_cache", "__pycache__", "build", "validation"}
 TEXT_SUFFIXES = {".json", ".md", ".py", ".ps1", ".toml", ".txt", ".yml", ".yaml"}
 
 

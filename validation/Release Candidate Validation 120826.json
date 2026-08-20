@@ -1,7 +1,7 @@
 {
   "status": "pass",
   "candidate": "prompt-optimizer 0.1.0",
-  "product_revision_sha256": "7084ea7149e513d6fb5c8bef8105bba69fc0dd7954b0d06d78ba74230bb820a2",
+  "product_revision_sha256": "5f563f848d0d34653b6ddd719f80bdef16c23cffd81cf6e5be38d5c74583acce",
   "root": ".",
   "checks": {
     "required_files": "pass",
@@ -35,16 +35,16 @@
     "plugins/prompt-optimizer/assets/social-preview.png": "e9ba1d14c70158fb921e524c8afde8ab469862c8251cbbb5c8253c49efe35e1f"
   },
   "evidence_sha256": {
-    "validation/Community Review Change Ledger 120826.json": "be602bd91ba13e53c70f64f43c22e74c31248364ac80a1e7c15ff36783390156",
-    "validation/Prompt Optimizer Eval Result 120826.json": "d2951630e6bd891a511d39fa54749675dbbeb283ee775ed0658965a8063ff78f",
-    "validation/Package Verification 120826.json": "803b8eeb2f215d15f431843e3fdc6d250a9c9931fd003fa58c56e9bd54809bd5",
-    "validation/Codex Plugin Verification 120826.json": "0563551389b26248e9dcee75d34197f505a795d417979edf23c2e5e2b6060c84",
-    "validation/Claude Plugin Verification 200826.json": "60e15a6ce50af327fe219fcb852e7ad5ec842b7e95a1ccc1b8e26c79db99de91",
-    "validation/JSON Schema Verification 120826.json": "d0d3fcba6ff048b4445cb43abbb94e8ce477c6287d2b13ac24fc9fbc039283b1",
+    "validation/Community Review Change Ledger 120826.json": "ed869ac2d64f024edd9407ac9bcca63e710679eeda8b2c5d76045c42ceda9170",
+    "validation/Prompt Optimizer Eval Result 120826.json": "d67a15aac96d949e4c749a4d276755ccf2cff04e175d0277a5465f6426715519",
+    "validation/Package Verification 120826.json": "e28e00b81c1aa24a5492f10b9a29be16a9be4932194327b9807e6e6201a2bf18",
+    "validation/Codex Plugin Verification 120826.json": "238efce467adc2d746a4d9913b16624053cd33662be0db880bd0ecf3cf56dbbe",
+    "validation/Claude Plugin Verification 200826.json": "ae0b46ae7207d7bf13442715c122f33ab677a4ab49b504f647dbfdd3f0c07af8",
+    "validation/JSON Schema Verification 120826.json": "bfd123fb86c313b6426546a7046e3518393ec688a2b8a4bfdf7f26bb343475fa",
     "validation/Skill Boundary Transcript 120826.md": "b186e83eaeab171f990f0cb86e6cb3dfc22cb6092c7b58d904a3f1f4039e45b7",
-    "validation/Skill Boundary Verification 120826.json": "1707083f3ef281466480b3994827cbea4aca033f95948fbe0f6b29a18a8bd63e",
-    "validation/Veteran Maintainer Review 120826.json": "d4bbc35b155ec8ec541ae428fc3952ed68b840671066cdeb5bd6e087ea882838",
-    "validation/Logo Selection and Promotion 200826.json": "c8e602fb383ae1017e4b996fe3b7d40dd4e40df482dfa1d3ed7f79f9fd953753"
+    "validation/Skill Boundary Verification 120826.json": "c09b770d6dae66d914db9d3f321c099787e48acb46d36d932036d0eeea38836d",
+    "validation/Veteran Maintainer Review 120826.json": "56d2611dd50d7794b7ad2fa5ec6dc1127e7e013e02c8bc8b1d3e58dad5fbf999",
+    "validation/Logo Selection and Promotion 200826.json": "688c40d0425da80664d47c4b00bcd00ac9dd0c7e1c04727467649a3ad0baa029"
   },
   "errors": [],
   "maintainer_pilot_timing": "post_release",

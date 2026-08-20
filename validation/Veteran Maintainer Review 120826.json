@@ -4,9 +4,9 @@
   "revision_identity": {
     "repository_target": "SpannDaMan/prompt-optimizer",
     "version": "v0.1.0",
-    "revision": "7084ea7149e513d6fb5c8bef8105bba69fc0dd7954b0d06d78ba74230bb820a2"
+    "revision": "5f563f848d0d34653b6ddd719f80bdef16c23cffd81cf6e5be38d5c74583acce"
   },
-  "product_revision_sha256": "7084ea7149e513d6fb5c8bef8105bba69fc0dd7954b0d06d78ba74230bb820a2",
+  "product_revision_sha256": "5f563f848d0d34653b6ddd719f80bdef16c23cffd81cf6e5be38d5c74583acce",
   "evidence_packet_sha256": "4e305a30cdc1714172cb7708be956869377e905c7d459e2e5191cf338c8b147b",
   "evidence_packet_scope": "The functional review packet remains bound to the accepted compiler behavior. The current revision adds the operator-selected Voice-to-Prompt identity, manifest-bound transparent-margin packaging, and refreshed machine-verifiable receipts; validation/Logo Selection and Promotion 200826.json carries the visual delta evidence.",
   "verdict": "public_release_ready_with_gates",

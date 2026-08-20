@@ -321,7 +321,7 @@ def validate_file_shape() -> list[str]:
             continue
         if not path.is_file():
             continue
-        if "__pycache__" in relative.parts or path.suffix == ".pyc":
+        if ".pytest_cache" in relative.parts or "__pycache__" in relative.parts or path.suffix == ".pyc":
             errors.append(f"generated Python cache is not allowed: {relative}")
         if path.stat().st_size > MAX_FILE_BYTES:
             errors.append(f"file exceeds {MAX_FILE_BYTES} bytes: {relative}")
@@ -334,7 +334,7 @@ def validate_text_safety() -> list[str]:
     errors: list[str] = []
     for path in ROOT.rglob("*"):
         relative = path.relative_to(ROOT)
-        if ".git" in relative.parts:
+        if ".git" in relative.parts or ".pytest_cache" in relative.parts:
             continue
         if not path.is_file() or (path.suffix.lower() not in TEXT_SUFFIXES and path.name != "LICENSE"):
             continue

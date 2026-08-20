@@ -180,6 +180,19 @@ class ReleaseValidatorTests(unittest.TestCase):
         self.assertEqual(first, second)
         self.assertNotEqual(second, third)
 
+    def test_product_revision_excludes_pytest_cache(self) -> None:
+        """Keep local pytest state out of the distributable product identity."""
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            (root / "README.md").write_text("product", encoding="utf-8")
+            before, _manifest = release_validator.product_revision(root)
+            cache = root / ".pytest_cache" / "v" / "cache"
+            cache.mkdir(parents=True)
+            (cache / "nodeids").write_text("[]", encoding="utf-8")
+            after, _manifest = release_validator.product_revision(root)
+        self.assertEqual(before, after)
+
     def test_product_revision_normalizes_text_line_endings(self) -> None:
         """Keep the product revision stable across LF and CRLF Git checkouts."""
 
