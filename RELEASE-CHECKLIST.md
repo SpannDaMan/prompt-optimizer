@@ -31,14 +31,17 @@
 
 ## Publication execution — approved August 20, 2026
 
-- [x] Promote the operator-selected Voice-to-Prompt logo and rerun visual/hash validation.
+- [x] Publish the initial Voice-to-Prompt logo in `v0.1.0`.
+- [ ] Promote the operator-selected Agent Smith Palette logo and rerun visual/hash validation for `v0.1.1`.
 - [x] Record the informed override that moves the 30-day pilot after public release.
-- [ ] Create `SpannDaMan/prompt-optimizer` as a public repository.
-- [ ] Push only the reviewed standalone history.
-- [ ] Apply approved repository settings, topics, and social preview.
+- [x] Create `SpannDaMan/prompt-optimizer` as a public repository.
+- [x] Push only the reviewed standalone history.
+- [x] Apply approved repository settings and topics.
 - [x] Disclose that `FUNDING.yml` is prepared while Sponsors enrollment remains inactive.
-- [ ] Create and verify `v0.1.0`.
-- [ ] Test installation from the actual Git source and hosted OpenAI/Codex and Claude marketplaces.
+- [x] Create and verify `v0.1.0`.
+- [x] Test installation from the actual `v0.1.0` Git source and hosted Codex and Claude marketplaces.
+- [ ] Create and verify `v0.1.1` without rewriting `v0.1.0`.
+- [ ] Test installation from the actual `v0.1.1` Git source and hosted Codex and Claude marketplaces.
 - [ ] Submit the approved skills-only package to OpenAI and Claude review lanes.
 - [ ] Publish approved launch content.
 

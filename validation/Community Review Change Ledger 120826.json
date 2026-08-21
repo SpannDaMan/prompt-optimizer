@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "review_type": "synthetic_github_community_pretest",
-  "product_revision_sha256": "5f563f848d0d34653b6ddd719f80bdef16c23cffd81cf6e5be38d5c74583acce",
+  "product_revision_sha256": "3324e04608ad1ff0d5518d5fb54633d0d7a0130c1a13b0e8131c701d97b36087",
   "status": "pass",
   "panel_size": 6,
   "perspectives": [
@@ -45,7 +45,7 @@
     },
     {
       "finding": "The prior abstract and funnel-based identities did not visibly communicate the product function.",
-      "change": "The operator selected Voice-to-Prompt: a microphone and waveform resolve into aligned prompt bars. The exact browser master is hash-locked and its source-only derivatives were regenerated."
+      "change": "The operator superseded the initial visual with the Agent Smith Palette mark: a microphone and waveform resolve into aligned prompt bars in deep navy, signal blue, and electric cyan. The supplied master is hash-locked and its source-only derivatives were regenerated."
     }
   ],
   "rejected_changes": [
@@ -64,17 +64,17 @@
   ],
   "retained_dissent": "Structural custody does not by itself prove semantic equivalence or better downstream model results; the candidate now states that limit explicitly.",
   "post_change_verification": {
-    "unit_and_release_regression_tests": "39/39 pass",
+    "unit_and_release_regression_tests": "43 tests and 22 subtests pass",
     "native_deterministic_eval": "13/13 pass at score 1.0",
-    "visual_asset_regeneration": "operator-selected Voice-to-Prompt browser master accepted; five source-only derivatives regenerated and hash-verified"
+    "visual_asset_regeneration": "operator-selected Agent Smith Palette master accepted for v0.1.1; five source-only derivatives regenerated and hash-verified"
   },
   "visual_promotion_continuity": {
     "status": "pass",
     "review_scope": "operator-selected visual identity and source-only packaging delta",
     "original_synthetic_panel_rerun": false,
     "continuity_reason": "The original six-perspective review remains the functional pretest. Direct operator selection and governed semantic QA are authoritative for the new visual identity; machine-verifiable receipts were regenerated for the current product revision.",
-    "promotion_receipt_path": "validation/Logo Selection and Promotion 200826.json",
-    "promotion_receipt_sha256": "264a60a7f21a28cd65a2bfba50ce2ba86e2c6ade52090e6dfd14a65fab00d6a3",
+    "promotion_receipt_path": "validation/Logo Selection and Promotion 210826.json",
+    "promotion_receipt_sha256": "5d05dfb195a90a9d36a494cfcaa404d1d7f40f5c10cb1b38fbe0100a92a5a575",
     "compiler_behavior_changed": false,
     "publication_action": "none"
   },

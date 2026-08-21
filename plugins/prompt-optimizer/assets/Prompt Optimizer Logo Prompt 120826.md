@@ -19,4 +19,4 @@ Avoid: brains, robots, magic wands, generic sparkle clusters, gradients required
 Production decision: implement the canonical mark as editable SVG and rasterize deterministic plugin variants. AI-generated raster output is not the master mark.
 # Deprecated provenance record
 
-This prompt belongs to the invalidated pre-repair pipeline. It must not be used for generation or treated as canonical. Use Prompt Optimizer Voice-to-Prompt GPT Image 2 Prompt 200826.md and Logo Generation Manifest 200826.json.
+This prompt belongs to the invalidated pre-repair pipeline. It must not be used for generation or treated as canonical. Use Prompt Optimizer Agent Smith Palette Source Receipt 210826.md and Logo Generation Manifest 200826.json.

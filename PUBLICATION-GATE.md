@@ -1,6 +1,6 @@
 # Publication Decision
 
-Prompt Optimizer `v0.1.0` was authorized for public release on August 20, 2026 after local release validation and operator selection of the Voice-to-Prompt identity.
+Prompt Optimizer `v0.1.0` was authorized and published on August 20, 2026. The operator selected the Agent Smith Palette identity on August 21, 2026 for the non-functional `v0.1.1` patch release before official directory submission.
 
 ## Product contract approved
 
@@ -10,7 +10,7 @@ Prompt Optimizer `v0.1.0` was authorized for public release on August 20, 2026 a
 - Primary product surface: provider-neutral skill with OpenAI/Codex and Claude Code plugin wrappers
 - Positioning: Prompt Optimizer first; Agent Smith Router follows as a separate future plugin
 - Required pre-publication validation: frozen candidate passes local custody, package, plugin, schema, review, safety, and visual gates
-- Visual gate: operator-selected Voice-to-Prompt logo promoted and revalidated
+- Visual gate: operator-selected Agent Smith Palette logo promoted and revalidated for `v0.1.1`
 - Pilot decision: the earlier private-pilot-first requirement was explicitly overridden; the 30-day maintainer pilot runs after publication
 
 ## Authorized release actions
@@ -18,7 +18,7 @@ Prompt Optimizer `v0.1.0` was authorized for public release on August 20, 2026 a
 - create and publish `SpannDaMan/prompt-optimizer`;
 - use a feature-branch pull request and remote merge;
 - enable normal repository metadata, Discussions, private vulnerability reporting, topics, and social preview;
-- create tag and release `v0.1.0`;
+- preserve immutable tag `v0.1.0` and create tag and release `v0.1.1` for the approved visual update;
 - test Git-source installation;
 - submit the plugin to OpenAI's Plugins Directory and Anthropic's official marketplace.
 

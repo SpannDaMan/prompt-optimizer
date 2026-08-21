@@ -14,7 +14,7 @@ Prompt Optimizer is prepared as a skills-only plugin. It has no MCP server, UI, 
 
 Before submitting through the OpenAI Platform:
 
-1. Confirm the locked Voice-to-Prompt asset receipt and current release validation remain passing.
+1. Confirm the locked Agent Smith Palette asset receipt and current release validation remain passing.
 2. Publish the reviewed repository under `SpannDaMan/prompt-optimizer` with separate approval.
 3. Confirm the public website, support, privacy, and terms URLs resolve.
 4. Complete publisher identity verification in the owning OpenAI organization.

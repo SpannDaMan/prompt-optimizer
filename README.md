@@ -2,7 +2,7 @@
 
 Constraint-safe prompt compilation for agent workflows.
 
-> **Initial public release.** Prompt Optimizer `v0.1.0` ships with the Voice-to-Prompt identity and a post-release 30-day maintainer pilot.
+> **Current release.** Prompt Optimizer `v0.1.1` ships the operator-selected Agent Smith Palette identity while preserving the post-release 30-day maintainer pilot.
 
 Prompt Optimizer helps developers turn long or messy agent requests into lean, reviewable prompt packets without silently dropping constraints or widening authority.
 
@@ -175,7 +175,7 @@ Read [SECURITY.md](SECURITY.md) and [THREAT-MODEL.md](THREAT-MODEL.md) before in
 
 ## Status
 
-`v0.1.0` is the initial public release. Local custody, package, plugin, schema, review, and visual gates pass. Public Git-source installation and directory review states are tracked separately from local package validity. The 30-day maintainer pilot now runs after release; it may narrow, patch, or hold future releases without rewriting public history. See [PUBLICATION-GATE.md](PUBLICATION-GATE.md).
+`v0.1.1` is the current public release and contains the new operator-selected logo with no compiler behavior change. Local custody, package, plugin, schema, review, and visual gates pass. Public Git-source installation and directory review states are tracked separately from local package validity. The 30-day maintainer pilot runs after release; it may narrow, patch, or hold future releases without rewriting public history. See [PUBLICATION-GATE.md](PUBLICATION-GATE.md).
 
 ## Contributing
 

@@ -119,7 +119,7 @@ def main() -> int:
             "Package Verification 120826.json",
             {
                 "schema_version": "1.0",
-                "candidate": "prompt-optimizer 0.1.0",
+                "candidate": "prompt-optimizer 0.1.1",
                 "product_revision_sha256": revision,
                 "status": "pass",
                 "python_version": f"{sys.version_info.major}.{sys.version_info.minor}",
@@ -151,7 +151,7 @@ def main() -> int:
         "Codex Plugin Verification 120826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.0",
+            "candidate": "prompt-optimizer 0.1.1",
             "product_revision_sha256": revision,
             "status": "pass",
             "exit_code": plugin_run.returncode,
@@ -183,7 +183,7 @@ def main() -> int:
         "Claude Plugin Verification 200826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.0",
+            "candidate": "prompt-optimizer 0.1.1",
             "product_revision_sha256": revision,
             "status": "pass",
             "validated_paths": [".", "plugins/prompt-optimizer"],
@@ -231,7 +231,7 @@ def main() -> int:
         "JSON Schema Verification 120826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.0",
+            "candidate": "prompt-optimizer 0.1.1",
             "product_revision_sha256": revision,
             "status": "pass",
             "exit_code": schema_run.returncode,
@@ -270,7 +270,7 @@ def main() -> int:
         "Skill Boundary Verification 120826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.0",
+            "candidate": "prompt-optimizer 0.1.1",
             "product_revision_sha256": revision,
             "status": "pass",
             "verification_type": "controlled_static_replay",

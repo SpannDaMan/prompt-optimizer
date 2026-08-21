@@ -71,6 +71,6 @@
     "requested_regions": [],
     "decision": "deferred_until_submission"
   },
-  "release_notes": "Initial skills-only submission. Local compiler and validator; no MCP server, authentication, telemetry, or hosted data storage.",
+  "release_notes": "Initial skills-only submission at v0.1.1 with the operator-selected Agent Smith Palette logo. Local compiler and validator; no MCP server, authentication, telemetry, or hosted data storage.",
   "publication_action": "none"
 }

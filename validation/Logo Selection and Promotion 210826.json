@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "review_type": "operator_selected_visual_promotion",
+  "candidate": "prompt-optimizer 0.1.1",
+  "product_revision_sha256": "3324e04608ad1ff0d5518d5fb54633d0d7a0130c1a13b0e8131c701d97b36087",
+  "status": "pass",
+  "operator_selection": {
+    "direction": "Agent Smith Palette",
+    "status": "locked",
+    "selection_scope": "public_release_v0.1.1",
+    "selected_at": "2026-08-21T00:20:03-04:00",
+    "timezone": "New York Eastern Time (America/New_York)"
+  },
+  "canonical_source": {
+    "path": "plugins/prompt-optimizer/assets/Prompt Optimizer Agent Smith Palette Master 210826.png",
+    "sha256": "a31f873f3b13869d50b4deaa9f247c827a7ca19ec9b8ac66bf4367952c875914",
+    "source_type": "operator_supplied_visualization_png",
+    "local_edit_status": "none",
+    "width": 1254,
+    "height": 1254,
+    "color_mode": "RGB",
+    "opaque_background_retained": true
+  },
+  "provenance": {
+    "source_receipt_path": "plugins/prompt-optimizer/assets/Prompt Optimizer Agent Smith Palette Source Receipt 210826.md",
+    "source_receipt_sha256": "dfba0965b60b27dcdb8f9bbf6e943acc9dba09f13c9c9cca8a4782136f2e1583",
+    "manifest_path": "plugins/prompt-optimizer/assets/Logo Generation Manifest 200826.json",
+    "manifest_sha256": "f88a6458598ee4513efcccdb466fd3acb910aeb9f1e164e571cd27f0a846f67d"
+  },
+  "source_only_packaging": {
+    "geometry_changed": false,
+    "redraw_used": false,
+    "recolor_used": false,
+    "inpainting_used": false,
+    "background_removed": false,
+    "derivatives": {
+      "plugins/prompt-optimizer/assets/icon.png": "6c37e8d3f927ebba2f69e98fad44cfead8fe505dcd9a255020f5f0a3348b5bfb",
+      "plugins/prompt-optimizer/assets/logo.png": "b149d573b060747f095c91e6d6f7f7a9583574d05bc13833f427296f7155a9a9",
+      "plugins/prompt-optimizer/assets/logo-dark.png": "b5b3cf8795ab8a83da34cd151bd16f1f79796ab8b544b50b544d48605f9414f6",
+      "plugins/prompt-optimizer/assets/screenshot1.png": "f4329bfd65e88468a4445a7667da7d06a0235c3a95b1bfabe137db467a37f050",
+      "plugins/prompt-optimizer/assets/social-preview.png": "8635a4f38b2071a3f9499d6fa57f3410c725e5857725a1484f95d909b9cb072e"
+    }
+  },
+  "actual_size_qa": {
+    "status": "pass",
+    "path": "validation/Prompt Optimizer Agent Smith Palette Actual Size QA 210826.png",
+    "sha256": "441925f10ed319b22844e96782d5aa0a27196ade3ed8e6bb4d9ed8a5b56b88ec",
+    "backgrounds": ["#F8FAFC", "#06235D"],
+    "sizes_px": [16, 24, 32, 64, 128],
+    "note": "The supplied opaque background is preserved. The silhouette is compact at 16 px and the microphone/prompt-bar distinction is clear from 24 px upward."
+  },
+  "functional_delta": {
+    "compiler_behavior_changed": false,
+    "permissions_changed": false,
+    "network_behavior_changed": false,
+    "version_change": "0.1.0 to 0.1.1",
+    "scope": "brand source, palette metadata, derivative assets, and release metadata only"
+  },
+  "publication_action": "none"
+}
