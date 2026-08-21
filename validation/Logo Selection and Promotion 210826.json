@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
   "review_type": "operator_selected_visual_promotion",
-  "candidate": "prompt-optimizer 0.1.1",
-  "product_revision_sha256": "3324e04608ad1ff0d5518d5fb54633d0d7a0130c1a13b0e8131c701d97b36087",
+  "candidate": "prompt-optimizer 0.1.2",
+  "product_revision_sha256": "2a4007b4fdc555b53dacba2cb7ee2a5aa66ff84947405a4c0096a8b97ff87848",
   "status": "pass",
   "operator_selection": {
     "direction": "Agent Smith Palette",
     "status": "locked",
-    "selection_scope": "public_release_v0.1.1",
+    "selection_scope": "public_release_v0.1.2",
     "selected_at": "2026-08-21T00:20:03-04:00",
     "timezone": "New York Eastern Time (America/New_York)"
   },
@@ -25,7 +25,7 @@
     "source_receipt_path": "plugins/prompt-optimizer/assets/Prompt Optimizer Agent Smith Palette Source Receipt 210826.md",
     "source_receipt_sha256": "dfba0965b60b27dcdb8f9bbf6e943acc9dba09f13c9c9cca8a4782136f2e1583",
     "manifest_path": "plugins/prompt-optimizer/assets/Logo Generation Manifest 200826.json",
-    "manifest_sha256": "f88a6458598ee4513efcccdb466fd3acb910aeb9f1e164e571cd27f0a846f67d"
+    "manifest_sha256": "c0821423e853d6eb8e9e24fd562540c7deea3ec8c049e45b72cea401747cf7fe"
   },
   "source_only_packaging": {
     "geometry_changed": false,
@@ -53,8 +53,8 @@
     "compiler_behavior_changed": false,
     "permissions_changed": false,
     "network_behavior_changed": false,
-    "version_change": "0.1.0 to 0.1.1",
-    "scope": "brand source, palette metadata, derivative assets, and release metadata only"
+    "version_change": "0.1.1 to 0.1.2",
+    "scope": "developer display name and release metadata only; brand source and derivatives unchanged"
   },
   "publication_action": "none"
 }

@@ -1,6 +1,6 @@
 # Publication Decision
 
-Prompt Optimizer `v0.1.0` was authorized and published on August 20, 2026. The operator selected the Agent Smith Palette identity on August 21, 2026 for the non-functional `v0.1.1` patch release before official directory submission.
+Prompt Optimizer `v0.1.0` was authorized and published on August 20, 2026. The operator selected the Agent Smith Palette identity for non-functional `v0.1.1`, then selected `Orbral` as the public directory developer display name for metadata-only `v0.1.2` before directory publication.
 
 ## Product contract approved
 
@@ -10,7 +10,8 @@ Prompt Optimizer `v0.1.0` was authorized and published on August 20, 2026. The o
 - Primary product surface: provider-neutral skill with OpenAI/Codex and Claude Code plugin wrappers
 - Positioning: Prompt Optimizer first; Agent Smith Router follows as a separate future plugin
 - Required pre-publication validation: frozen candidate passes local custody, package, plugin, schema, review, safety, and visual gates
-- Visual gate: operator-selected Agent Smith Palette logo promoted and revalidated for `v0.1.1`
+- Visual gate: operator-selected Agent Smith Palette logo promoted and retained for `v0.1.2`
+- Directory developer display: `Orbral`
 - Pilot decision: the earlier private-pilot-first requirement was explicitly overridden; the 30-day maintainer pilot runs after publication
 
 ## Authorized release actions
@@ -18,7 +19,7 @@ Prompt Optimizer `v0.1.0` was authorized and published on August 20, 2026. The o
 - create and publish `SpannDaMan/prompt-optimizer`;
 - use a feature-branch pull request and remote merge;
 - enable normal repository metadata, Discussions, private vulnerability reporting, topics, and social preview;
-- preserve immutable tag `v0.1.0` and create tag and release `v0.1.1` for the approved visual update;
+- preserve immutable tags `v0.1.0` and `v0.1.1`, and create tag and release `v0.1.2` for the approved developer-display update;
 - test Git-source installation;
 - submit the plugin to OpenAI's Plugins Directory and Anthropic's official marketplace.
 

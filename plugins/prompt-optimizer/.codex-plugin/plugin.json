@@ -1,6 +1,6 @@
 {
   "name": "prompt-optimizer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Compile long agent requests with explicit constraint and authority mapping for review.",
   "author": {
     "name": "SpannDaMan",
@@ -15,7 +15,7 @@
     "displayName": "Prompt Optimizer",
     "shortDescription": "Compile prompts. Map constraints.",
     "longDescription": "Turn long or messy agent requests into lean prompt packets with exact source custody, authorization boundaries, and deterministic local validation.",
-    "developerName": "SpannDaMan",
+    "developerName": "Orbral",
     "category": "Developer Tools",
     "capabilities": ["Local", "Prompt compilation", "Constraint custody", "No credentials"],
     "websiteURL": "https://github.com/SpannDaMan/prompt-optimizer",
