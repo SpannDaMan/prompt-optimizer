@@ -1,7 +1,7 @@
 {
   "schema_version": "1.3",
   "product": "Prompt Optimizer",
-  "release_version": "0.1.1",
+  "release_version": "0.1.2",
   "selected_direction": "Agent Smith Palette",
   "canonical_master": "plugins/prompt-optimizer/assets/Prompt Optimizer Agent Smith Palette Master 210826.png",
   "master_sha256": "a31f873f3b13869d50b4deaa9f247c827a7ca19ec9b8ac66bf4367952c875914",
@@ -39,7 +39,7 @@
     "visual_identity": "microphone and waveform resolve into aligned prompt bars in the Agent Smith navy-blue-cyan palette"
   },
   "capability_boundary": "The microphone represents spoken or dictated input supplied by the host interface. The plugin compiles the resulting text; it does not implement audio recording or speech recognition.",
-  "canonical_source_policy": "This operator-supplied raster is the only logo authority for v0.1.1 and later until superseded. Local tools may verify, resize, and place it; they may not redraw, trace, recolor, inpaint, remove its opaque background, or originate alternate geometry.",
+  "canonical_source_policy": "This operator-supplied raster is the only logo authority for v0.1.2 and later until superseded. Local tools may verify, resize, and place it; they may not redraw, trace, recolor, inpaint, remove its opaque background, or originate alternate geometry.",
   "render_config": {
     "product_name": "Prompt Optimizer",
     "tagline": "Compile clearly. Verify locally.",

@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "submission_type": "skills_only",
   "plugin_name": "Prompt Optimizer",
-  "publisher": "SpannDaMan",
+  "publisher": "Orbral",
   "category": "Developer Tools",
   "short_description": "Compile prompts. Map constraints.",
   "long_description": "Turn long or messy agent requests into lean prompt packets with exact source custody, authorization boundaries, and deterministic local validation.",
@@ -71,6 +71,6 @@
     "requested_regions": [],
     "decision": "deferred_until_submission"
   },
-  "release_notes": "Initial skills-only submission at v0.1.1 with the operator-selected Agent Smith Palette logo. Local compiler and validator; no MCP server, authentication, telemetry, or hosted data storage.",
+  "release_notes": "Initial skills-only directory submission at v0.1.2 with developer display name Orbral and the operator-selected Agent Smith Palette logo. Local compiler and validator; no MCP server, authentication, telemetry, or hosted data storage.",
   "publication_action": "none"
 }

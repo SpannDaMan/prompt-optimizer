@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "review_type": "synthetic_github_community_pretest",
-  "product_revision_sha256": "3324e04608ad1ff0d5518d5fb54633d0d7a0130c1a13b0e8131c701d97b36087",
+  "product_revision_sha256": "2a4007b4fdc555b53dacba2cb7ee2a5aa66ff84947405a4c0096a8b97ff87848",
   "status": "pass",
   "panel_size": 6,
   "perspectives": [
@@ -74,7 +74,7 @@
     "original_synthetic_panel_rerun": false,
     "continuity_reason": "The original six-perspective review remains the functional pretest. Direct operator selection and governed semantic QA are authoritative for the new visual identity; machine-verifiable receipts were regenerated for the current product revision.",
     "promotion_receipt_path": "validation/Logo Selection and Promotion 210826.json",
-    "promotion_receipt_sha256": "5d05dfb195a90a9d36a494cfcaa404d1d7f40f5c10cb1b38fbe0100a92a5a575",
+    "promotion_receipt_sha256": "e9c0628932995152ed857fb280beb8cfd6f77a7f681e3b51e220ed181c83f1df",
     "compiler_behavior_changed": false,
     "publication_action": "none"
   },

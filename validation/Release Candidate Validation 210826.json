@@ -1,7 +1,7 @@
 {
   "status": "pass",
-  "candidate": "prompt-optimizer 0.1.1",
-  "product_revision_sha256": "3324e04608ad1ff0d5518d5fb54633d0d7a0130c1a13b0e8131c701d97b36087",
+  "candidate": "prompt-optimizer 0.1.2",
+  "product_revision_sha256": "2a4007b4fdc555b53dacba2cb7ee2a5aa66ff84947405a4c0096a8b97ff87848",
   "root": ".",
   "checks": {
     "required_files": "pass",
@@ -35,16 +35,16 @@
     "plugins/prompt-optimizer/assets/social-preview.png": "8635a4f38b2071a3f9499d6fa57f3410c725e5857725a1484f95d909b9cb072e"
   },
   "evidence_sha256": {
-    "validation/Community Review Change Ledger 120826.json": "11afc2ac482092dd89c56f00aeefec7c7ffba2af45594629470f6adc4f7ef634",
-    "validation/Prompt Optimizer Eval Result 120826.json": "46df9bfc267f49da78f0083ee277510c31c41f149eafa5e434112b7be825f35d",
-    "validation/Package Verification 120826.json": "ad4caa09351c408b37a0ab388737e215d41448f2c43184c9330f195bb077fa43",
-    "validation/Codex Plugin Verification 120826.json": "3ed7540bd98279b9a9bc6ff595c4e3d42280d4d40d2002d3ad0defb0234ca824",
-    "validation/Claude Plugin Verification 200826.json": "76a0b3e55bf3d1323244c4b42d880171811140a4c2fda3bb5b188ec35aaea899",
-    "validation/JSON Schema Verification 120826.json": "7f19911ca7248eb59bd9a1fe1b0e780b3eaf1e555b62fc2544f844f1819ac3ff",
+    "validation/Community Review Change Ledger 120826.json": "342a9b25598a6d0cf3acd2e2f57befc154945cae937036e95cad4e9a098e6667",
+    "validation/Prompt Optimizer Eval Result 120826.json": "e0723bfadbc11f28497da61157e7dbf3535adfffda81a19a70cd2c4d3ccef6f7",
+    "validation/Package Verification 120826.json": "a55703b5cfaf4b1e83e75002b16edf823fe793e66e0ece822bd4a897c4768e86",
+    "validation/Codex Plugin Verification 120826.json": "1072f7b34e2c8353463604015233f945eae1287b3beb66eccba0c3c0460261c7",
+    "validation/Claude Plugin Verification 200826.json": "b211dbaf953afdda4ec01f2b200ad3e988da86ef0bdfbbac526dc07c6ba4702a",
+    "validation/JSON Schema Verification 120826.json": "69893fe99edca2477dd0da7fd9eba1ffc0c84144dec95e523e1b37e36dc93a04",
     "validation/Skill Boundary Transcript 120826.md": "b186e83eaeab171f990f0cb86e6cb3dfc22cb6092c7b58d904a3f1f4039e45b7",
-    "validation/Skill Boundary Verification 120826.json": "c6b214506c0d5c3432742409c4c419ed8c59931a1fe4ff3e51d97e2b8643f2d9",
-    "validation/Veteran Maintainer Review 120826.json": "a711f0045595c88ce6c0d8037d48e209b5dbbb6b40afdf99f138bcda08c4af8d",
-    "validation/Logo Selection and Promotion 210826.json": "5d05dfb195a90a9d36a494cfcaa404d1d7f40f5c10cb1b38fbe0100a92a5a575"
+    "validation/Skill Boundary Verification 120826.json": "6eedcdce19a037b276449d9a809a79ad8844a5f2b222e54e49f4b7eb690b9ec1",
+    "validation/Veteran Maintainer Review 120826.json": "4799df922005b38b8f40da58a07d905bd7df88f66ca23978a30acfc213cbe9bb",
+    "validation/Logo Selection and Promotion 210826.json": "e9c0628932995152ed857fb280beb8cfd6f77a7f681e3b51e220ed181c83f1df"
   },
   "errors": []
 }

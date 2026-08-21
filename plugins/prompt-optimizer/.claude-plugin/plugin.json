@@ -1,7 +1,7 @@
 {
   "name": "prompt-optimizer",
   "description": "Compile long agent requests into lean prompt packets with explicit constraint and authority mapping.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": {
     "name": "SpannDaMan"
   },

@@ -1,6 +1,6 @@
 {
   "tool": "prompt-optimizer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "valid": true,
   "source_sha256": "4d9954be977a8d586e02e11dd548b50fe59fc59231bb7985eeff838bb3a221eb",
   "trigger_decision": "optimize",

@@ -3,10 +3,10 @@
   "reviewer_type": "simulated_veteran_open_source_maintainer",
   "revision_identity": {
     "repository_target": "SpannDaMan/prompt-optimizer",
-    "version": "v0.1.1",
-    "revision": "3324e04608ad1ff0d5518d5fb54633d0d7a0130c1a13b0e8131c701d97b36087"
+    "version": "v0.1.2",
+    "revision": "2a4007b4fdc555b53dacba2cb7ee2a5aa66ff84947405a4c0096a8b97ff87848"
   },
-  "product_revision_sha256": "3324e04608ad1ff0d5518d5fb54633d0d7a0130c1a13b0e8131c701d97b36087",
+  "product_revision_sha256": "2a4007b4fdc555b53dacba2cb7ee2a5aa66ff84947405a4c0096a8b97ff87848",
   "evidence_packet_sha256": "4e305a30cdc1714172cb7708be956869377e905c7d459e2e5191cf338c8b147b",
   "evidence_packet_scope": "The functional review packet remains bound to the accepted compiler behavior. The current revision adds the operator-selected Agent Smith Palette identity, manifest-bound opaque-source packaging, and refreshed machine-verifiable receipts; validation/Logo Selection and Promotion 210826.json carries the visual delta evidence.",
   "verdict": "public_release_ready_with_gates",
@@ -54,7 +54,7 @@
     "direction": "Agent Smith Palette",
     "operator_selection_status": "locked",
     "promotion_receipt_path": "validation/Logo Selection and Promotion 210826.json",
-    "promotion_receipt_sha256": "5d05dfb195a90a9d36a494cfcaa404d1d7f40f5c10cb1b38fbe0100a92a5a575",
+    "promotion_receipt_sha256": "e9c0628932995152ed857fb280beb8cfd6f77a7f681e3b51e220ed181c83f1df",
     "canonical_master_sha256": "a31f873f3b13869d50b4deaa9f247c827a7ca19ec9b8ac66bf4367952c875914",
     "compiler_behavior_changed": false,
     "machine_receipts_regenerated": true,

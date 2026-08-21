@@ -2,7 +2,7 @@
 
 Prompt Optimizer validation is not a substitute for behavioral evaluation.
 
-The public `v0.1.1` candidate makes no model-performance, conversion, or task-quality claim. Its current automated evidence covers deterministic custody and fail-closed packet behavior only.
+The public `v0.1.2` candidate makes no model-performance, conversion, or task-quality claim. Its current automated evidence covers deterministic custody and fail-closed packet behavior only.
 
 Use the local validator for source custody, section structure, constraint placement, and authorization boundaries. Use representative model evals when a semantic rewrite could materially affect task success.
 

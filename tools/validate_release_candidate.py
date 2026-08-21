@@ -387,7 +387,7 @@ def validate_metadata() -> list[str]:
         return ["OpenAI/Codex and Claude plugin and marketplace metadata must contain JSON objects"]
     expected_manifest = {
         "name": "prompt-optimizer",
-        "version": "0.1.1",
+        "version": "0.1.2",
         "license": "MIT",
         "homepage": "https://github.com/SpannDaMan/prompt-optimizer",
         "repository": "https://github.com/SpannDaMan/prompt-optimizer",
@@ -402,6 +402,8 @@ def validate_metadata() -> list[str]:
     if not isinstance(interface, dict):
         errors.append("plugin.json interface must be an object")
         interface = {}
+    if interface.get("developerName") != "Orbral":
+        errors.append("plugin.json interface.developerName must be Orbral")
     for field in ("composerIcon", "logo", "logoDark"):
         value = interface.get(field)
         if not isinstance(value, str) or not (PLUGIN / value).is_file():
@@ -457,8 +459,8 @@ def validate_metadata() -> list[str]:
             errors.append("Claude marketplace plugin name must be prompt-optimizer")
         if claude_entry.get("source") != "./plugins/prompt-optimizer":
             errors.append("Claude marketplace source must be ./plugins/prompt-optimizer")
-        if claude_entry.get("version") != "0.1.1":
-            errors.append("Claude marketplace version must be 0.1.1")
+        if claude_entry.get("version") != "0.1.2":
+            errors.append("Claude marketplace version must be 0.1.2")
     try:
         license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError) as exc:
@@ -630,8 +632,8 @@ def validate_logo_selection_evidence() -> list[str]:
     selection = receipt.get("operator_selection")
     if not isinstance(selection, dict) or selection.get("direction") != "Agent Smith Palette":
         errors.append("logo selection receipt must identify Agent Smith Palette")
-    elif selection.get("status") != "locked" or selection.get("selection_scope") != "public_release_v0.1.1":
-        errors.append("logo selection receipt must remain locked to public release v0.1.1")
+    elif selection.get("status") != "locked" or selection.get("selection_scope") != "public_release_v0.1.2":
+        errors.append("logo selection receipt must remain locked to public release v0.1.2")
 
     source = receipt.get("canonical_source")
     expected_source = "plugins/prompt-optimizer/assets/Prompt Optimizer Agent Smith Palette Master 210826.png"
@@ -809,8 +811,8 @@ def validate_package_evidence() -> list[str]:
     except (OSError, json.JSONDecodeError) as exc:
         return [f"package evidence failed: {exc}"]
     errors: list[str] = []
-    if receipt.get("candidate") != "prompt-optimizer 0.1.1" or receipt.get("status") != "pass":
-        errors.append("package verification must pass for prompt-optimizer 0.1.1")
+    if receipt.get("candidate") != "prompt-optimizer 0.1.2" or receipt.get("status") != "pass":
+        errors.append("package verification must pass for prompt-optimizer 0.1.2")
     checks = receipt.get("checks")
     if not isinstance(checks, list) or len(checks) < 7 or any(item.get("status") != "pass" for item in checks if isinstance(item, dict)):
         errors.append("package verification must record all clean-install and installed-command checks as passing")
@@ -832,7 +834,7 @@ def validate_eval_evidence() -> list[str]:
     except (OSError, json.JSONDecodeError) as exc:
         return [f"eval evidence failed: {exc}"]
     errors: list[str] = []
-    if result.get("suite_id") != "prompt-optimizer-public-candidate-v0.1.1":
+    if result.get("suite_id") != "prompt-optimizer-public-candidate-v0.1.2":
         errors.append("eval suite_id is invalid")
     if result.get("pass") is not True or result.get("score") != 1.0:
         errors.append("native prompt-agent eval must pass at score 1.0")
@@ -1099,7 +1101,7 @@ def run_validation() -> dict[str, Any]:
     }
     return {
         "status": "pass" if not errors else "fail",
-        "candidate": "prompt-optimizer 0.1.1",
+        "candidate": "prompt-optimizer 0.1.2",
         "product_revision_sha256": current_product_revision(),
         "root": ".",
         "checks": {name: "pass" if not group else "fail" for name, group in check_errors.items()},

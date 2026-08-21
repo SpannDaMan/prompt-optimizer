@@ -2,6 +2,12 @@
 
 All notable changes to Prompt Optimizer will be documented here.
 
+## 0.1.2 — Orbral developer identity
+
+- Changed the OpenAI/Codex directory developer display name from `SpannDaMan` to `Orbral` at the operator's direction.
+- Preserved repository ownership, MIT copyright, funding destination, package behavior, Agent Smith Palette assets, and all runtime boundaries.
+- Added release validation for the required `Orbral` directory metadata.
+
 ## 0.1.1 — Agent Smith Palette identity
 
 - Replaced the Voice-to-Prompt release artwork with the operator-selected Agent Smith Palette microphone, waveform, and prompt-bar mark.
