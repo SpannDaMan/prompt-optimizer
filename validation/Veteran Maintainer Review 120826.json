@@ -3,12 +3,12 @@
   "reviewer_type": "simulated_veteran_open_source_maintainer",
   "revision_identity": {
     "repository_target": "SpannDaMan/prompt-optimizer",
-    "version": "v0.1.0",
-    "revision": "5f563f848d0d34653b6ddd719f80bdef16c23cffd81cf6e5be38d5c74583acce"
+    "version": "v0.1.1",
+    "revision": "3324e04608ad1ff0d5518d5fb54633d0d7a0130c1a13b0e8131c701d97b36087"
   },
-  "product_revision_sha256": "5f563f848d0d34653b6ddd719f80bdef16c23cffd81cf6e5be38d5c74583acce",
+  "product_revision_sha256": "3324e04608ad1ff0d5518d5fb54633d0d7a0130c1a13b0e8131c701d97b36087",
   "evidence_packet_sha256": "4e305a30cdc1714172cb7708be956869377e905c7d459e2e5191cf338c8b147b",
-  "evidence_packet_scope": "The functional review packet remains bound to the accepted compiler behavior. The current revision adds the operator-selected Voice-to-Prompt identity, manifest-bound transparent-margin packaging, and refreshed machine-verifiable receipts; validation/Logo Selection and Promotion 200826.json carries the visual delta evidence.",
+  "evidence_packet_scope": "The functional review packet remains bound to the accepted compiler behavior. The current revision adds the operator-selected Agent Smith Palette identity, manifest-bound opaque-source packaging, and refreshed machine-verifiable receipts; validation/Logo Selection and Promotion 210826.json carries the visual delta evidence.",
   "verdict": "public_release_ready_with_gates",
   "status": "eligible_for_separate_publication_decision_after_gates",
   "public_release_ready": true,
@@ -42,20 +42,20 @@
     "overlap_risk": "low"
   },
   "required_post_review_verification": [
-    "Bind the current review ledger to the frozen Voice-to-Prompt product revision and retain the visual-promotion receipt.",
+    "Bind the current review ledger to the frozen Agent Smith Palette v0.1.1 product revision and retain the visual-promotion receipt.",
     "Regenerate the machine-verifiable eval, package, Codex plugin, Claude plugin, JSON Schema, and skill-boundary receipts for the current revision.",
     "Run `python tools/validate_release_candidate.py --json` once for the frozen candidate; the overall result and every individual check must pass.",
     "Verify that the candidate contains zero `__pycache__` directories and zero `.pyc` files after validation.",
     "Any cache residue, portable-file-shape failure, unexplained regression, or visual provenance failure reopens PO-R013 as P2 and changes the verdict to hold.",
     "Do not open the separately controlled private-pilot or publication gates from this review alone."
   ],
-  "voice_to_prompt_promotion_review": {
+  "agent_smith_palette_promotion_review": {
     "status": "pass",
-    "direction": "Voice-to-Prompt",
+    "direction": "Agent Smith Palette",
     "operator_selection_status": "locked",
-    "promotion_receipt_path": "validation/Logo Selection and Promotion 200826.json",
-    "promotion_receipt_sha256": "264a60a7f21a28cd65a2bfba50ce2ba86e2c6ade52090e6dfd14a65fab00d6a3",
-    "canonical_master_sha256": "65896dac00e0c9361122b33f290f928783e4d7f7f1f65e8f180986b1601b6d28",
+    "promotion_receipt_path": "validation/Logo Selection and Promotion 210826.json",
+    "promotion_receipt_sha256": "5d05dfb195a90a9d36a494cfcaa404d1d7f40f5c10cb1b38fbe0100a92a5a575",
+    "canonical_master_sha256": "a31f873f3b13869d50b4deaa9f247c827a7ca19ec9b8ac66bf4367952c875914",
     "compiler_behavior_changed": false,
     "machine_receipts_regenerated": true,
     "publication_action": "none"
@@ -93,5 +93,5 @@
     "pilot_timing": "post_release",
     "operator_override": true
   },
-  "review_caveat": "The original maintainer determination covers the accepted compiler behavior and private-candidate gates. The current revision additionally relies on the explicit Voice-to-Prompt promotion receipt and refreshed local machine evidence; local validation does not establish marketplace acceptance, hosted installation, Sponsors enrollment, real-user demand, or public-release approval. No publication or other external action is authorized."
+  "review_caveat": "The original maintainer determination covers the accepted compiler behavior and release gates. The current revision additionally relies on the explicit Agent Smith Palette promotion receipt and refreshed local machine evidence; local validation does not establish v0.1.1 marketplace acceptance, hosted installation, Sponsors enrollment, or real-user demand. The visual patch is authorized separately by the operator."
 }

@@ -18,16 +18,13 @@ $manifestPath = $manifestFiles[0].FullName
 $assetDir = Split-Path -Parent $manifestPath
 $manifest = Get-Content -LiteralPath $manifestPath -Raw | ConvertFrom-Json
 
-foreach ($required in @('canonical_master', 'master_sha256', 'master_width', 'master_height', 'source_type', 'generation_mode', 'local_edit_status', 'source_crop', 'render_config')) {
+foreach ($required in @('canonical_master', 'master_sha256', 'master_width', 'master_height', 'source_type', 'source_background_policy', 'generation_mode', 'local_edit_status', 'source_crop', 'render_config')) {
     if (-not $manifest.PSObject.Properties.Name.Contains($required)) {
         throw "Logo generation manifest is missing '$required'."
     }
 }
-if ($manifest.source_type -ne 'original_browser_download') {
-    throw "Canonical logo source must be an original browser download; got '$($manifest.source_type)'."
-}
-if ($manifest.generation_mode -notmatch 'GPT Image 2') {
-    throw "Canonical logo source must record GPT Image 2 generation."
+if ($manifest.source_type -notin @('original_browser_download', 'operator_supplied_visualization_png')) {
+    throw "Unsupported canonical logo source type '$($manifest.source_type)'."
 }
 if ($manifest.local_edit_status -ne 'none') {
     throw "Canonical logo source declares a local edit and cannot be packaged."
@@ -56,17 +53,21 @@ try {
     if ($master.Width -ne $master.Height) {
         throw "Canonical master must be square."
     }
-    if ($master.PixelFormat.ToString() -notmatch 'Argb') {
-        throw "Canonical master must retain an alpha channel."
-    }
-    $cornerAlpha = @(
-        $master.GetPixel(0, 0).A,
-        $master.GetPixel($master.Width - 1, 0).A,
-        $master.GetPixel(0, $master.Height - 1).A,
-        $master.GetPixel($master.Width - 1, $master.Height - 1).A
-    )
-    if (@($cornerAlpha | Where-Object { $_ -ne 0 }).Count -gt 0) {
-        throw "Canonical master must have transparent corners; got $($cornerAlpha -join ',')."
+    if ($manifest.source_background_policy -eq 'transparent_source') {
+        if ($master.PixelFormat.ToString() -notmatch 'Argb') {
+            throw "Transparent canonical master must retain an alpha channel."
+        }
+        $cornerAlpha = @(
+            $master.GetPixel(0, 0).A,
+            $master.GetPixel($master.Width - 1, 0).A,
+            $master.GetPixel(0, $master.Height - 1).A,
+            $master.GetPixel($master.Width - 1, $master.Height - 1).A
+        )
+        if (@($cornerAlpha | Where-Object { $_ -ne 0 }).Count -gt 0) {
+            throw "Transparent canonical master must have transparent corners; got $($cornerAlpha -join ',')."
+        }
+    } elseif ($manifest.source_background_policy -ne 'preserve_opaque_source') {
+        throw "Unsupported source background policy '$($manifest.source_background_policy)'."
     }
 
     $crop = $manifest.source_crop
@@ -137,8 +138,13 @@ try {
         finally { $font.Dispose(); $brush.Dispose() }
     }
 
-    # Composer icon: a deterministic resize of the immutable browser master.
-    $canvas = New-Canvas 512 512 'transparent'
+    # Composer icon: a deterministic resize of the immutable selected master.
+    $iconBackground = if ($manifest.source_background_policy -eq 'preserve_opaque_source') {
+        [string]$cfg.light_background
+    } else {
+        'transparent'
+    }
+    $canvas = New-Canvas 512 512 $iconBackground
     try {
         Place-Master $canvas[1] $master 0 0 512
         Save-Png $canvas[0] (Join-Path $assetDir 'icon.png')
@@ -173,7 +179,7 @@ try {
             Write-Text $g ([string]$line) 128 $lineY 22 ([string]$cfg.accent) $true
             $lineY += 66
         }
-        Write-Text $g 'SOURCE  GPT IMAGE 2  |  DERIVATIVES  HASH-VERIFIED' 128 758 18 ([string]$cfg.secondary) $true $true
+        Write-Text $g 'SOURCE  OPERATOR-SELECTED PNG  |  DERIVATIVES  HASH-VERIFIED' 128 758 18 ([string]$cfg.secondary) $true $true
         Save-Png $canvas[0] (Join-Path $assetDir 'screenshot1.png')
     } finally { $canvas[1].Dispose(); $canvas[0].Dispose() }
 
@@ -224,7 +230,7 @@ try {
     }
     [ordered]@{
         status = 'ok'
-        source_policy = 'immutable_gpt_image_2_master_only'
+        source_policy = 'immutable_operator_selected_master_only'
         master_path = (Resolve-Path -LiteralPath $MasterPath).Path
         master_sha256 = $actualHash
         outputs = $outputs

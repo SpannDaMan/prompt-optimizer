@@ -16,7 +16,7 @@ The microphone is an input metaphor: Prompt Optimizer compiles the text supplied
 
 ## Canonical image source
 
-`Prompt Optimizer Voice-to-Prompt GPT Image 2 Master 200826.png` is the operator-selected immutable browser-delivered source named and hashed in `Logo Generation Manifest 200826.json`. Local tools may trim transparent-only outer canvas, resize, and place it; they may not originate, trace, recolor, or reconstruct the mark.
+`Prompt Optimizer Agent Smith Palette Master 210826.png` is the operator-selected immutable source named and hashed in `Logo Generation Manifest 200826.json`. Its opaque light background is part of the approved source. Local tools may verify, resize, and place it; they may not remove the background, originate, trace, recolor, inpaint, or reconstruct the mark.
 
 ## Voice
 

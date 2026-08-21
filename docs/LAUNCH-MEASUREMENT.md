@@ -24,7 +24,7 @@ GitHub stars are a visibility signal, not the product outcome. Prompt Optimizer 
 
 ## Privacy boundary
 
-Version 0.1.0 contains no plugin telemetry. Do not add background tracking or transmit prompts to measure usage. Prefer GitHub's aggregate repository metrics and voluntary user feedback. Any future opt-in telemetry requires a separate design, privacy review, and release decision.
+Version 0.1.x contains no plugin telemetry. Do not add background tracking or transmit prompts to measure usage. Prefer GitHub's aggregate repository metrics and voluntary user feedback. Any future opt-in telemetry requires a separate design, privacy review, and release decision.
 
 ## Review cadence
 

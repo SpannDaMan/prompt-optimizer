@@ -2,9 +2,9 @@
   "schema_version": "1.0",
   "brand": "Prompt Optimizer",
   "colors": {
-    "signal_violet": "#7C3AED",
-    "clean_cyan": "#22D3EE",
-    "deep_ink": "#111827",
+    "deep_navy": "#06235D",
+    "signal_blue": "#0183E0",
+    "electric_cyan": "#09CEFC",
     "cloud_white": "#F8FAFC",
     "slate": "#64748B",
     "pass": "#16A34A",

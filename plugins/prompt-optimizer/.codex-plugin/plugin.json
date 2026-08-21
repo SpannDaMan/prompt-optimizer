@@ -1,6 +1,6 @@
 {
   "name": "prompt-optimizer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Compile long agent requests with explicit constraint and authority mapping for review.",
   "author": {
     "name": "SpannDaMan",
@@ -26,7 +26,7 @@
       "Validate this prompt packet.",
       "Show why this prompt packet cannot render yet."
     ],
-    "brandColor": "#7C3AED",
+    "brandColor": "#0183E0",
     "composerIcon": "./assets/icon.png",
     "logo": "./assets/logo.png",
     "logoDark": "./assets/logo-dark.png",

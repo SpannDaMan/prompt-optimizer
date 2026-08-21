@@ -1,6 +1,6 @@
 {
-  "suite_id": "prompt-optimizer-public-candidate-v0.1.0",
-  "product_revision_sha256": "5f563f848d0d34653b6ddd719f80bdef16c23cffd81cf6e5be38d5c74583acce",
+  "suite_id": "prompt-optimizer-public-candidate-v0.1.1",
+  "product_revision_sha256": "3324e04608ad1ff0d5518d5fb54633d0d7a0130c1a13b0e8131c701d97b36087",
   "pass": true,
   "pass_threshold": 1.0,
   "score": 1.0,
@@ -49,7 +49,7 @@
         "stderr": "",
         "require_exit_zero": true
       },
-      "output_excerpt": "{\"tool\": \"prompt-optimizer\", \"version\": \"0.1.0\", \"source_sha256\": \"4d9954be977a8d586e02e11dd548b50fe59fc59231bb7985eeff838bb3a221eb\", \"sentence_count\": 5, \"explicit_skip\": false, \"trigger_decision\": \"optimize\", \"candidate_constraints\": [\"Fix only the defect and preserve existing user changes.\", \"Do "
+      "output_excerpt": "{\"tool\": \"prompt-optimizer\", \"version\": \"0.1.1\", \"source_sha256\": \"4d9954be977a8d586e02e11dd548b50fe59fc59231bb7985eeff838bb3a221eb\", \"sentence_count\": 5, \"explicit_skip\": false, \"trigger_decision\": \"optimize\", \"candidate_constraints\": [\"Fix only the defect and preserve existing user changes.\", \"Do "
     },
     {
       "id": "short-prompt-remains-unchanged",

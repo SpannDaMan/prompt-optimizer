@@ -6,9 +6,9 @@ The canonical tokens live in `design.tokens.json`.
 
 ## Colors
 
-- Signal violet `#7C3AED`: compiler/refinement core.
-- Clean cyan `#22D3EE`: validated output signal.
-- Deep ink `#111827`: primary text and dark surface.
+- Deep navy `#06235D`: primary text and dark surface.
+- Signal blue `#0183E0`: compiler/refinement core.
+- Electric cyan `#09CEFC`: validated output signal.
 - Cloud white `#F8FAFC`: light surface.
 - Slate `#64748B`: secondary text.
 - Pass green `#16A34A`, hold amber `#D97706`, and fail red `#DC2626`: state colors used sparingly.
@@ -21,7 +21,7 @@ Use Inter, ui-sans-serif, or a system sans for product surfaces. Use a platform 
 
 - Prefer one clear vertical story: source, compiler, receipt.
 - Keep the first screen understandable without scrolling on a typical desktop repository view.
-- Use generous whitespace and one dominant violet-to-cyan voice-to-structure transition.
+- Use generous whitespace and one dominant navy-to-blue-to-cyan voice-to-structure transition.
 - Tables require short cells and explicit status labels.
 
 ## Shape and elevation
@@ -30,8 +30,8 @@ The core mark uses a stable microphone capsule, a thick waveform, and rounded ho
 
 ## Components
 
-- Source card: deep ink border and the exact Voice-to-Prompt mark.
-- Compiler card: violet waveform transitioning into an aligned prompt stack.
+- Source card: deep navy border and the exact Agent Smith Palette mark.
+- Compiler card: blue waveform transitioning into an aligned prompt stack.
 - Receipt card: cyan structured-prompt bars with pass/hold/fail badge.
 - Command block: dark surface, single copy target, no decorative chrome.
 
@@ -48,14 +48,14 @@ Use `Compile clearly. Verify locally.` as the primary tagline. Do not use `Same 
 
 ## Asset authority
 
-- Canonical source: `plugins/prompt-optimizer/assets/Prompt Optimizer Voice-to-Prompt GPT Image 2 Master 200826.png`.
+- Canonical source: `plugins/prompt-optimizer/assets/Prompt Optimizer Agent Smith Palette Master 210826.png`.
 - Provenance and immutable hash: `plugins/prompt-optimizer/assets/Logo Generation Manifest 200826.json`.
-- `icon.png`, `logo.png`, `logo-dark.png`, `screenshot1.png`, and `social-preview.png` are deterministic source-only derivatives using the manifest-bound transparent-margin crop.
+- `icon.png`, `logo.png`, `logo-dark.png`, `screenshot1.png`, and `social-preview.png` are deterministic source-only derivatives using the full manifest-bound source.
 - No SVG or local geometry reconstruction is a production source.
 
 ## Do
 
-- Use the voice-or-text-to-structured-prompt metaphor.
+- Use the voice-or-text-to-structured-prompt metaphor and the selected deep navy, signal blue, and electric cyan palette.
 - Keep icons geometric and readable without text.
 - Show the no-model-call boundary near first-run examples.
 
