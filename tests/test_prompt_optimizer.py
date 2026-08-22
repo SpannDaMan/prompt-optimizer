@@ -93,6 +93,24 @@ class PromptOptimizerTests(unittest.TestCase):
         self.assertEqual(trace["authorization_boundary"], self.brief["authorization_boundary"])
         self.assertIn("not semantic equivalence", trace["evidence_boundary"])
 
+    def test_requirement_custody_ledger_is_deterministic_and_bounded(self) -> None:
+        first = prompt_optimizer.requirement_custody_ledger(self.prompt, self.brief)
+        second = prompt_optimizer.requirement_custody_ledger(self.prompt, self.brief)
+        self.assertEqual(first, second)
+        self.assertEqual(first["schema"], {"id": "requirement-custody-ledger", "version": "1.0"})
+        self.assertEqual(first["tool"]["authority"], "compiler-only")
+        self.assertTrue(first["source_fingerprint"]["matches_brief"])
+        self.assertEqual(len(first["explicit_requirements"]), len(self.brief["constraint_map"]))
+        self.assertTrue(all(item["custody"] == "preserved" for item in first["explicit_requirements"]))
+        self.assertEqual(first["authorization_decisions"], self.brief["authorization_boundary"])
+        self.assertIn("No semantic equivalence", first["evidence_boundary"])
+
+    def test_requirement_custody_ledger_fails_closed_for_invalid_brief(self) -> None:
+        invalid = copy.deepcopy(self.brief)
+        invalid["source_sha256"] = "0" * 64
+        with self.assertRaisesRegex(ValueError, "prompt packet is invalid"):
+            prompt_optimizer.requirement_custody_ledger(self.prompt, invalid)
+
     def test_source_prompt_mismatch_fails_closed(self) -> None:
         result = prompt_optimizer.validate_brief(self.prompt + "Changed.", self.brief)
         self.assertFalse(result.valid)

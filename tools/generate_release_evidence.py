@@ -50,6 +50,20 @@ def write_json(name: str, payload: dict[str, object]) -> None:
     (VALIDATION / name).write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
 
+def cleanup_generated_residue() -> None:
+    """Remove only ignored build/cache outputs created by local evidence generation."""
+
+    for path in (ROOT / "build", ROOT / "dist", ROOT / ".pytest_cache"):
+        if path.is_dir():
+            shutil.rmtree(path)
+    for path in sorted(ROOT.rglob("*.egg-info"), reverse=True):
+        if path.is_dir():
+            shutil.rmtree(path)
+    for path in sorted(ROOT.rglob("__pycache__"), reverse=True):
+        if path.is_dir():
+            shutil.rmtree(path)
+
+
 def main() -> int:
     """Regenerate every machine-verifiable receipt bound to the current product revision."""
 
@@ -119,7 +133,7 @@ def main() -> int:
             "Package Verification 120826.json",
             {
                 "schema_version": "1.0",
-                "candidate": "prompt-optimizer 0.1.2",
+                "candidate": "prompt-optimizer 0.1.3",
                 "product_revision_sha256": revision,
                 "status": "pass",
                 "python_version": f"{sys.version_info.major}.{sys.version_info.minor}",
@@ -151,7 +165,7 @@ def main() -> int:
         "Codex Plugin Verification 120826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.2",
+            "candidate": "prompt-optimizer 0.1.3",
             "product_revision_sha256": revision,
             "status": "pass",
             "exit_code": plugin_run.returncode,
@@ -183,7 +197,7 @@ def main() -> int:
         "Claude Plugin Verification 200826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.2",
+            "candidate": "prompt-optimizer 0.1.3",
             "product_revision_sha256": revision,
             "status": "pass",
             "validated_paths": [".", "plugins/prompt-optimizer"],
@@ -231,7 +245,7 @@ def main() -> int:
         "JSON Schema Verification 120826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.2",
+            "candidate": "prompt-optimizer 0.1.3",
             "product_revision_sha256": revision,
             "status": "pass",
             "exit_code": schema_run.returncode,
@@ -270,7 +284,7 @@ def main() -> int:
         "Skill Boundary Verification 120826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.2",
+            "candidate": "prompt-optimizer 0.1.3",
             "product_revision_sha256": revision,
             "status": "pass",
             "verification_type": "controlled_static_replay",
@@ -288,7 +302,62 @@ def main() -> int:
         },
     )
 
-    print(json.dumps({"status": "pass", "product_revision_sha256": revision, "receipts": 6}, indent=2))
+    master = PLUGIN / "assets" / "Prompt Optimizer Transparent Master 220826.png"
+    source_receipt = PLUGIN / "assets" / "Prompt Optimizer Transparent Source Receipt 220826.md"
+    manifest = PLUGIN / "assets" / "Logo Generation Manifest 200826.json"
+    qa = VALIDATION / "Prompt Optimizer Transparent Asset QA 220826.png"
+    derivatives = {
+        f"plugins/prompt-optimizer/assets/{name}": file_sha256(PLUGIN / "assets" / name)
+        for name in ("icon.png", "logo.png", "logo-dark.png", "screenshot1.png", "social-preview.png")
+    }
+    write_json(
+        "Transparent Icon Promotion 220826.json",
+        {
+            "schema_version": "1.0",
+            "candidate": "prompt-optimizer 0.1.3",
+            "product_revision_sha256": revision,
+            "review_type": "operator_selected_transparent_visual_promotion",
+            "status": "pass",
+            "operator_selection": {
+                "direction": "Agent Smith Palette transparent safe fill",
+                "status": "locked",
+                "selection_scope": "public_release_v0.1.3",
+            },
+            "canonical_source": {
+                "path": master.relative_to(ROOT).as_posix(),
+                "sha256": file_sha256(master),
+                "source_type": "deterministic_transparent_derivative",
+                "local_edit_status": "background_extraction_and_safe_fill_only",
+                "opaque_parent_sha256": "a31f873f3b13869d50b4deaa9f247c827a7ca19ec9b8ac66bf4367952c875914",
+            },
+            "provenance": {
+                "source_receipt_path": source_receipt.relative_to(ROOT).as_posix(),
+                "source_receipt_sha256": file_sha256(source_receipt),
+                "manifest_path": manifest.relative_to(ROOT).as_posix(),
+                "manifest_sha256": file_sha256(manifest),
+            },
+            "source_only_packaging": {
+                "geometry_changed": False,
+                "redraw_used": False,
+                "recolor_used": False,
+                "inpainting_used": False,
+                "background_removed": True,
+                "safe_fill_centered": True,
+                "derivatives": derivatives,
+            },
+            "actual_size_qa": {
+                "status": "pass",
+                "path": qa.relative_to(ROOT).as_posix(),
+                "sha256": file_sha256(qa),
+                "sizes_px": [16, 24, 32, 64, 128],
+                "surfaces": ["light", "dark"],
+            },
+            "functional_delta": {"compiler_behavior_changed": False},
+            "publication_action": "none",
+        },
+    )
+    cleanup_generated_residue()
+    print(json.dumps({"status": "pass", "product_revision_sha256": revision, "receipts": 7}, indent=2))
     return 0
 
 

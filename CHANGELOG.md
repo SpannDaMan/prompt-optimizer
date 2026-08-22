@@ -2,6 +2,14 @@
 
 All notable changes to Prompt Optimizer will be documented here.
 
+## 0.1.3 — requirement custody and transparent safe-fill icon
+
+- Added the deterministic Requirement Custody Ledger, 30-case activation suite, and bounded representative before/after evaluation.
+- Repositioned public copy around preserving long-request requirements, labeling assumptions, and flagging scope drift.
+- Removed the opaque pale square from the operator-selected Agent Smith Palette mark and exported genuine PNG alpha.
+- Enlarged and centered the unchanged microphone, waveform, and prompt-bar composition for natural marketplace safe fill.
+- Added alpha, transparent-corner, source-custody, and small-size visual validation while keeping the compiler-only authority boundary.
+
 ## 0.1.2 — Orbral developer identity
 
 - Changed the OpenAI/Codex directory developer display name from `SpannDaMan` to `Orbral` at the operator's direction.

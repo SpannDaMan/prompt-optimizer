@@ -42,9 +42,11 @@
 - [x] Test installation from the actual `v0.1.0` Git source and hosted Codex and Claude marketplaces.
 - [x] Create and verify `v0.1.1` without rewriting `v0.1.0`.
 - [x] Test installation from the actual `v0.1.1` Git source and hosted Codex and Claude marketplaces.
-- [ ] Create and verify metadata-only `v0.1.2` with public developer display name `Orbral`.
-- [ ] Test installation from the actual `v0.1.2` Git source and hosted Codex and Claude marketplaces.
-- [ ] Submit the approved skills-only package to OpenAI and Claude review lanes.
+- [x] Create and verify metadata-only `v0.1.2` with public developer display name `Orbral`.
+- [x] Test installation from the actual `v0.1.2` Git source and hosted Codex and Claude marketplaces.
+- [x] Submit the approved skills-only package to OpenAI and Claude review lanes.
+- [ ] Create and verify `v0.1.3` with the genuine-transparent, larger-safe-fill icon without rewriting prior tags.
+- [ ] Test installation from the actual `v0.1.3` Git source and refresh provider assets through supported update flows.
 - [ ] Publish approved launch content.
 
 Repository, release, hosted-install, and directory-submission items are checked only from external readback evidence.

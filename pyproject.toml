@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "prompt-optimizer"
-version = "0.1.2"
-description = "Constraint-safe prompt compilation for agent workflows with deterministic local validation"
+version = "0.1.3"
+description = "Keep long requests intact with deterministic requirement custody"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
-authors = [{name = "SpannDaMan"}]
+authors = [{name = "Orbral"}]
 keywords = ["codex", "claude-code", "prompts", "prompt-engineering", "agents", "validation"]
 dependencies = []
 

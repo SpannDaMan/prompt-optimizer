@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Any
 
 
-VERSION = "0.1.2"
+VERSION = "0.1.3"
 SCHEMA_VERSION = "1.0"
 SECTION_IDS = (
     "outcome",
@@ -649,6 +649,110 @@ def trace_brief(prompt: str, brief: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def requirement_custody_ledger(prompt: str, brief: dict[str, Any]) -> dict[str, Any]:
+    """Return a deterministic Requirement Custody Ledger for one valid packet."""
+
+    result = validate_brief(prompt, brief)
+    if not result.valid:
+        raise ValueError("prompt packet is invalid: " + "; ".join(result.errors))
+    compiled = brief.get("compiled_prompt", {})
+    sections = {
+        str(item.get("id")): item
+        for item in compiled.get("sections", [])
+        if isinstance(item, dict)
+    }
+    constraint_map = brief.get("constraint_map", [])
+    boundary = brief.get("authorization_boundary", {})
+
+    def _extract(labels: tuple[str, ...]) -> list[dict[str, str]]:
+        found: list[dict[str, str]] = []
+        for section_id in SECTION_IDS:
+            section = sections.get(section_id, {})
+            content = str(section.get("content", ""))
+            for raw in content.splitlines():
+                line = re.sub(r"^(?:[-*]|\d+[.)])\s*", "", raw.strip())
+                lowered = normalize_text(line)
+                for label in labels:
+                    prefix = f"{label}:"
+                    if lowered.startswith(prefix):
+                        value = line.split(":", 1)[1].strip()
+                        if value:
+                            found.append({"section": section_id, "text": value})
+                        break
+        return found
+
+    requirement_records = []
+    mapped = {
+        normalize_text(record["source_text"])
+        for record in constraint_map
+        if isinstance(record, dict)
+    }
+    for record in constraint_map:
+        if not isinstance(record, dict):
+            continue
+        section_id = str(record["compiled_section"])
+        section_text = str(sections.get(section_id, {}).get("content", ""))
+        requirement_records.append(
+            {
+                "id": record["id"],
+                "disposition": record["disposition"],
+                "compiled_section": section_id,
+                "source_text": record["source_text"],
+                "compiled_text": record["compiled_text"],
+                "source_occurrences": prompt.count(record["source_text"]),
+                "compiled_occurrences": section_text.count(record["compiled_text"]),
+                "custody": "preserved",
+            }
+        )
+
+    signals = [
+        {
+            "id": "candidate-constraint-coverage",
+            "state": (
+                "review"
+                if any(normalize_text(item) not in mapped for item in brief.get("candidate_constraints", []))
+                else "clear"
+            ),
+            "details": sorted(
+                item
+                for item in brief.get("candidate_constraints", [])
+                if normalize_text(item) not in mapped
+            ),
+        },
+        {
+            "id": "scope-expansion-authorization",
+            "state": "clear" if boundary.get("scope_expansion") == "gated" else "review",
+            "details": boundary.get("scope_expansion"),
+        },
+    ]
+
+    return {
+        "schema": {"id": "requirement-custody-ledger", "version": "1.0"},
+        "tool": {"name": "prompt-optimizer", "version": VERSION, "authority": "compiler-only"},
+        "source_fingerprint": {
+            "algorithm": "sha256",
+            "value": source_sha256(prompt),
+            "matches_brief": source_sha256(prompt) == brief.get("source_sha256"),
+        },
+        "trigger_decision": result.expected_trigger_decision,
+        "explicit_requirements": requirement_records,
+        "assumptions": _extract(("assumption", "assumptions")),
+        "unresolved_decisions": _extract(
+            ("unresolved", "decision required", "open question", "manual decision")
+        ),
+        "scope_drift_signals": signals,
+        "authorization_decisions": {
+            "local_reversible_execution": boundary.get("local_reversible_execution"),
+            "external_actions": boundary.get("external_actions"),
+            "scope_expansion": boundary.get("scope_expansion"),
+            "gated_actions": boundary.get("gated_actions", []),
+            "approval_evidence": boundary.get("approval_evidence", []),
+        },
+        "evidence_boundary": "Derived only from the validated prompt packet and exact source fingerprint. No semantic equivalence or downstream execution is asserted.",
+        "privacy_notice": "Local-only deterministic custody output. It may contain exact source text; avoid storing secrets in prompt packets.",
+    }
+
+
 def read_prompt(path: str) -> str:
     """Read strict UTF-8 bytes while preserving BOM and newline code points."""
 
@@ -722,6 +826,10 @@ def build_parser() -> argparse.ArgumentParser:
     trace.add_argument("--prompt-file", required=True)
     trace.add_argument("--brief-file", required=True)
 
+    ledger = subparsers.add_parser("ledger", help="Show the deterministic Requirement Custody Ledger.")
+    ledger.add_argument("--prompt-file", required=True)
+    ledger.add_argument("--brief-file", required=True)
+
     render = subparsers.add_parser("render", help="Print compiled prompt text only after validation passes.")
     render.add_argument("--prompt-file", required=True)
     render.add_argument("--brief-file", required=True)
@@ -767,6 +875,9 @@ def main(argv: list[str] | None = None) -> int:
             return 0 if result.valid else 1
         if args.command == "trace":
             print(json.dumps(trace_brief(prompt, brief), indent=2, ensure_ascii=False))
+            return 0
+        if args.command == "ledger":
+            print(json.dumps(requirement_custody_ledger(prompt, brief), indent=2, ensure_ascii=False))
             return 0
         sys.stdout.write(render_brief(prompt, brief))
         if not str(brief["compiled_prompt"]["text"]).endswith("\n"):

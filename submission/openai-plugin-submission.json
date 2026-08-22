@@ -3,17 +3,18 @@
   "submission_type": "skills_only",
   "plugin_name": "Prompt Optimizer",
   "publisher": "Orbral",
-  "category": "Developer Tools",
-  "short_description": "Compile prompts. Map constraints.",
-  "long_description": "Turn long or messy agent requests into lean prompt packets with exact source custody, authorization boundaries, and deterministic local validation.",
+  "category": "Productivity",
+  "subtitle": "Keep long requests intact",
+  "short_description": "Keep long requests intact.",
+  "long_description": "Turn long or messy requests into reviewable instructions while preserving explicit requirements, separating assumptions, and flagging scope drift in a deterministic local Requirement Custody Ledger.",
   "website_url": "https://github.com/SpannDaMan/prompt-optimizer",
   "support_url": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/SUPPORT.md",
   "privacy_policy_url": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/PRIVACY.md",
   "terms_url": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/TERMS.md",
   "starter_prompts": [
-    "Optimize this request and map every constraint.",
-    "Validate this prompt packet.",
-    "Show why this prompt packet cannot render yet."
+    "Keep every requirement in this long request while making it easier to use.",
+    "Check whether this optimized request lost or invented anything.",
+    "Show the explicit requirements, assumptions, and unresolved decisions."
   ],
   "positive_tests": [
     {
@@ -71,6 +72,6 @@
     "requested_regions": [],
     "decision": "deferred_until_submission"
   },
-  "release_notes": "Initial skills-only directory submission at v0.1.2 with developer display name Orbral and the operator-selected Agent Smith Palette logo. Local compiler and validator; no MCP server, authentication, telemetry, or hosted data storage.",
+  "release_notes": "Patch v0.1.3 keeps the accepted transparent Agent Smith Palette mark and adds natural-language listing copy, deterministic requirement-custody evidence, activation tests, and bounded before/after evaluation without expanding the compiler-only authority boundary.",
   "publication_action": "none"
 }

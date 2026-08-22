@@ -1,9 +1,9 @@
 {
   "name": "prompt-optimizer",
-  "version": "0.1.2",
-  "description": "Compile long agent requests with explicit constraint and authority mapping for review.",
+  "version": "0.1.3",
+  "description": "Keep long requests intact with deterministic requirement custody.",
   "author": {
-    "name": "SpannDaMan",
+    "name": "Orbral",
     "url": "https://github.com/SpannDaMan"
   },
   "homepage": "https://github.com/SpannDaMan/prompt-optimizer",
@@ -13,18 +13,18 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Prompt Optimizer",
-    "shortDescription": "Compile prompts. Map constraints.",
-    "longDescription": "Turn long or messy agent requests into lean prompt packets with exact source custody, authorization boundaries, and deterministic local validation.",
+    "shortDescription": "Keep long requests intact.",
+    "longDescription": "Turn long or messy requests into reviewable instructions while preserving explicit requirements, separating assumptions, and flagging scope drift in a deterministic local Requirement Custody Ledger.",
     "developerName": "Orbral",
-    "category": "Developer Tools",
-    "capabilities": ["Local", "Prompt compilation", "Constraint custody", "No credentials"],
+    "category": "Productivity",
+    "capabilities": ["Local", "Requirement custody", "Assumption labeling", "Scope-drift checks", "No credentials"],
     "websiteURL": "https://github.com/SpannDaMan/prompt-optimizer",
     "privacyPolicyURL": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/PRIVACY.md",
     "termsOfServiceURL": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/TERMS.md",
     "defaultPrompt": [
-      "Optimize this request and map every declared constraint for review.",
-      "Validate this prompt packet.",
-      "Show why this prompt packet cannot render yet."
+      "Keep every requirement in this long request while making it easier to use.",
+      "Check whether this optimized request lost or invented anything.",
+      "Show the explicit requirements, assumptions, and unresolved decisions."
     ],
     "brandColor": "#0183E0",
     "composerIcon": "./assets/icon.png",

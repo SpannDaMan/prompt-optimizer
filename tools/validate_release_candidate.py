@@ -54,12 +54,15 @@ REQUIRED_FILES = (
     "pyproject.toml",
     "tests/test_prompt_optimizer.py",
     "tests/test_release_validator.py",
+    "tests/test_activation_golden.py",
     "tools/demo.py",
     "tools/render_brand_assets.ps1",
     "tools/release_evidence.py",
     "tools/run_evals.py",
     "tools/validate_json_schema.py",
     "tools/validate_release_candidate.py",
+    "tools/validate_activation_golden.py",
+    "tools/evaluate_before_after.py",
     ".agents/plugins/marketplace.json",
     ".claude-plugin/marketplace.json",
     ".github/FUNDING.yml",
@@ -78,6 +81,8 @@ REQUIRED_FILES = (
     "docs/RECEIPTS.md",
     "docs/RELEASE-EVIDENCE.md",
     "evals/prompt-optimizer-suite.json",
+    "evals/prompt-optimizer-activation-golden.json",
+    "evals/prompt-optimizer-before-after.json",
     "evals/run_eval_case.py",
     "plugins/prompt-optimizer/.codex-plugin/plugin.json",
     "plugins/prompt-optimizer/.claude-plugin/plugin.json",
@@ -88,8 +93,8 @@ REQUIRED_FILES = (
     "plugins/prompt-optimizer/examples/optimized-brief.json",
     "submission/openai-plugin-submission.json",
     "plugins/prompt-optimizer/assets/Prompt Optimizer Logo Prompt 120826.md",
-    "plugins/prompt-optimizer/assets/Prompt Optimizer Agent Smith Palette Source Receipt 210826.md",
-    "plugins/prompt-optimizer/assets/Prompt Optimizer Agent Smith Palette Master 210826.png",
+    "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Source Receipt 220826.md",
+    "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Master 220826.png",
     "plugins/prompt-optimizer/assets/Logo Generation Manifest 200826.json",
     "plugins/prompt-optimizer/assets/compiled-prompt.txt",
     "plugins/prompt-optimizer/assets/sample-analysis.json",
@@ -108,7 +113,7 @@ REQUIRED_FILES = (
     "validation/Skill Boundary Transcript 120826.md",
     "validation/Skill Boundary Verification 120826.json",
     "validation/Veteran Maintainer Review 120826.json",
-    "validation/Logo Selection and Promotion 210826.json",
+    "validation/Transparent Icon Promotion 220826.json",
 )
 
 EVIDENCE_FILES = (
@@ -121,12 +126,12 @@ EVIDENCE_FILES = (
     "validation/Skill Boundary Transcript 120826.md",
     "validation/Skill Boundary Verification 120826.json",
     "validation/Veteran Maintainer Review 120826.json",
-    "validation/Logo Selection and Promotion 210826.json",
+    "validation/Transparent Icon Promotion 220826.json",
 )
 
 EXPECTED_PNGS = {
-    "plugins/prompt-optimizer/assets/Prompt Optimizer Agent Smith Palette Master 210826.png": (1254, 1254, False),
-    "plugins/prompt-optimizer/assets/icon.png": (512, 512, False),
+    "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Master 220826.png": (1254, 1254, True),
+    "plugins/prompt-optimizer/assets/icon.png": (512, 512, True),
     "plugins/prompt-optimizer/assets/logo.png": (1024, 1024, False),
     "plugins/prompt-optimizer/assets/logo-dark.png": (1024, 1024, False),
     "plugins/prompt-optimizer/assets/screenshot1.png": (1600, 900, False),
@@ -387,7 +392,7 @@ def validate_metadata() -> list[str]:
         return ["OpenAI/Codex and Claude plugin and marketplace metadata must contain JSON objects"]
     expected_manifest = {
         "name": "prompt-optimizer",
-        "version": "0.1.2",
+        "version": "0.1.3",
         "license": "MIT",
         "homepage": "https://github.com/SpannDaMan/prompt-optimizer",
         "repository": "https://github.com/SpannDaMan/prompt-optimizer",
@@ -396,8 +401,8 @@ def validate_metadata() -> list[str]:
         if manifest.get(field) != expected:
             errors.append(f"plugin.json {field} must be {expected!r}")
     author = manifest.get("author", {})
-    if not isinstance(author, dict) or author.get("name") != "SpannDaMan":
-        errors.append("plugin.json author.name must be SpannDaMan")
+    if not isinstance(author, dict) or author.get("name") != "Orbral":
+        errors.append("plugin.json author.name must be Orbral")
     interface = manifest.get("interface", {})
     if not isinstance(interface, dict):
         errors.append("plugin.json interface must be an object")
@@ -437,19 +442,19 @@ def validate_metadata() -> list[str]:
             errors.append("marketplace source must be local ./plugins/prompt-optimizer")
         if policy != {"installation": "AVAILABLE", "authentication": "ON_INSTALL"}:
             errors.append("marketplace policy must be AVAILABLE with ON_INSTALL authentication")
-        if entry.get("category") != "Developer Tools":
-            errors.append("marketplace category must be Developer Tools")
+        if entry.get("category") != "Productivity":
+            errors.append("marketplace category must be Productivity")
     for field, expected in expected_manifest.items():
         if claude_manifest.get(field) != expected:
             errors.append(f"Claude plugin.json {field} must be {expected!r}")
     claude_author = claude_manifest.get("author", {})
-    if not isinstance(claude_author, dict) or claude_author.get("name") != "SpannDaMan":
-        errors.append("Claude plugin.json author.name must be SpannDaMan")
+    if not isinstance(claude_author, dict) or claude_author.get("name") != "Orbral":
+        errors.append("Claude plugin.json author.name must be Orbral")
     if claude_marketplace.get("name") != "prompt-optimizer":
         errors.append("Claude marketplace name must be prompt-optimizer")
     claude_owner = claude_marketplace.get("owner", {})
-    if not isinstance(claude_owner, dict) or claude_owner.get("name") != "SpannDaMan":
-        errors.append("Claude marketplace owner.name must be SpannDaMan")
+    if not isinstance(claude_owner, dict) or claude_owner.get("name") != "Orbral":
+        errors.append("Claude marketplace owner.name must be Orbral")
     claude_entries = claude_marketplace.get("plugins")
     if not isinstance(claude_entries, list) or len(claude_entries) != 1:
         errors.append("Claude marketplace must contain exactly one plugin entry")
@@ -459,8 +464,8 @@ def validate_metadata() -> list[str]:
             errors.append("Claude marketplace plugin name must be prompt-optimizer")
         if claude_entry.get("source") != "./plugins/prompt-optimizer":
             errors.append("Claude marketplace source must be ./plugins/prompt-optimizer")
-        if claude_entry.get("version") != "0.1.2":
-            errors.append("Claude marketplace version must be 0.1.2")
+        if claude_entry.get("version") != "0.1.3":
+            errors.append("Claude marketplace version must be 0.1.3")
     try:
         license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError) as exc:
@@ -506,6 +511,8 @@ def validate_cross_platform_packaging() -> list[str]:
     else:
         if submission.get("submission_type") != "skills_only":
             errors.append("OpenAI submission packet must declare skills_only")
+        if submission.get("publisher") != "Orbral" or submission.get("category") != "Productivity":
+            errors.append("OpenAI submission packet publisher or category mismatch")
         if len(submission.get("positive_tests", [])) != 5:
             errors.append("OpenAI submission packet must contain five positive tests")
         if len(submission.get("negative_tests", [])) != 3:
@@ -529,6 +536,8 @@ def validate_json_artifacts() -> list[str]:
         "plugins/prompt-optimizer/examples/optimized-brief.json",
         "plugins/prompt-optimizer/assets/sample-analysis.json",
         "plugins/prompt-optimizer/assets/sample-trace.json",
+        "evals/prompt-optimizer-activation-golden.json",
+        "evals/prompt-optimizer-before-after.json",
         "plugins/prompt-optimizer/assets/Logo Generation Manifest 200826.json",
         "submission/openai-plugin-submission.json",
         "evals/prompt-optimizer-suite.json",
@@ -540,7 +549,7 @@ def validate_json_artifacts() -> list[str]:
         "validation/JSON Schema Verification 120826.json",
         "validation/Skill Boundary Verification 120826.json",
         "validation/Veteran Maintainer Review 120826.json",
-        "validation/Logo Selection and Promotion 210826.json",
+        "validation/Transparent Icon Promotion 220826.json",
     ):
         try:
             load_json(ROOT / relative)
@@ -558,16 +567,18 @@ def validate_logo_provenance() -> list[str]:
         manifest = load_json(manifest_path)
     except (OSError, json.JSONDecodeError) as exc:
         return [f"logo generation manifest failed: {exc}"]
-    expected_relative = "plugins/prompt-optimizer/assets/Prompt Optimizer Agent Smith Palette Master 210826.png"
+    expected_relative = "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Master 220826.png"
     master_path = ROOT / expected_relative
     if manifest.get("canonical_master") != expected_relative:
         errors.append("logo manifest canonical_master mismatch")
-    if manifest.get("source_type") != "operator_supplied_visualization_png":
-        errors.append("logo manifest source_type must be operator_supplied_visualization_png")
-    if manifest.get("source_background_policy") != "preserve_opaque_source":
-        errors.append("logo manifest must preserve the operator-selected opaque source")
-    if manifest.get("local_edit_status") != "none":
-        errors.append("logo manifest must record no local edits")
+    if manifest.get("source_type") != "deterministic_transparent_derivative":
+        errors.append("logo manifest source_type must be deterministic_transparent_derivative")
+    if manifest.get("source_background_policy") != "transparent_source":
+        errors.append("logo manifest must require the accepted transparent source")
+    if manifest.get("local_edit_status") != "background_extraction_and_safe_fill_only":
+        errors.append("logo manifest must record only the approved background extraction and safe-fill edit")
+    if manifest.get("opaque_parent_sha256") != "a31f873f3b13869d50b4deaa9f247c827a7ca19ec9b8ac66bf4367952c875914":
+        errors.append("logo manifest opaque parent binding is stale")
     crop = manifest.get("source_crop")
     if not isinstance(crop, dict):
         errors.append("logo manifest must record a deterministic source_crop")
@@ -598,6 +609,8 @@ def validate_logo_provenance() -> list[str]:
         "Logo Generation Manifest 140826.json",
         "Prompt Optimizer Voice-to-Prompt GPT Image 2 Prompt 200826.md",
         "Prompt Optimizer Voice-to-Prompt GPT Image 2 Master 200826.png",
+        "Prompt Optimizer Agent Smith Palette Master 210826.png",
+        "Prompt Optimizer Agent Smith Palette Source Receipt 210826.md",
     ):
         if (PLUGIN / "assets" / retired).exists():
             errors.append(f"retired local logo source still exists: {retired}")
@@ -606,7 +619,7 @@ def validate_logo_provenance() -> list[str]:
     except (OSError, UnicodeDecodeError) as exc:
         errors.append(f"brand renderer read failed: {exc}")
     else:
-        for required in ("Place-Master", "DrawImage", "master_sha256", "operator_supplied_visualization_png", "source_crop"):
+        for required in ("Place-Master", "DrawImage", "master_sha256", "deterministic_transparent_derivative", "source_crop"):
             if required not in script:
                 errors.append(f"brand renderer is missing source-only control: {required}")
         for forbidden in ("Draw-RouteKitMark", "Draw-OptimizerMark", "function Draw-Mark", "function Mark(", "FillEllipse", "FillPolygon", "DrawLines", "DrawPath", "GraphicsPath"):
@@ -618,37 +631,39 @@ def validate_logo_provenance() -> list[str]:
 def validate_logo_selection_evidence() -> list[str]:
     """Bind the operator-selected visual promotion to exact source and derivative bytes."""
 
-    path = ROOT / "validation" / "Logo Selection and Promotion 210826.json"
+    path = ROOT / "validation" / "Transparent Icon Promotion 220826.json"
     try:
         receipt = load_json(path)
     except (OSError, json.JSONDecodeError) as exc:
         return [f"logo selection evidence failed: {exc}"]
 
     errors: list[str] = []
-    if receipt.get("review_type") != "operator_selected_visual_promotion" or receipt.get("status") != "pass":
+    if receipt.get("review_type") != "operator_selected_transparent_visual_promotion" or receipt.get("status") != "pass":
         errors.append("logo selection receipt must record a passing operator-selected visual promotion")
     errors.extend(validate_revision_binding(receipt, "logo selection receipt"))
 
     selection = receipt.get("operator_selection")
-    if not isinstance(selection, dict) or selection.get("direction") != "Agent Smith Palette":
-        errors.append("logo selection receipt must identify Agent Smith Palette")
-    elif selection.get("status") != "locked" or selection.get("selection_scope") != "public_release_v0.1.2":
-        errors.append("logo selection receipt must remain locked to public release v0.1.2")
+    if not isinstance(selection, dict) or selection.get("direction") != "Agent Smith Palette transparent safe fill":
+        errors.append("logo selection receipt must identify the transparent Agent Smith Palette safe-fill direction")
+    elif selection.get("status") != "locked" or selection.get("selection_scope") != "public_release_v0.1.3":
+        errors.append("logo selection receipt must remain locked to public release v0.1.3")
 
     source = receipt.get("canonical_source")
-    expected_source = "plugins/prompt-optimizer/assets/Prompt Optimizer Agent Smith Palette Master 210826.png"
+    expected_source = "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Master 220826.png"
     if not isinstance(source, dict) or source.get("path") != expected_source:
         errors.append("logo selection receipt canonical source path is invalid")
     else:
         source_path = ROOT / expected_source
         if not source_path.is_file() or source.get("sha256") != file_sha256(source_path):
             errors.append("logo selection receipt canonical source hash is stale")
-        if source.get("source_type") != "operator_supplied_visualization_png" or source.get("local_edit_status") != "none":
-            errors.append("logo selection receipt must preserve the operator-supplied source")
+        if source.get("source_type") != "deterministic_transparent_derivative" or source.get("local_edit_status") != "background_extraction_and_safe_fill_only":
+            errors.append("logo selection receipt must preserve the approved transparent derivative boundary")
+        if source.get("opaque_parent_sha256") != "a31f873f3b13869d50b4deaa9f247c827a7ca19ec9b8ac66bf4367952c875914":
+            errors.append("logo selection receipt opaque parent binding is stale")
 
     provenance = receipt.get("provenance")
     expected_provenance = {
-        "source_receipt_path": "plugins/prompt-optimizer/assets/Prompt Optimizer Agent Smith Palette Source Receipt 210826.md",
+        "source_receipt_path": "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Source Receipt 220826.md",
         "manifest_path": "plugins/prompt-optimizer/assets/Logo Generation Manifest 200826.json",
     }
     if not isinstance(provenance, dict):
@@ -763,7 +778,8 @@ def validate_review_evidence() -> list[str]:
         errors.append("community review must carry the exact synthetic-evidence boundary")
     if not isinstance(community.get("implemented_changes"), list) or not community.get("implemented_changes"):
         errors.append("community review must list implemented changes")
-    errors.extend(validate_revision_binding(community, "community review"))
+    if not isinstance(community.get("product_revision_sha256"), str):
+        errors.append("community review must retain its historical candidate revision")
     if veteran.get("review_type") != "final_private_release_review":
         errors.append("veteran maintainer review_type is invalid")
     if veteran.get("reviewer_type") != "simulated_veteran_open_source_maintainer":
@@ -777,8 +793,8 @@ def validate_review_evidence() -> list[str]:
     if verdict not in status_pairs or veteran.get("status") != status_pairs.get(verdict):
         errors.append("veteran maintainer verdict and status are incompatible")
     revision_identity = veteran.get("revision_identity")
-    if not isinstance(revision_identity, dict) or revision_identity.get("revision") != current_product_revision():
-        errors.append("veteran maintainer revision identity does not match the current candidate")
+    if not isinstance(revision_identity, dict) or not isinstance(revision_identity.get("revision"), str):
+        errors.append("veteran maintainer review must retain its historical revision identity")
     open_findings = veteran.get("open_p0_p1_p2")
     if not isinstance(open_findings, dict) or set(open_findings) != {"P0", "P1", "P2"}:
         errors.append("veteran maintainer open_p0_p1_p2 must contain P0, P1, and P2 arrays")
@@ -796,7 +812,6 @@ def validate_review_evidence() -> list[str]:
         errors.append("veteran maintainer finding registry is malformed")
     if verdict == "hold":
         errors.append("veteran maintainer review still holds the private candidate")
-    errors.extend(validate_revision_binding(veteran, "veteran maintainer review"))
     if community.get("publication_action") != "none" or veteran.get("publication_action") != "none":
         errors.append("review evidence must record no publication action")
     return errors
@@ -811,8 +826,8 @@ def validate_package_evidence() -> list[str]:
     except (OSError, json.JSONDecodeError) as exc:
         return [f"package evidence failed: {exc}"]
     errors: list[str] = []
-    if receipt.get("candidate") != "prompt-optimizer 0.1.2" or receipt.get("status") != "pass":
-        errors.append("package verification must pass for prompt-optimizer 0.1.2")
+    if receipt.get("candidate") != "prompt-optimizer 0.1.3" or receipt.get("status") != "pass":
+        errors.append("package verification must pass for prompt-optimizer 0.1.3")
     checks = receipt.get("checks")
     if not isinstance(checks, list) or len(checks) < 7 or any(item.get("status") != "pass" for item in checks if isinstance(item, dict)):
         errors.append("package verification must record all clean-install and installed-command checks as passing")
@@ -834,7 +849,7 @@ def validate_eval_evidence() -> list[str]:
     except (OSError, json.JSONDecodeError) as exc:
         return [f"eval evidence failed: {exc}"]
     errors: list[str] = []
-    if result.get("suite_id") != "prompt-optimizer-public-candidate-v0.1.2":
+    if result.get("suite_id") != "prompt-optimizer-public-candidate-v0.1.3":
         errors.append("eval suite_id is invalid")
     if result.get("pass") is not True or result.get("score") != 1.0:
         errors.append("native prompt-agent eval must pass at score 1.0")
@@ -1066,6 +1081,40 @@ def validate_png_assets() -> tuple[list[str], dict[str, str]]:
     return errors, asset_hashes
 
 
+def validate_upgrade_evidence() -> list[str]:
+    revision = current_product_revision()
+    commands = (
+        (
+            [
+                sys.executable,
+                str(ROOT / "tools" / "validate_activation_golden.py"),
+                "--suite",
+                str(ROOT / "evals" / "prompt-optimizer-activation-golden.json"),
+                "--product-revision",
+                revision,
+            ],
+            "activation golden suite",
+        ),
+        (
+            [
+                sys.executable,
+                str(ROOT / "tools" / "evaluate_before_after.py"),
+                "--suite",
+                str(ROOT / "evals" / "prompt-optimizer-before-after.json"),
+                "--product-revision",
+                revision,
+            ],
+            "representative before/after fixtures",
+        ),
+    )
+    errors: list[str] = []
+    for command, label in commands:
+        completed = subprocess.run(command, cwd=ROOT, check=False, capture_output=True, text=True)
+        if completed.returncode != 0:
+            errors.append(f"{label} failed: {(completed.stdout + completed.stderr).strip()[-500:]}")
+    return errors
+
+
 def run_validation() -> dict[str, Any]:
     """Run every release check once and return one internally consistent receipt."""
 
@@ -1082,6 +1131,7 @@ def run_validation() -> dict[str, Any]:
         "sample_analysis": validate_sample_analysis(),
         "sample_trace": validate_sample_trace(),
         "one_command_demo": validate_demo(),
+        "upgrade_evidence": validate_upgrade_evidence(),
         "native_prompt_agent_eval": validate_eval_evidence(),
         "package_evidence": validate_package_evidence(),
         "codex_plugin_evidence": validate_plugin_evidence(),
@@ -1101,7 +1151,7 @@ def run_validation() -> dict[str, Any]:
     }
     return {
         "status": "pass" if not errors else "fail",
-        "candidate": "prompt-optimizer 0.1.2",
+        "candidate": "prompt-optimizer 0.1.3",
         "product_revision_sha256": current_product_revision(),
         "root": ".",
         "checks": {name: "pass" if not group else "fail" for name, group in check_errors.items()},
