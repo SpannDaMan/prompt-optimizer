@@ -1,0 +1,50 @@
+{
+  "status": "pass",
+  "candidate": "prompt-optimizer 0.1.3",
+  "product_revision_sha256": "b40320f110c17523017c65eca0a3667d393ab114a1338a97b15f7a7d719602d5",
+  "root": ".",
+  "checks": {
+    "required_files": "pass",
+    "portable_file_shape": "pass",
+    "text_safety": "pass",
+    "metadata": "pass",
+    "cross_platform_packaging": "pass",
+    "json_artifacts": "pass",
+    "logo_provenance": "pass",
+    "logo_selection_evidence": "pass",
+    "sample_analysis": "pass",
+    "sample_trace": "pass",
+    "one_command_demo": "pass",
+    "native_prompt_agent_eval": "pass",
+    "package_evidence": "pass",
+    "codex_plugin_evidence": "pass",
+    "claude_plugin_evidence": "pass",
+    "json_schema_evidence": "pass",
+    "skill_boundary": "pass",
+    "claims_integrity": "pass",
+    "private_pilot_contract": "pass",
+    "review_evidence": "pass",
+    "png_assets": "pass"
+  },
+  "asset_sha256": {
+    "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Master 220826.png": "8eb5beea5551c31ed3932125a10003155c5d01577ec664b00f3390fcac3bc4e9",
+    "plugins/prompt-optimizer/assets/icon.png": "cd80983bf89d6069acc95f6aecd25f5ddfbf0ec11eecb637363651076452a797",
+    "plugins/prompt-optimizer/assets/logo.png": "e8e6025fef6680f3331ab93b6448be524ad0810c8174d953a15a17fdda1a0136",
+    "plugins/prompt-optimizer/assets/logo-dark.png": "a69b9adf1dc6c92351b433dcbd125f94aaf93eb141abe351e87acd04b8e969ff",
+    "plugins/prompt-optimizer/assets/screenshot1.png": "72e317815f78041f5a34a0e98b0a3da07cec3d91472db2b56fe0c9690fe5e8e1",
+    "plugins/prompt-optimizer/assets/social-preview.png": "defe5085345a9c19ce491782d9c1249e1315c6a1df0435e8451c0ae733d473b1"
+  },
+  "evidence_sha256": {
+    "validation/Community Review Change Ledger 120826.json": "342a9b25598a6d0cf3acd2e2f57befc154945cae937036e95cad4e9a098e6667",
+    "validation/Prompt Optimizer Eval Result 120826.json": "37b88951a7b3bb09f01e8b141bad205e336d81a69ea1385eb2ce9431a0343b89",
+    "validation/Package Verification 120826.json": "65cc70adede56f8c8c723e6dffdaef7ed81f05c9d0ef4524259fb1b5ca88225b",
+    "validation/Codex Plugin Verification 120826.json": "6ef44597de382a4c66db6f0a198e458cdbc561abb8074d7487696c313d21a5b7",
+    "validation/Claude Plugin Verification 200826.json": "27340c53b43fbf118d9f955816c8fcde24f31d3fec797291c38971e76c9c79d1",
+    "validation/JSON Schema Verification 120826.json": "5031ee030d2ccda1ffbb007fe58863c7b8083ae051f2239accaf363c248c024b",
+    "validation/Skill Boundary Transcript 120826.md": "b186e83eaeab171f990f0cb86e6cb3dfc22cb6092c7b58d904a3f1f4039e45b7",
+    "validation/Skill Boundary Verification 120826.json": "c07877c85248abe449a9fdd971b18d34b3136cfff2fcd235530e7ebfaa5b3b6e",
+    "validation/Veteran Maintainer Review 120826.json": "4799df922005b38b8f40da58a07d905bd7df88f66ca23978a30acfc213cbe9bb",
+    "validation/Transparent Icon Promotion 220826.json": "aba823026f300424c49bfec751bb9e51e3b92f7c2330258e8699beea59997ea4"
+  },
+  "errors": []
+}

@@ -2,15 +2,15 @@
   "name": "prompt-optimizer",
   "description": "A focused marketplace for the Prompt Optimizer skills-only plugin.",
   "owner": {
-    "name": "SpannDaMan"
+    "name": "Orbral"
   },
   "plugins": [
     {
       "name": "prompt-optimizer",
       "source": "./plugins/prompt-optimizer",
-      "description": "Compile long agent requests into lean prompt packets with explicit constraint and authority mapping.",
-      "version": "0.1.2",
-      "category": "development"
+      "description": "Keep long requests intact with deterministic requirement custody.",
+      "version": "0.1.3",
+      "category": "productivity"
     }
   ]
 }

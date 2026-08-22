@@ -1,9 +1,9 @@
 {
   "name": "prompt-optimizer",
-  "description": "Compile long agent requests into lean prompt packets with explicit constraint and authority mapping.",
-  "version": "0.1.2",
+  "description": "Keep long requests intact with deterministic requirement custody.",
+  "version": "0.1.3",
   "author": {
-    "name": "SpannDaMan"
+    "name": "Orbral"
   },
   "homepage": "https://github.com/SpannDaMan/prompt-optimizer",
   "repository": "https://github.com/SpannDaMan/prompt-optimizer",

@@ -23,11 +23,11 @@ foreach ($required in @('canonical_master', 'master_sha256', 'master_width', 'ma
         throw "Logo generation manifest is missing '$required'."
     }
 }
-if ($manifest.source_type -notin @('original_browser_download', 'operator_supplied_visualization_png')) {
+if ($manifest.source_type -notin @('original_browser_download', 'operator_supplied_visualization_png', 'deterministic_transparent_derivative')) {
     throw "Unsupported canonical logo source type '$($manifest.source_type)'."
 }
-if ($manifest.local_edit_status -ne 'none') {
-    throw "Canonical logo source declares a local edit and cannot be packaged."
+if ($manifest.local_edit_status -notin @('none', 'background_extraction_and_safe_fill_only')) {
+    throw "Canonical logo source declares an unsupported local edit and cannot be packaged."
 }
 
 if (-not $MasterPath) {

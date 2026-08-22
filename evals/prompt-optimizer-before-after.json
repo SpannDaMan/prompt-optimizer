@@ -1,0 +1,34 @@
+{
+  "schema_version": "1.0",
+  "suite_id": "prompt-optimizer-representative-before-after-v1",
+  "claim_boundary": "These fixed fixtures measure literal requirement coverage, explicit assumption labels, declared prohibited additions, and first-pass fixture validity only; they do not establish generalized model or prompt quality.",
+  "cases": [
+    {
+      "id": "PO-BA01",
+      "source": "Prepare a Windows-only local prototype. Do not use network calls. Keep the existing CLI compatible.",
+      "explicit_requirements": ["Windows-only", "Do not use network calls", "existing CLI compatible"],
+      "assumptions_to_label": [],
+      "prohibited_additions": ["publish", "deploy"],
+      "before_output": "Prepare a local prototype and improve the CLI.",
+      "after_output": "Prepare a Windows-only local prototype. Do not use network calls. Keep the existing CLI compatible."
+    },
+    {
+      "id": "PO-BA02",
+      "source": "Draft the release package, but publication approval has not been granted. The target category is still undecided.",
+      "explicit_requirements": ["Draft the release package", "publication approval has not been granted", "target category is still undecided"],
+      "assumptions_to_label": ["publication remains gated", "category requires a decision"],
+      "prohibited_additions": ["publish now", "category: productivity"],
+      "before_output": "Publish the release package in Productivity.",
+      "after_output": "Draft the release package. Publication approval has not been granted. The target category is still undecided. Assumption: publication remains gated. Decision required: category requires a decision."
+    },
+    {
+      "id": "PO-BA03",
+      "source": "Update only the metadata. Preserve the selected logo bytes. Do not change OAuth scopes or repository visibility.",
+      "explicit_requirements": ["Update only the metadata", "Preserve the selected logo bytes", "Do not change OAuth scopes or repository visibility"],
+      "assumptions_to_label": [],
+      "prohibited_additions": ["regenerate the logo", "make the repository public", "add OAuth scopes"],
+      "before_output": "Refresh the plugin package and regenerate its branding.",
+      "after_output": "Update only the metadata. Preserve the selected logo bytes. Do not change OAuth scopes or repository visibility."
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 ---
 name: prompt-optimizer
-description: Compile long or messy requests into lean prompt packets while preserving constraints, authorization boundaries, and validation evidence. Use when a user asks to optimize a prompt or when a request is longer than three relevant sentences, unless the user explicitly says not to rewrite it.
+description: Keep long or messy requests intact while making them easier to use, preserving explicit requirements, labeling assumptions, and flagging scope drift. Use when a user asks to optimize a prompt or when a request is longer than three relevant sentences, unless the user explicitly says not to rewrite it.
 ---
 
 # Prompt Optimizer
@@ -61,12 +61,15 @@ prompt-optimizer analyze --prompt-file request.txt
 prompt-optimizer scaffold --prompt-file request.txt --surface codex --output prompt-packet.json
 prompt-optimizer validate --prompt-file request.txt --brief-file prompt-packet.json
 prompt-optimizer trace --prompt-file request.txt --brief-file prompt-packet.json
+prompt-optimizer ledger --prompt-file request.txt --brief-file prompt-packet.json
 prompt-optimizer render --prompt-file request.txt --brief-file prompt-packet.json
 ```
 
 The scaffold for a long prompt is deliberately a non-renderable draft. Complete the semantic compilation before changing `status` to `ready`.
 
 `trace` exposes exact constraint mappings and authority decisions only after the packet validates. It may contain source text, so keep it local and never store secrets in a packet.
+
+`ledger` is the primary review surface for explicit requirements, assumptions, unresolved decisions, scope-drift signals, and authorization decisions. It is deterministic custody evidence, not proof of semantic equivalence or downstream execution.
 
 ## Output behavior
 

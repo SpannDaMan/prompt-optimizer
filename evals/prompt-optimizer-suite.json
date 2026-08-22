@@ -1,5 +1,5 @@
 {
-  "suite_id": "prompt-optimizer-public-candidate-v0.1.2",
+  "suite_id": "prompt-optimizer-public-candidate-v0.1.3",
   "pass_threshold": 1.0,
   "runner": {
     "command": [

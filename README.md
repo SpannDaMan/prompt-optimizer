@@ -1,17 +1,17 @@
 # Prompt Optimizer
 
-Constraint-safe prompt compilation for agent workflows.
+Keep long requests intact.
 
-> **Current release.** Prompt Optimizer `v0.1.2` uses the public developer display name `Orbral` and ships the operator-selected Agent Smith Palette identity while preserving the post-release 30-day maintainer pilot.
+> **Current release.** Prompt Optimizer `v0.1.3` uses the public developer display name `Orbral` and a genuine-transparent, larger safe-fill version of the operator-selected Agent Smith Palette identity while preserving the post-release 30-day maintainer pilot.
 
-Prompt Optimizer helps developers turn long or messy agent requests into lean, reviewable prompt packets without silently dropping constraints or widening authority.
+Prompt Optimizer turns long or messy requests into reviewable instructions while preserving explicit requirements, separating assumptions, and flagging scope drift. Its local **Requirement Custody Ledger** shows what was preserved without claiming that a model will perform better.
 
 It is deliberately a two-part tool:
 
 | Surface | What it does | What it does not do |
 |---|---|---|
 | Bundled agent skill | Makes the semantic compilation: selects material sections and maps every must-preserve constraint. | It cannot invent approval, expand scope, execute the source task, or guarantee better model output. |
-| Dependency-free CLI | Fingerprints the exact source, creates a safe draft, validates custody and authority, shows a trace, and renders only a passing packet. | It never semantically rewrites a long prompt, calls a model, or executes the prompt. |
+| Dependency-free CLI | Fingerprints the exact source, creates a safe draft, validates custody and authority, shows a trace or Requirement Custody Ledger, and renders only a passing package. | It never semantically rewrites a long request, calls a model, or executes the request. |
 
 Here, **optimized** means compiled by the skill and checked against an explicit custody contract. It does not mean empirically proven to improve model performance.
 
@@ -50,6 +50,12 @@ To inspect exactly where the two source constraints landed:
 prompt-optimizer trace --prompt-file plugins/prompt-optimizer/examples/long-request.txt --brief-file plugins/prompt-optimizer/examples/optimized-brief.json
 ```
 
+For the clearer requirement/assumption/scope review surface:
+
+```bash
+prompt-optimizer ledger --prompt-file plugins/prompt-optimizer/examples/long-request.txt --brief-file plugins/prompt-optimizer/examples/optimized-brief.json
+```
+
 The JSON trace includes each source constraint, its verbatim or semantic disposition, compiled text, destination section, authorization boundary, and a reminder that structural validation is not proof of semantic equivalence.
 
 ## What it catches
@@ -83,7 +89,8 @@ Python 3.10 or later is required. The runtime uses only the Python standard libr
 3. The bundled skill compiles only the material sections and maps every must-preserve constraint.
 4. `validate` checks source custody, section ordering, constraint placement, authorization boundaries, and validation evidence.
 5. `trace` exposes every constraint mapping and authority decision for review.
-6. `render` emits the compiled prompt only after validation passes.
+6. `ledger` adds explicit requirements, assumptions, unresolved decisions, scope-drift signals, and authorization decisions under the exact source fingerprint.
+7. `render` emits the compiled request only after validation passes.
 
 The safe fallback is always the original prompt unchanged.
 
@@ -175,7 +182,7 @@ Read [SECURITY.md](SECURITY.md) and [THREAT-MODEL.md](THREAT-MODEL.md) before in
 
 ## Status
 
-`v0.1.2` is the current public release and changes only the public developer display name to `Orbral` after the v0.1.1 logo release; compiler behavior is unchanged. Local custody, package, plugin, schema, review, and visual gates pass. Public Git-source installation and directory review states are tracked separately from local package validity. The 30-day maintainer pilot runs after release; it may narrow, patch, or hold future releases without rewriting public history. See [PUBLICATION-GATE.md](PUBLICATION-GATE.md).
+`v0.1.3` is the current public candidate and changes only the icon surface: the same selected mark now uses genuine alpha and a larger safe fill instead of an opaque square. The public developer display remains `Orbral`, and compiler behavior is unchanged. Local custody, package, plugin, schema, review, and visual gates are revision-bound; public Git-source installation and directory review states remain separate from local package validity. The 30-day maintainer pilot continues after release without rewriting public history. See [PUBLICATION-GATE.md](PUBLICATION-GATE.md).
 
 ## Contributing
 
