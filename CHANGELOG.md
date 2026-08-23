@@ -2,6 +2,13 @@
 
 All notable changes to Prompt Optimizer will be documented here.
 
+## 0.1.4 — transparent plugin logo fields
+
+- Reused the accepted transparent master without regenerating, redrawing, recoloring, or changing the mark.
+- Removed renderer-painted backgrounds from `logo.png` and `logo-dark.png`; `composerIcon`, `logo`, and `logoDark` now all retain genuine alpha and the same large safe fill.
+- Added fail-closed alpha expectations and a negative regression test for opaque host-facing logo variants.
+- Added release-to-marketplace-to-installed-asset reconciliation so a published patch cannot be called applied while Codex remains pinned to an older tag.
+
 ## 0.1.3 — requirement custody and transparent safe-fill icon
 
 - Added the deterministic Requirement Custody Ledger, 30-case activation suite, and bounded representative before/after evaluation.

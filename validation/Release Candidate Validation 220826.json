@@ -1,6 +1,6 @@
 {
   "status": "pass",
-  "candidate": "prompt-optimizer 0.1.3",
+  "candidate": "prompt-optimizer 0.1.4",
   "product_revision_sha256": "b40320f110c17523017c65eca0a3667d393ab114a1338a97b15f7a7d719602d5",
   "root": ".",
   "checks": {

@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
-  "candidate": "prompt-optimizer 0.1.3",
-  "product_revision_sha256": "b6cc47e3f6ba82abc5a87c8058a5bb9a220f40180ee53bdcb23a84f3662fbdee",
-  "review_type": "operator_selected_transparent_visual_promotion",
+  "candidate": "prompt-optimizer 0.1.4",
+  "product_revision_sha256": "9e57003228bcaeecb9ee066ee109b2537bc6e98722d41f0aaba917e96696835d",
+  "review_type": "operator_selected_transparent_plugin_logo_promotion",
   "status": "pass",
   "operator_selection": {
-    "direction": "Agent Smith Palette transparent safe fill",
+    "direction": "Agent Smith Palette transparent safe fill across all plugin logo fields",
     "status": "locked",
-    "selection_scope": "public_release_v0.1.3"
+    "selection_scope": "public_release_v0.1.4"
   },
   "canonical_source": {
     "path": "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Master 220826.png",
@@ -18,9 +18,9 @@
   },
   "provenance": {
     "source_receipt_path": "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Source Receipt 220826.md",
-    "source_receipt_sha256": "f27edd7f6772e936cbf441cd1f73d8410f6e4ff1bca4803a6041c3a407aae11d",
+    "source_receipt_sha256": "880976fbe513ca1c08e6c01872b7b323646866b6f7379043e1c9c9d6b390edd5",
     "manifest_path": "plugins/prompt-optimizer/assets/Logo Generation Manifest 200826.json",
-    "manifest_sha256": "dd5217551b2cad8f4828100f68262472e458fd1498453b998a8835d8189e1209"
+    "manifest_sha256": "5bba7c90ff7ed0227c4c05d31b4e2d23a226c618129041c39928fe5184c74d10"
   },
   "source_only_packaging": {
     "geometry_changed": false,
@@ -29,10 +29,11 @@
     "inpainting_used": false,
     "background_removed": true,
     "safe_fill_centered": true,
+    "host_facing_logo_backgrounds": "transparent",
     "derivatives": {
       "plugins/prompt-optimizer/assets/icon.png": "cd80983bf89d6069acc95f6aecd25f5ddfbf0ec11eecb637363651076452a797",
-      "plugins/prompt-optimizer/assets/logo.png": "e8e6025fef6680f3331ab93b6448be524ad0810c8174d953a15a17fdda1a0136",
-      "plugins/prompt-optimizer/assets/logo-dark.png": "a69b9adf1dc6c92351b433dcbd125f94aaf93eb141abe351e87acd04b8e969ff",
+      "plugins/prompt-optimizer/assets/logo.png": "33e65426243147529b0d7d869c457ec38cfae6cf62ed09a5c018c581e125ed7c",
+      "plugins/prompt-optimizer/assets/logo-dark.png": "33e65426243147529b0d7d869c457ec38cfae6cf62ed09a5c018c581e125ed7c",
       "plugins/prompt-optimizer/assets/screenshot1.png": "72e317815f78041f5a34a0e98b0a3da07cec3d91472db2b56fe0c9690fe5e8e1",
       "plugins/prompt-optimizer/assets/social-preview.png": "defe5085345a9c19ce491782d9c1249e1315c6a1df0435e8451c0ae733d473b1"
     }
@@ -47,6 +48,21 @@
       32,
       64,
       128
+    ],
+    "surfaces": [
+      "transparent",
+      "light",
+      "dark"
+    ]
+  },
+  "plugin_logo_fields_qa": {
+    "status": "pass",
+    "path": "validation/Prompt Optimizer Plugin Logo Fields QA 230826.png",
+    "sha256": "bdd4f85cf5a749952b3736ce07db5bf8b2dd08ece27dc3d1519bfe6567c43fbe",
+    "fields": [
+      "composerIcon",
+      "logo",
+      "logoDark"
     ],
     "surfaces": [
       "light",

@@ -1,6 +1,7 @@
 param(
     [string]$Root = (Split-Path -Parent $PSScriptRoot),
     [string]$QaOutputPath = '',
+    [string]$LogoFieldsQaOutputPath = '',
     [string]$MasterPath = ''
 )
 
@@ -150,14 +151,15 @@ try {
         Save-Png $canvas[0] (Join-Path $assetDir 'icon.png')
     } finally { $canvas[1].Dispose(); $canvas[0].Dispose() }
 
-    # Light and dark product surfaces place the same master without recoloring it.
+    # Plugin logo fields must stay host-surface neutral. Both variants retain
+    # genuine alpha so Codex can place the same accepted mark on light or dark UI.
     foreach ($variant in @(
-        @{ Name = 'logo.png'; Background = [string]$cfg.light_background },
-        @{ Name = 'logo-dark.png'; Background = [string]$cfg.dark_background }
+        @{ Name = 'logo.png'; Background = 'transparent' },
+        @{ Name = 'logo-dark.png'; Background = 'transparent' }
     )) {
         $canvas = New-Canvas 1024 1024 $variant.Background
         try {
-            Place-Master $canvas[1] $master 96 96 832
+            Place-Master $canvas[1] $master 0 0 1024
             Save-Png $canvas[0] (Join-Path $assetDir $variant.Name)
         } finally { $canvas[1].Dispose(); $canvas[0].Dispose() }
     }
@@ -224,13 +226,49 @@ try {
         } finally { $canvas[1].Dispose(); $canvas[0].Dispose() }
     }
 
+    if ($LogoFieldsQaOutputPath) {
+        if (-not [System.IO.Path]::IsPathRooted($LogoFieldsQaOutputPath)) { $LogoFieldsQaOutputPath = Join-Path $Root $LogoFieldsQaOutputPath }
+        [System.IO.Directory]::CreateDirectory((Split-Path -Parent $LogoFieldsQaOutputPath)) | Out-Null
+        $canvas = New-Canvas 1500 700 ([string]$cfg.light_background)
+        try {
+            $g = $canvas[1]
+            Write-Text $g "$($cfg.product_name) plugin logo fields QA" 42 24 32 ([string]$cfg.dark_text) $false $true
+            $x = 42
+            foreach ($variant in @(
+                @{ Label = 'composerIcon'; Name = 'icon.png' },
+                @{ Label = 'logo'; Name = 'logo.png' },
+                @{ Label = 'logoDark'; Name = 'logo-dark.png' }
+            )) {
+                Write-Text $g $variant.Label ($x + 118) 74 22 ([string]$cfg.dark_text) $true $true
+                $lightBrush = [System.Drawing.SolidBrush]::new([System.Drawing.ColorTranslator]::FromHtml([string]$cfg.light_background))
+                $darkBrush = [System.Drawing.SolidBrush]::new([System.Drawing.ColorTranslator]::FromHtml([string]$cfg.dark_background))
+                try {
+                    $g.FillRectangle($lightBrush, $x, 112, 430, 235)
+                    $g.FillRectangle($darkBrush, $x, 395, 430, 235)
+                } finally { $lightBrush.Dispose(); $darkBrush.Dispose() }
+                $assetPath = Join-Path $assetDir $variant.Name
+                $asset = [System.Drawing.Bitmap]::FromFile($assetPath)
+                try {
+                    $lightDestination = [System.Drawing.Rectangle]::new($x + 112, 125, 210, 210)
+                    $darkDestination = [System.Drawing.Rectangle]::new($x + 112, 408, 210, 210)
+                    $g.DrawImage($asset, $lightDestination)
+                    $g.DrawImage($asset, $darkDestination)
+                } finally { $asset.Dispose() }
+                Write-Text $g 'light surface' ($x + 145) 350 16 ([string]$cfg.dark_text) $true
+                Write-Text $g 'dark surface' ($x + 150) 638 16 ([string]$cfg.dark_text) $true
+                $x += 485
+            }
+            Save-Png $canvas[0] $LogoFieldsQaOutputPath
+        } finally { $canvas[1].Dispose(); $canvas[0].Dispose() }
+    }
+
     $outputs = @('icon.png', 'logo.png', 'logo-dark.png', 'screenshot1.png', 'social-preview.png') | ForEach-Object {
         $path = Join-Path $assetDir $_
         [ordered]@{ path = $path; sha256 = (Get-FileHash -Algorithm SHA256 -LiteralPath $path).Hash.ToLowerInvariant() }
     }
     [ordered]@{
         status = 'ok'
-        source_policy = 'immutable_operator_selected_master_only'
+        source_policy = 'accepted_transparent_master_only'
         master_path = (Resolve-Path -LiteralPath $MasterPath).Path
         master_sha256 = $actualHash
         outputs = $outputs

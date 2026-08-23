@@ -84,6 +84,22 @@ class ReleaseValidatorTests(unittest.TestCase):
                 errors = release_validator.validate_png(path, (512, 512, False))
         self.assertEqual(errors, ["icon.png: expected 512x512, got 256x512"])
 
+    def test_transparent_plugin_logo_rejects_opaque_corners(self) -> None:
+        """Reject a host-facing logo variant that paints its own background."""
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            path = root / "logo-dark.png"
+            path.touch()
+            opaque_row = bytes((0, 0, 0, 255)) * 1024
+            rows = [opaque_row] * 1024
+            with (
+                mock.patch.object(release_validator, "ROOT", root),
+                mock.patch.object(release_validator, "decode_png_rgba", return_value=(1024, 1024, rows)),
+            ):
+                errors = release_validator.validate_png(path, (1024, 1024, True))
+        self.assertIn("logo-dark.png: transparent asset corners have incorrect alpha", errors)
+
     def test_missing_metadata_prerequisites_return_structured_error(self) -> None:
         """Return one stable metadata error when prerequisites are absent."""
 

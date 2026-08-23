@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "candidate": "prompt-optimizer 0.1.3",
-  "product_revision_sha256": "b6cc47e3f6ba82abc5a87c8058a5bb9a220f40180ee53bdcb23a84f3662fbdee",
+  "candidate": "prompt-optimizer 0.1.4",
+  "product_revision_sha256": "9e57003228bcaeecb9ee066ee109b2537bc6e98722d41f0aaba917e96696835d",
   "status": "pass",
   "exit_code": 0,
   "errors": [],

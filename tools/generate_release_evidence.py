@@ -133,7 +133,7 @@ def main() -> int:
             "Package Verification 120826.json",
             {
                 "schema_version": "1.0",
-                "candidate": "prompt-optimizer 0.1.3",
+                "candidate": "prompt-optimizer 0.1.4",
                 "product_revision_sha256": revision,
                 "status": "pass",
                 "python_version": f"{sys.version_info.major}.{sys.version_info.minor}",
@@ -165,7 +165,7 @@ def main() -> int:
         "Codex Plugin Verification 120826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.3",
+            "candidate": "prompt-optimizer 0.1.4",
             "product_revision_sha256": revision,
             "status": "pass",
             "exit_code": plugin_run.returncode,
@@ -197,7 +197,7 @@ def main() -> int:
         "Claude Plugin Verification 200826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.3",
+            "candidate": "prompt-optimizer 0.1.4",
             "product_revision_sha256": revision,
             "status": "pass",
             "validated_paths": [".", "plugins/prompt-optimizer"],
@@ -245,7 +245,7 @@ def main() -> int:
         "JSON Schema Verification 120826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.3",
+            "candidate": "prompt-optimizer 0.1.4",
             "product_revision_sha256": revision,
             "status": "pass",
             "exit_code": schema_run.returncode,
@@ -284,7 +284,7 @@ def main() -> int:
         "Skill Boundary Verification 120826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.3",
+            "candidate": "prompt-optimizer 0.1.4",
             "product_revision_sha256": revision,
             "status": "pass",
             "verification_type": "controlled_static_replay",
@@ -306,6 +306,7 @@ def main() -> int:
     source_receipt = PLUGIN / "assets" / "Prompt Optimizer Transparent Source Receipt 220826.md"
     manifest = PLUGIN / "assets" / "Logo Generation Manifest 200826.json"
     qa = VALIDATION / "Prompt Optimizer Transparent Asset QA 220826.png"
+    plugin_fields_qa = VALIDATION / "Prompt Optimizer Plugin Logo Fields QA 230826.png"
     derivatives = {
         f"plugins/prompt-optimizer/assets/{name}": file_sha256(PLUGIN / "assets" / name)
         for name in ("icon.png", "logo.png", "logo-dark.png", "screenshot1.png", "social-preview.png")
@@ -314,14 +315,14 @@ def main() -> int:
         "Transparent Icon Promotion 220826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.3",
+            "candidate": "prompt-optimizer 0.1.4",
             "product_revision_sha256": revision,
-            "review_type": "operator_selected_transparent_visual_promotion",
+            "review_type": "operator_selected_transparent_plugin_logo_promotion",
             "status": "pass",
             "operator_selection": {
-                "direction": "Agent Smith Palette transparent safe fill",
+                "direction": "Agent Smith Palette transparent safe fill across all plugin logo fields",
                 "status": "locked",
-                "selection_scope": "public_release_v0.1.3",
+                "selection_scope": "public_release_v0.1.4",
             },
             "canonical_source": {
                 "path": master.relative_to(ROOT).as_posix(),
@@ -343,6 +344,7 @@ def main() -> int:
                 "inpainting_used": False,
                 "background_removed": True,
                 "safe_fill_centered": True,
+                "host_facing_logo_backgrounds": "transparent",
                 "derivatives": derivatives,
             },
             "actual_size_qa": {
@@ -350,6 +352,13 @@ def main() -> int:
                 "path": qa.relative_to(ROOT).as_posix(),
                 "sha256": file_sha256(qa),
                 "sizes_px": [16, 24, 32, 64, 128],
+                "surfaces": ["transparent", "light", "dark"],
+            },
+            "plugin_logo_fields_qa": {
+                "status": "pass",
+                "path": plugin_fields_qa.relative_to(ROOT).as_posix(),
+                "sha256": file_sha256(plugin_fields_qa),
+                "fields": ["composerIcon", "logo", "logoDark"],
                 "surfaces": ["light", "dark"],
             },
             "functional_delta": {"compiler_behavior_changed": False},
