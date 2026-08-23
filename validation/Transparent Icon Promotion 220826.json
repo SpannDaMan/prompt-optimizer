@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "candidate": "prompt-optimizer 0.1.4",
-  "product_revision_sha256": "97146e3d88531762fed182c8a2805295f68bbed9cc3a1badecb8cec15741843d",
+  "candidate": "prompt-optimizer 0.1.5",
+  "product_revision_sha256": "0773024932fee10e11d427161e5ce1a1a97a69bf6fd7079e6aa555526086910e",
   "review_type": "operator_selected_transparent_plugin_logo_promotion",
   "status": "pass",
   "operator_selection": {

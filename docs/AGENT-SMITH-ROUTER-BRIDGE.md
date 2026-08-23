@@ -1,4 +1,4 @@
-# Prompt Optimizer To Agent Smith Router
+# Prompt Optimizer To Local Model Route Planner
 
 Prompt Optimizer is the first public layer because routing quality depends on the quality of the task description a router receives.
 
@@ -20,10 +20,10 @@ The relationship is:
 raw request
     -> Prompt Optimizer
     -> validated prompt packet
-    -> Agent Smith Router
+    -> Local Model Route Planner
     -> route decision and execution receipt
 ```
 
 A clearer packet can reduce routing ambiguity, but it does not guarantee a better route. The Router must still use current capability, cost, risk, availability, and verification evidence.
 
-Agent Smith Router is a planned follow-on public plugin. Prompt Optimizer has no runtime dependency on it.
+Local Model Route Planner is a planned follow-on public plugin. Prompt Optimizer has no runtime dependency on it.

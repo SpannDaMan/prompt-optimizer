@@ -1,7 +1,7 @@
 {
   "status": "pass",
-  "candidate": "prompt-optimizer 0.1.4",
-  "product_revision_sha256": "b40320f110c17523017c65eca0a3667d393ab114a1338a97b15f7a7d719602d5",
+  "candidate": "prompt-optimizer 0.1.5",
+  "product_revision_sha256": "0773024932fee10e11d427161e5ce1a1a97a69bf6fd7079e6aa555526086910e",
   "root": ".",
   "checks": {
     "required_files": "pass",
@@ -15,6 +15,7 @@
     "sample_analysis": "pass",
     "sample_trace": "pass",
     "one_command_demo": "pass",
+    "upgrade_evidence": "pass",
     "native_prompt_agent_eval": "pass",
     "package_evidence": "pass",
     "codex_plugin_evidence": "pass",
@@ -36,15 +37,15 @@
   },
   "evidence_sha256": {
     "validation/Community Review Change Ledger 120826.json": "342a9b25598a6d0cf3acd2e2f57befc154945cae937036e95cad4e9a098e6667",
-    "validation/Prompt Optimizer Eval Result 120826.json": "37b88951a7b3bb09f01e8b141bad205e336d81a69ea1385eb2ce9431a0343b89",
-    "validation/Package Verification 120826.json": "65cc70adede56f8c8c723e6dffdaef7ed81f05c9d0ef4524259fb1b5ca88225b",
-    "validation/Codex Plugin Verification 120826.json": "6ef44597de382a4c66db6f0a198e458cdbc561abb8074d7487696c313d21a5b7",
-    "validation/Claude Plugin Verification 200826.json": "27340c53b43fbf118d9f955816c8fcde24f31d3fec797291c38971e76c9c79d1",
-    "validation/JSON Schema Verification 120826.json": "5031ee030d2ccda1ffbb007fe58863c7b8083ae051f2239accaf363c248c024b",
+    "validation/Prompt Optimizer Eval Result 120826.json": "d6d3625f500ba723728eb7c02fcc144c9adac0d3055baa24003bcbbc5bc4b851",
+    "validation/Package Verification 120826.json": "ff6b85ea11e06cf96e36bcb844a642ca1b222a16973ef64bde05fbd188c4f1d0",
+    "validation/Codex Plugin Verification 120826.json": "39903b07d45509a84eb5d67afe4fe6ac1ecf9b1b4529d11e88ef600cd4a23d4f",
+    "validation/Claude Plugin Verification 200826.json": "73f957e8dc7f73ea464bf12d4f22c4416bed17463f4371d059a51a1526f7364c",
+    "validation/JSON Schema Verification 120826.json": "7c222e0063e6089f134c2e3513fbe7f22ecede1c66f06ebafcf91b5158aee9cd",
     "validation/Skill Boundary Transcript 120826.md": "b186e83eaeab171f990f0cb86e6cb3dfc22cb6092c7b58d904a3f1f4039e45b7",
-    "validation/Skill Boundary Verification 120826.json": "c07877c85248abe449a9fdd971b18d34b3136cfff2fcd235530e7ebfaa5b3b6e",
+    "validation/Skill Boundary Verification 120826.json": "f7956c3b554a222a437686a4e8e2653d6416022f6998c59a7628f78beeceb9e3",
     "validation/Veteran Maintainer Review 120826.json": "4799df922005b38b8f40da58a07d905bd7df88f66ca23978a30acfc213cbe9bb",
-    "validation/Transparent Icon Promotion 220826.json": "aba823026f300424c49bfec751bb9e51e3b92f7c2330258e8699beea59997ea4"
+    "validation/Transparent Icon Promotion 220826.json": "6bfabca5d11ccc66bc5312b8d81f3d66f5ade335bd8dd7dd3a3c1191d363f5ba"
   },
   "errors": []
 }

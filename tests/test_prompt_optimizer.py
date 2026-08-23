@@ -36,6 +36,15 @@ class PromptOptimizerTests(unittest.TestCase):
     def test_long_prompt_triggers_optimization(self) -> None:
         self.assertEqual(prompt_optimizer.expected_trigger_decision(self.prompt), "optimize")
 
+    def test_more_than_three_sentence_threshold_activates_without_plugin_name(self) -> None:
+        three_sentences = "Plan our API launch. Keep costs under $5,000. Do not publish anything."
+        four_sentences = three_sentences + " Return milestones, owners, risks, and approvals…"
+        self.assertNotIn("Prompt Optimizer", four_sentences)
+        self.assertEqual(prompt_optimizer.count_sentences(three_sentences), 3)
+        self.assertEqual(prompt_optimizer.expected_trigger_decision(three_sentences), "skip")
+        self.assertEqual(prompt_optimizer.count_sentences(four_sentences), 4)
+        self.assertEqual(prompt_optimizer.expected_trigger_decision(four_sentences), "optimize")
+
     def test_explicit_skip_overrides_long_prompt(self) -> None:
         prompt = "Do not rewrite this. Keep it exact. It has four sentences. Use my prompt as-is."
         self.assertEqual(prompt_optimizer.expected_trigger_decision(prompt), "skip")

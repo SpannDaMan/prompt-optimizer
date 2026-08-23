@@ -10,7 +10,7 @@ body:
     id: version
     attributes:
       label: Version
-      placeholder: prompt-optimizer 0.1.4
+      placeholder: prompt-optimizer 0.1.5
     validations:
       required: true
   - type: input

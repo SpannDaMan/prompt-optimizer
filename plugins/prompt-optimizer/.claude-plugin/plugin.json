@@ -1,7 +1,7 @@
 {
   "name": "prompt-optimizer",
-  "description": "Keep long requests intact with deterministic requirement custody.",
-  "version": "0.1.4",
+  "description": "Use when a request has more than three relevant sentences or explicitly needs optimization; return a clear brief without losing requirements or approval limits.",
+  "version": "0.1.5",
   "author": {
     "name": "Orbral"
   },
@@ -9,10 +9,12 @@
   "repository": "https://github.com/SpannDaMan/prompt-optimizer",
   "license": "MIT",
   "keywords": [
-    "prompts",
+    "long-prompts",
+    "prompt-optimization",
     "prompt-engineering",
-    "agents",
-    "validation",
+    "requirements",
+    "scope-drift",
+    "agent-briefs",
     "claude-code"
   ]
 }

@@ -1,6 +1,6 @@
 {
   "name": "prompt-optimizer",
-  "description": "A focused marketplace for the Prompt Optimizer skills-only plugin.",
+  "description": "The official Orbral marketplace for Prompt Optimizer, which activates on requests longer than three relevant sentences.",
   "owner": {
     "name": "Orbral"
   },
@@ -8,9 +8,11 @@
     {
       "name": "prompt-optimizer",
       "source": "./plugins/prompt-optimizer",
-      "description": "Keep long requests intact with deterministic requirement custody.",
-      "version": "0.1.4",
-      "category": "productivity"
+      "description": "Use when a request has more than three relevant sentences or explicitly needs optimization; return a clear brief without losing requirements or approval limits.",
+      "version": "0.1.5",
+      "category": "productivity",
+      "keywords": ["long prompts", "prompt optimization", "requirements", "scope drift", "agent briefs"],
+      "tags": ["prompts", "productivity", "validation", "local"]
     }
   ]
 }

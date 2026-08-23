@@ -30,6 +30,6 @@ Version 0.1.x contains no plugin telemetry. Do not add background tracking or tr
 
 - Day 1: confirm links, install instructions, and visible repository metadata.
 - Day 7: review referral sources, clones, issues, and confusion patterns.
-- Day 30: decide whether to continue, revise positioning, prepare Agent Smith Router, or stop.
+- Day 30: decide whether to continue, revise positioning, prepare Local Model Route Planner, or stop.
 
 Do not use stars alone as the launch verdict.
