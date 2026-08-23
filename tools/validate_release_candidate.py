@@ -392,7 +392,7 @@ def validate_metadata() -> list[str]:
         return ["OpenAI/Codex and Claude plugin and marketplace metadata must contain JSON objects"]
     expected_manifest = {
         "name": "prompt-optimizer",
-        "version": "0.1.4",
+        "version": "0.1.5",
         "license": "MIT",
         "homepage": "https://github.com/SpannDaMan/prompt-optimizer",
         "repository": "https://github.com/SpannDaMan/prompt-optimizer",
@@ -413,13 +413,8 @@ def validate_metadata() -> list[str]:
         value = interface.get(field)
         if not isinstance(value, str) or not (PLUGIN / value).is_file():
             errors.append(f"plugin.json interface.{field} must reference an existing asset")
-    screenshots = interface.get("screenshots")
-    if not isinstance(screenshots, list) or not screenshots:
-        errors.append("plugin.json interface.screenshots must contain at least one asset")
-    else:
-        for value in screenshots:
-            if not isinstance(value, str) or not (PLUGIN / value).is_file():
-                errors.append(f"plugin.json screenshot is missing: {value!r}")
+    if "screenshots" in interface:
+        errors.append("skills-only plugin must not declare interface.screenshots")
     expected_public_urls = {
         "privacyPolicyURL": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/PRIVACY.md",
         "termsOfServiceURL": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/TERMS.md",
@@ -464,8 +459,8 @@ def validate_metadata() -> list[str]:
             errors.append("Claude marketplace plugin name must be prompt-optimizer")
         if claude_entry.get("source") != "./plugins/prompt-optimizer":
             errors.append("Claude marketplace source must be ./plugins/prompt-optimizer")
-        if claude_entry.get("version") != "0.1.4":
-            errors.append("Claude marketplace version must be 0.1.4")
+        if claude_entry.get("version") != "0.1.5":
+            errors.append("Claude marketplace version must be 0.1.5")
     try:
         license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError) as exc:
@@ -838,8 +833,8 @@ def validate_package_evidence() -> list[str]:
     except (OSError, json.JSONDecodeError) as exc:
         return [f"package evidence failed: {exc}"]
     errors: list[str] = []
-    if receipt.get("candidate") != "prompt-optimizer 0.1.4" or receipt.get("status") != "pass":
-        errors.append("package verification must pass for prompt-optimizer 0.1.4")
+    if receipt.get("candidate") != "prompt-optimizer 0.1.5" or receipt.get("status") != "pass":
+        errors.append("package verification must pass for prompt-optimizer 0.1.5")
     checks = receipt.get("checks")
     if not isinstance(checks, list) or len(checks) < 7 or any(item.get("status") != "pass" for item in checks if isinstance(item, dict)):
         errors.append("package verification must record all clean-install and installed-command checks as passing")
@@ -861,7 +856,7 @@ def validate_eval_evidence() -> list[str]:
     except (OSError, json.JSONDecodeError) as exc:
         return [f"eval evidence failed: {exc}"]
     errors: list[str] = []
-    if result.get("suite_id") != "prompt-optimizer-public-candidate-v0.1.4":
+    if result.get("suite_id") != "prompt-optimizer-public-candidate-v0.1.5":
         errors.append("eval suite_id is invalid")
     if result.get("pass") is not True or result.get("score") != 1.0:
         errors.append("native prompt-agent eval must pass at score 1.0")
@@ -1163,7 +1158,7 @@ def run_validation() -> dict[str, Any]:
     }
     return {
         "status": "pass" if not errors else "fail",
-        "candidate": "prompt-optimizer 0.1.4",
+        "candidate": "prompt-optimizer 0.1.5",
         "product_revision_sha256": current_product_revision(),
         "root": ".",
         "checks": {name: "pass" if not group else "fail" for name, group in check_errors.items()},

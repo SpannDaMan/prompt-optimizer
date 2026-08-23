@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "prompt-optimizer"
-version = "0.1.4"
-description = "Keep long requests intact with deterministic requirement custody"
+version = "0.1.5"
+description = "Turn long prompts into clear execution briefs without losing requirements or widening scope"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
 authors = [{name = "Orbral"}]
-keywords = ["codex", "claude-code", "prompts", "prompt-engineering", "agents", "validation"]
+keywords = ["long-prompts", "prompt-optimization", "prompt-engineering", "requirements", "scope-drift", "agent-briefs", "codex", "claude-code"]
 dependencies = []
 
 [project.urls]

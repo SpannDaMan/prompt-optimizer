@@ -1,6 +1,6 @@
 ---
 name: prompt-optimizer
-description: Keep long or messy requests intact while making them easier to use, preserving explicit requirements, labeling assumptions, and flagging scope drift. Use when a user asks to optimize a prompt or when a request is longer than three relevant sentences, unless the user explicitly says not to rewrite it.
+description: Use when a user asks to optimize a request or when it contains more than three relevant sentences. Return a clear execution brief, preserve requirements and approval limits, flag assumptions or scope drift, and keep explicit no-rewrite requests unchanged; never execute the source request.
 ---
 
 # Prompt Optimizer

@@ -2,6 +2,13 @@
 
 All notable changes to Prompt Optimizer will be documented here.
 
+## 0.1.5 — trigger-first provider metadata
+
+- Made the automatic more-than-three-relevant-sentences trigger explicit in OpenAI, Codex, and Claude listing metadata.
+- Preserved the operator-directed four-sentence starter prompt ending with an ellipsis.
+- Clarified the first execution-brief result, approval-boundary custody, explicit no-rewrite behavior, and no-execution/no-guarantee boundary.
+- Removed skills-only provider screenshot declarations while retaining repository marketing assets and the accepted all-transparent `v0.1.4` logo fields.
+
 ## 0.1.4 — transparent plugin logo fields
 
 - Reused the accepted transparent master without regenerating, redrawing, recoloring, or changing the mark.

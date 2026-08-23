@@ -1,7 +1,7 @@
 {
   "name": "prompt-optimizer",
-  "version": "0.1.4",
-  "description": "Keep long requests intact with deterministic requirement custody.",
+  "version": "0.1.5",
+  "description": "Turn long prompts into clear execution briefs without losing requirements or widening scope.",
   "author": {
     "name": "Orbral",
     "url": "https://github.com/SpannDaMan"
@@ -9,27 +9,24 @@
   "homepage": "https://github.com/SpannDaMan/prompt-optimizer",
   "repository": "https://github.com/SpannDaMan/prompt-optimizer",
   "license": "MIT",
-  "keywords": ["codex", "claude-code", "prompts", "prompt-engineering", "agents", "validation"],
+  "keywords": ["long-prompts", "prompt-optimization", "prompt-engineering", "requirements", "scope-drift", "agent-briefs", "codex", "claude-code"],
   "skills": "./skills/",
   "interface": {
     "displayName": "Prompt Optimizer",
     "shortDescription": "Keep long requests intact.",
-    "longDescription": "Turn long or messy requests into reviewable instructions while preserving explicit requirements, separating assumptions, and flagging scope drift in a deterministic local Requirement Custody Ledger.",
+    "longDescription": "Use this when a request contains more than three relevant sentences or when you explicitly ask to optimize it. Prompt Optimizer returns a clear execution brief, preserves requirements and approval limits, and flags assumptions or unresolved decisions. Do not use it to execute the request; it keeps explicit no-rewrite requests unchanged and cannot guarantee host selection or better output.",
     "developerName": "Orbral",
     "category": "Productivity",
-    "capabilities": ["Local", "Requirement custody", "Assumption labeling", "Scope-drift checks", "No credentials"],
+    "capabilities": ["Activate on four or more relevant sentences", "Return a clear execution brief", "Preserve requirements and approval limits", "Flag assumptions and scope drift", "Run locally with no credentials"],
     "websiteURL": "https://github.com/SpannDaMan/prompt-optimizer",
     "privacyPolicyURL": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/PRIVACY.md",
     "termsOfServiceURL": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/TERMS.md",
     "defaultPrompt": [
-      "Keep every requirement in this long request while making it easier to use.",
-      "Check whether this optimized request lost or invented anything.",
-      "Show the explicit requirements, assumptions, and unresolved decisions."
+      "Plan our API launch. Keep costs under $5,000. Do not publish anything. Return milestones, owners, risks, and approvals…"
     ],
     "brandColor": "#0183E0",
     "composerIcon": "./assets/icon.png",
     "logo": "./assets/logo.png",
-    "logoDark": "./assets/logo-dark.png",
-    "screenshots": ["./assets/screenshot1.png"]
+    "logoDark": "./assets/logo-dark.png"
   }
 }

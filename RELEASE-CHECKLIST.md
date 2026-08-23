@@ -49,6 +49,8 @@
 - [x] Test installation from the actual `v0.1.3` Git source and refresh provider assets through supported update flows.
 - [x] Create and verify `v0.1.4` through [PR #5](https://github.com/SpannDaMan/prompt-optimizer/pull/5) and the immutable [v0.1.4 release](https://github.com/SpannDaMan/prompt-optimizer/releases/tag/v0.1.4) with transparent `composerIcon`, `logo`, and `logoDark` derivatives without rewriting prior tags.
 - [x] Test installation from the actual `v0.1.4` Git source: Codex reports `0.1.4` installed and enabled, all three installed files match the release hashes, and all three have alpha-zero corners.
+- [ ] Create and verify `v0.1.5` with trigger-first provider metadata while preserving the accepted `v0.1.4` logo files.
+- [ ] Test installation from the actual `v0.1.5` Git source and refresh supported provider listing metadata.
 - [ ] Publish approved launch content.
 
 Repository, release, hosted-install, and directory-submission items are checked only from external readback evidence.

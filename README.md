@@ -2,7 +2,7 @@
 
 Keep long requests intact.
 
-> **Current release.** Prompt Optimizer `v0.1.4` uses the public developer display name `Orbral` and applies the genuine-transparent, larger safe-fill Agent Smith Palette identity to every plugin logo field while preserving the post-release 30-day maintainer pilot.
+> **Current release.** Prompt Optimizer `v0.1.5` makes its automatic more-than-three-relevant-sentences trigger explicit, preserves the operator-directed long-request example, and retains the genuine-transparent, larger safe-fill Agent Smith Palette identity across every plugin logo field.
 
 Prompt Optimizer turns long or messy requests into reviewable instructions while preserving explicit requirements, separating assumptions, and flagging scope drift. Its local **Requirement Custody Ledger** shows what was preserved without claiming that a model will perform better.
 
@@ -182,7 +182,7 @@ Read [SECURITY.md](SECURITY.md) and [THREAT-MODEL.md](THREAT-MODEL.md) before in
 
 ## Status
 
-`v0.1.4` is the current public candidate and changes only plugin logo packaging: `composerIcon`, `logo`, and `logoDark` now use the same genuine-transparent, larger-safe-fill derivative instead of renderer-painted backgrounds. The public developer display remains `Orbral`, and compiler behavior is unchanged. Local custody, package, plugin, schema, review, and visual gates are revision-bound; public Git-source installation and directory review states remain separate from local package validity. The 30-day maintainer pilot continues after release without rewriting public history. See [PUBLICATION-GATE.md](PUBLICATION-GATE.md).
+`v0.1.5` is the current public candidate. It preserves the accepted all-transparent `v0.1.4` logo packaging and compiler-only behavior while rewriting provider metadata around the automatic long-request trigger, first useful output, approval-boundary custody, and no-execution boundary. Local custody, package, plugin, schema, review, and visual gates are revision-bound; public Git-source installation and directory review states remain separate from local package validity. The 30-day maintainer pilot continues after release without rewriting public history. See [PUBLICATION-GATE.md](PUBLICATION-GATE.md).
 
 ## Contributing
 
