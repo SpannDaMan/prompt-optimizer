@@ -47,8 +47,8 @@
 - [x] Submit the approved skills-only package to OpenAI and Claude review lanes.
 - [x] Create and verify `v0.1.3` with the genuine-transparent, larger-safe-fill icon without rewriting prior tags.
 - [x] Test installation from the actual `v0.1.3` Git source and refresh provider assets through supported update flows.
-- [ ] Create and verify `v0.1.4` with transparent `composerIcon`, `logo`, and `logoDark` derivatives without rewriting prior tags.
-- [ ] Test installation from the actual `v0.1.4` Git source and verify all three installed logo files retain alpha.
+- [x] Create and verify `v0.1.4` through [PR #5](https://github.com/SpannDaMan/prompt-optimizer/pull/5) and the immutable [v0.1.4 release](https://github.com/SpannDaMan/prompt-optimizer/releases/tag/v0.1.4) with transparent `composerIcon`, `logo`, and `logoDark` derivatives without rewriting prior tags.
+- [x] Test installation from the actual `v0.1.4` Git source: Codex reports `0.1.4` installed and enabled, all three installed files match the release hashes, and all three have alpha-zero corners.
 - [ ] Publish approved launch content.
 
 Repository, release, hosted-install, and directory-submission items are checked only from external readback evidence.
