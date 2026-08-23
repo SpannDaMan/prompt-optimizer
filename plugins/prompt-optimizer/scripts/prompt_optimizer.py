@@ -13,7 +13,7 @@ from pathlib import Path
 from typing import Any
 
 
-VERSION = "0.1.3"
+VERSION = "0.1.4"
 SCHEMA_VERSION = "1.0"
 SECTION_IDS = (
     "outcome",

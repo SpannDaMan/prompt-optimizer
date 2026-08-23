@@ -1,6 +1,6 @@
 # Prompt Optimizer transparent source receipt
 
-The public `v0.1.3` package uses `Prompt Optimizer Transparent Master 220826.png` as its accepted canonical raster.
+Public packages from `v0.1.3` onward use `Prompt Optimizer Transparent Master 220826.png` as their accepted canonical raster. `v0.1.4` applies that same source to every host-facing plugin logo field without changing its pixels.
 
 - Transparent master SHA-256: `8eb5beea5551c31ed3932125a10003155c5d01577ec664b00f3390fcac3bc4e9`
 - Opaque parent SHA-256: `a31f873f3b13869d50b4deaa9f247c827a7ca19ec9b8ac66bf4367952c875914`

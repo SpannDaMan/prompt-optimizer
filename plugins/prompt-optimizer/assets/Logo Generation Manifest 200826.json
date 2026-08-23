@@ -1,14 +1,14 @@
 {
   "schema_version": "2.0",
   "product": "Prompt Optimizer",
-  "release_version": "0.1.3",
+  "release_version": "0.1.4",
   "selected_direction": "Agent Smith Palette transparent safe fill",
   "canonical_master": "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Master 220826.png",
   "master_sha256": "8eb5beea5551c31ed3932125a10003155c5d01577ec664b00f3390fcac3bc4e9",
   "master_width": 1254,
   "master_height": 1254,
   "master_format": "image/png",
-  "alpha_status": "RGBA PNG with transparent corners and approximately 90% closest-edge fill",
+  "alpha_status": "RGBA canonical master; icon.png, logo.png, and logo-dark.png retain transparent corners and approximately 90% closest-edge fill",
   "source_type": "deterministic_transparent_derivative",
   "source_background_policy": "transparent_source",
   "opaque_parent_sha256": "a31f873f3b13869d50b4deaa9f247c827a7ca19ec9b8ac66bf4367952c875914",
@@ -18,15 +18,23 @@
   "timezone": "New York Eastern Time (America/New_York)",
   "source_receipt_path": "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Source Receipt 220826.md",
   "extraction_receipt_path": "validation/Transparent Icon Promotion 220826.json",
-  "operator_selection_status": "accepted_transparent_safe_fill",
-  "qa_status": "pass_after_light_dark_checkerboard_and_64px_review",
+  "operator_selection_status": "accepted_transparent_safe_fill_all_plugin_logo_fields",
+  "qa_status": "pass_after_all_derivative_alpha_light_dark_checkerboard_and_64px_review",
   "qa_backgrounds": ["#F8FAFC", "#06235D", "transparent_checkerboard"],
   "qa_sizes_px": [16, 24, 32, 64, 128],
   "qa_deviations": [
     "The pale square background was removed into genuine alpha at the operator's request.",
     "The microphone, waveform, prompt bars, relative geometry, and navy-blue-cyan palette were preserved.",
-    "The mark was proportionally centered to approximately 90% horizontal safe fill without clipping."
+    "The mark was proportionally centered to approximately 90% horizontal safe fill without clipping.",
+    "icon.png, logo.png, and logo-dark.png use the same transparent source without renderer-painted backgrounds."
   ],
+  "derivative_background_policy": {
+    "icon.png": "transparent",
+    "logo.png": "transparent",
+    "logo-dark.png": "transparent",
+    "screenshot1.png": "opaque_presentation_surface",
+    "social-preview.png": "opaque_presentation_surface"
+  },
   "local_edit_status": "background_extraction_and_safe_fill_only",
   "source_crop": {
     "mode": "full_square_transparent_master",

@@ -48,9 +48,9 @@ Use `Compile clearly. Verify locally.` as the primary tagline. Do not use `Same 
 
 ## Asset authority
 
-- Canonical source: `plugins/prompt-optimizer/assets/Prompt Optimizer Agent Smith Palette Master 210826.png`.
+- Canonical source: `plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Master 220826.png`.
 - Provenance and immutable hash: `plugins/prompt-optimizer/assets/Logo Generation Manifest 200826.json`.
-- `icon.png`, `logo.png`, `logo-dark.png`, `screenshot1.png`, and `social-preview.png` are deterministic source-only derivatives using the full manifest-bound source.
+- `icon.png`, `logo.png`, and `logo-dark.png` are transparent, large-safe-fill host-facing derivatives. `screenshot1.png` and `social-preview.png` are opaque presentation-surface derivatives. All five use the full manifest-bound source without redrawing or recoloring it.
 - No SVG or local geometry reconstruction is a production source.
 
 ## Do
