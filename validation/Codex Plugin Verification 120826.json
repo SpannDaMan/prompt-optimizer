@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "candidate": "prompt-optimizer 0.1.6",
-  "product_revision_sha256": "eddbc6909c86a53c4f95d2716cb22e2ca1bd415450d0a3c91955361bc34d3c44",
+  "candidate": "prompt-optimizer 0.1.7",
+  "product_revision_sha256": "bac0bd1c8b4636a4aeb450127a8004952e5a4ef1c4ba595011671044b4e7efe7",
   "status": "pass",
   "exit_code": 0,
   "validated_plugin_path": "plugins/prompt-optimizer",

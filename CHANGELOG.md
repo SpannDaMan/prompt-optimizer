@@ -2,6 +2,12 @@
 
 All notable changes to Prompt Optimizer will be documented here.
 
+## 0.1.7 — OpenAI starter-prompt limit compliance
+
+- Tightened the approved four-sentence automatic-trigger example to 119 characters for OpenAI's 128-character store limit.
+- Preserved the budget, milestones, owners, risks, metrics, no-publish/no-spend approval boundary, and trailing ellipsis.
+- Kept the locked full-bleed Silver Satin marketplace identity unchanged.
+
 ## 0.1.6 — natural launch request and Silver Satin identity
 
 - Replaced the short listing example with the operator-approved natural four-sentence launch request ending in an ellipsis.

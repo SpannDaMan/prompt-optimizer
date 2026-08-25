@@ -1,13 +1,13 @@
 {
   "schema_version": "1.0",
-  "candidate": "prompt-optimizer 0.1.6",
-  "product_revision_sha256": "eddbc6909c86a53c4f95d2716cb22e2ca1bd415450d0a3c91955361bc34d3c44",
+  "candidate": "prompt-optimizer 0.1.7",
+  "product_revision_sha256": "bac0bd1c8b4636a4aeb450127a8004952e5a4ef1c4ba595011671044b4e7efe7",
   "review_type": "operator_selected_opaque_visual_promotion",
   "status": "pass",
   "operator_selection": {
     "direction": "Silver Satin full-bleed",
     "status": "locked",
-    "selection_scope": "existing_marketplace_v0.1.6"
+    "selection_scope": "existing_marketplace_v0.1.7"
   },
   "canonical_source": {
     "path": "plugins/prompt-optimizer/assets/Prompt Optimizer Silver Satin Master 240826.png",
@@ -25,9 +25,9 @@
   },
   "provenance": {
     "source_receipt_path": "plugins/prompt-optimizer/assets/Prompt Optimizer Silver Satin Source Receipt 240826.md",
-    "source_receipt_sha256": "55181db766e952bbd112b5c50599f85798e80a63baf7b6a9e7612c4d16f34ace",
+    "source_receipt_sha256": "776e1329d5b1b9da030fe7a8ce230cbab62181cb67e805184a3fffa8e79a5c0a",
     "manifest_path": "plugins/prompt-optimizer/assets/Logo Generation Manifest 200826.json",
-    "manifest_sha256": "1c805123807ed9cd9774cfcd11dbc55c022505c4a5ebc9522ff6037fe0dff3cc"
+    "manifest_sha256": "388e2371e273a3dac1da22e1cfc26c7b95e88685abc00e9054626b138ddef246"
   },
   "source_only_packaging": {
     "geometry_changed": false,

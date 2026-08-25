@@ -1,6 +1,6 @@
 # Publication Decision
 
-Prompt Optimizer `v0.1.0` was authorized and published on August 20, 2026. The operator selected the Agent Smith Palette identity for non-functional `v0.1.1`, selected `Orbral` as the public directory developer display name for metadata-only `v0.1.2`, authorized transparent logo improvements through immutable `v0.1.4`, authorized trigger-first provider metadata for `v0.1.5`, and approved the natural launch request plus full-bleed Silver Satin identity for `v0.1.6`.
+Prompt Optimizer `v0.1.0` was authorized and published on August 20, 2026. The operator selected the Agent Smith Palette identity for non-functional `v0.1.1`, selected `Orbral` as the public directory developer display name for metadata-only `v0.1.2`, authorized transparent logo improvements through immutable `v0.1.4`, authorized trigger-first provider metadata for `v0.1.5`, approved the natural launch request plus full-bleed Silver Satin identity for `v0.1.6`, and authorized the provider-required 128-character starter-prompt repair for `v0.1.7`.
 
 ## Product contract approved
 
@@ -10,7 +10,7 @@ Prompt Optimizer `v0.1.0` was authorized and published on August 20, 2026. The o
 - Primary product surface: provider-neutral skill with OpenAI/Codex and Claude Code plugin wrappers
 - Positioning: Prompt Optimizer first; Agent Smith Router follows as a separate future plugin
 - Required pre-publication validation: frozen candidate passes local custody, package, plugin, schema, review, safety, and visual gates
-- Visual gate: `v0.1.6` uses the operator-locked opaque full-bleed Silver Satin master in `composerIcon`, `logo`, and `logoDark`; the microphone, waveform, prompt bars, geometry, and color remain unchanged
+- Visual gate: `v0.1.7` uses the operator-locked opaque full-bleed Silver Satin master in `composerIcon`, `logo`, and `logoDark`; the microphone, waveform, prompt bars, geometry, and color remain unchanged
 - Directory developer display: `Orbral`
 - Pilot decision: the earlier private-pilot-first requirement was explicitly overridden; the 30-day maintainer pilot runs after publication
 
@@ -19,7 +19,7 @@ Prompt Optimizer `v0.1.0` was authorized and published on August 20, 2026. The o
 - create and publish `SpannDaMan/prompt-optimizer`;
 - use a feature-branch pull request and remote merge;
 - enable normal repository metadata, Discussions, private vulnerability reporting, topics, and social preview;
-- preserve immutable tags `v0.1.0` through `v0.1.5`, and create tag and release `v0.1.6` for the approved natural starter prompt and Silver Satin identity;
+- preserve immutable tags `v0.1.0` through `v0.1.6`, and create tag and release `v0.1.7` for the approved natural starter prompt, OpenAI's 128-character limit, and the unchanged Silver Satin identity;
 - test Git-source installation;
 - submit the plugin to OpenAI's Plugins Directory and Anthropic's official marketplace.
 
