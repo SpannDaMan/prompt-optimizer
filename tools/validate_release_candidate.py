@@ -93,8 +93,8 @@ REQUIRED_FILES = (
     "plugins/prompt-optimizer/examples/optimized-brief.json",
     "submission/openai-plugin-submission.json",
     "plugins/prompt-optimizer/assets/Prompt Optimizer Logo Prompt 120826.md",
-    "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Source Receipt 220826.md",
-    "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Master 220826.png",
+    "plugins/prompt-optimizer/assets/Prompt Optimizer Silver Satin Source Receipt 240826.md",
+    "plugins/prompt-optimizer/assets/Prompt Optimizer Silver Satin Master 240826.png",
     "plugins/prompt-optimizer/assets/Logo Generation Manifest 200826.json",
     "plugins/prompt-optimizer/assets/compiled-prompt.txt",
     "plugins/prompt-optimizer/assets/sample-analysis.json",
@@ -113,7 +113,7 @@ REQUIRED_FILES = (
     "validation/Skill Boundary Transcript 120826.md",
     "validation/Skill Boundary Verification 120826.json",
     "validation/Veteran Maintainer Review 120826.json",
-    "validation/Transparent Icon Promotion 220826.json",
+    "validation/Silver Satin Logo Promotion 240826.json",
 )
 
 EVIDENCE_FILES = (
@@ -126,14 +126,14 @@ EVIDENCE_FILES = (
     "validation/Skill Boundary Transcript 120826.md",
     "validation/Skill Boundary Verification 120826.json",
     "validation/Veteran Maintainer Review 120826.json",
-    "validation/Transparent Icon Promotion 220826.json",
+    "validation/Silver Satin Logo Promotion 240826.json",
 )
 
 EXPECTED_PNGS = {
-    "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Master 220826.png": (1254, 1254, True),
-    "plugins/prompt-optimizer/assets/icon.png": (512, 512, True),
-    "plugins/prompt-optimizer/assets/logo.png": (1024, 1024, True),
-    "plugins/prompt-optimizer/assets/logo-dark.png": (1024, 1024, True),
+    "plugins/prompt-optimizer/assets/Prompt Optimizer Silver Satin Master 240826.png": (1254, 1254, False),
+    "plugins/prompt-optimizer/assets/icon.png": (512, 512, False),
+    "plugins/prompt-optimizer/assets/logo.png": (1024, 1024, False),
+    "plugins/prompt-optimizer/assets/logo-dark.png": (1024, 1024, False),
     "plugins/prompt-optimizer/assets/screenshot1.png": (1600, 900, False),
     "plugins/prompt-optimizer/assets/social-preview.png": (1600, 900, False),
 }
@@ -166,6 +166,18 @@ ABSOLUTE_PATH_PATTERNS = (
 
 TEXT_SUFFIXES = {".md", ".json", ".py", ".toml", ".txt", ".yml", ".yaml", ".ps1", ".svg"}
 MAX_FILE_BYTES = 1_000_000
+MAX_LOGO_PNG_BYTES = 2_000_000
+LARGE_LOGO_PNGS = {
+    Path("plugins/prompt-optimizer/assets/Prompt Optimizer Silver Satin Master 240826.png"),
+    Path("plugins/prompt-optimizer/assets/logo.png"),
+    Path("plugins/prompt-optimizer/assets/logo-dark.png"),
+}
+
+
+def max_file_bytes_for(relative: Path) -> int:
+    """Return the narrow logo exception without weakening other package files."""
+
+    return MAX_LOGO_PNG_BYTES if relative in LARGE_LOGO_PNGS else MAX_FILE_BYTES
 
 
 def load_json(path: Path) -> Any:
@@ -338,8 +350,9 @@ def validate_file_shape() -> list[str]:
             continue
         if ".pytest_cache" in relative.parts or "__pycache__" in relative.parts or path.suffix == ".pyc":
             errors.append(f"generated Python cache is not allowed: {relative}")
-        if path.stat().st_size > MAX_FILE_BYTES:
-            errors.append(f"file exceeds {MAX_FILE_BYTES} bytes: {relative}")
+        max_bytes = max_file_bytes_for(relative)
+        if path.stat().st_size > max_bytes:
+            errors.append(f"file exceeds {max_bytes} bytes: {relative}")
     return errors
 
 
@@ -392,7 +405,7 @@ def validate_metadata() -> list[str]:
         return ["OpenAI/Codex and Claude plugin and marketplace metadata must contain JSON objects"]
     expected_manifest = {
         "name": "prompt-optimizer",
-        "version": "0.1.5",
+        "version": "0.1.6",
         "license": "MIT",
         "homepage": "https://github.com/SpannDaMan/prompt-optimizer",
         "repository": "https://github.com/SpannDaMan/prompt-optimizer",
@@ -459,8 +472,8 @@ def validate_metadata() -> list[str]:
             errors.append("Claude marketplace plugin name must be prompt-optimizer")
         if claude_entry.get("source") != "./plugins/prompt-optimizer":
             errors.append("Claude marketplace source must be ./plugins/prompt-optimizer")
-        if claude_entry.get("version") != "0.1.5":
-            errors.append("Claude marketplace version must be 0.1.5")
+        if claude_entry.get("version") != "0.1.6":
+            errors.append("Claude marketplace version must be 0.1.6")
     try:
         license_text = (ROOT / "LICENSE").read_text(encoding="utf-8")
     except (OSError, UnicodeDecodeError) as exc:
@@ -488,7 +501,7 @@ def validate_cross_platform_packaging() -> list[str]:
         return [f"cross-platform packaging failed: {exc}"]
     if funding.strip() != "github: [SpannDaMan]":
         errors.append("FUNDING.yml must contain only the approved SpannDaMan GitHub Sponsors target")
-    for required in ("OpenAI/Codex", "Claude Code", "Agent Smith Router", "FUNDING.yml"):
+    for required in ("OpenAI/Codex", "Claude Code", "Local Model Route Planner", "FUNDING.yml"):
         if required not in readme:
             errors.append(f"README is missing cross-platform public-readiness marker: {required}")
     if "does not send prompts" not in privacy or "does not include telemetry" not in privacy:
@@ -544,7 +557,7 @@ def validate_json_artifacts() -> list[str]:
         "validation/JSON Schema Verification 120826.json",
         "validation/Skill Boundary Verification 120826.json",
         "validation/Veteran Maintainer Review 120826.json",
-        "validation/Transparent Icon Promotion 220826.json",
+        "validation/Silver Satin Logo Promotion 240826.json",
     ):
         try:
             load_json(ROOT / relative)
@@ -562,18 +575,18 @@ def validate_logo_provenance() -> list[str]:
         manifest = load_json(manifest_path)
     except (OSError, json.JSONDecodeError) as exc:
         return [f"logo generation manifest failed: {exc}"]
-    expected_relative = "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Master 220826.png"
+    expected_relative = "plugins/prompt-optimizer/assets/Prompt Optimizer Silver Satin Master 240826.png"
     master_path = ROOT / expected_relative
     if manifest.get("canonical_master") != expected_relative:
         errors.append("logo manifest canonical_master mismatch")
-    if manifest.get("source_type") != "deterministic_transparent_derivative":
-        errors.append("logo manifest source_type must be deterministic_transparent_derivative")
-    if manifest.get("source_background_policy") != "transparent_source":
-        errors.append("logo manifest must require the accepted transparent source")
-    if manifest.get("local_edit_status") != "background_extraction_and_safe_fill_only":
-        errors.append("logo manifest must record only the approved background extraction and safe-fill edit")
-    if manifest.get("opaque_parent_sha256") != "a31f873f3b13869d50b4deaa9f247c827a7ca19ec9b8ac66bf4367952c875914":
-        errors.append("logo manifest opaque parent binding is stale")
+    if manifest.get("source_type") != "operator_selected_generated_png":
+        errors.append("logo manifest source_type must be operator_selected_generated_png")
+    if manifest.get("source_background_policy") != "preserve_opaque_source":
+        errors.append("logo manifest must preserve the selected opaque source")
+    if manifest.get("local_edit_status") != "none":
+        errors.append("logo manifest must record the selected source as locally unedited")
+    if manifest.get("full_bleed_required") is not True:
+        errors.append("logo manifest must require a full-bleed background")
     crop = manifest.get("source_crop")
     if not isinstance(crop, dict):
         errors.append("logo manifest must record a deterministic source_crop")
@@ -606,6 +619,8 @@ def validate_logo_provenance() -> list[str]:
         "Prompt Optimizer Voice-to-Prompt GPT Image 2 Master 200826.png",
         "Prompt Optimizer Agent Smith Palette Master 210826.png",
         "Prompt Optimizer Agent Smith Palette Source Receipt 210826.md",
+        "Prompt Optimizer Transparent Master 220826.png",
+        "Prompt Optimizer Transparent Source Receipt 220826.md",
     ):
         if (PLUGIN / "assets" / retired).exists():
             errors.append(f"retired local logo source still exists: {retired}")
@@ -614,7 +629,7 @@ def validate_logo_provenance() -> list[str]:
     except (OSError, UnicodeDecodeError) as exc:
         errors.append(f"brand renderer read failed: {exc}")
     else:
-        for required in ("Place-Master", "DrawImage", "master_sha256", "deterministic_transparent_derivative", "source_crop"):
+        for required in ("Place-Master", "DrawImage", "master_sha256", "operator_selected_generated_png", "preserve_opaque_source", "full_bleed", "source_crop"):
             if required not in script:
                 errors.append(f"brand renderer is missing source-only control: {required}")
         for forbidden in ("Draw-RouteKitMark", "Draw-OptimizerMark", "function Draw-Mark", "function Mark(", "FillEllipse", "FillPolygon", "DrawLines", "DrawPath", "GraphicsPath"):
@@ -626,39 +641,41 @@ def validate_logo_provenance() -> list[str]:
 def validate_logo_selection_evidence() -> list[str]:
     """Bind the operator-selected visual promotion to exact source and derivative bytes."""
 
-    path = ROOT / "validation" / "Transparent Icon Promotion 220826.json"
+    path = ROOT / "validation" / "Silver Satin Logo Promotion 240826.json"
     try:
         receipt = load_json(path)
     except (OSError, json.JSONDecodeError) as exc:
         return [f"logo selection evidence failed: {exc}"]
 
     errors: list[str] = []
-    if receipt.get("review_type") != "operator_selected_transparent_plugin_logo_promotion" or receipt.get("status") != "pass":
+    if receipt.get("review_type") != "operator_selected_opaque_visual_promotion" or receipt.get("status") != "pass":
         errors.append("logo selection receipt must record a passing operator-selected visual promotion")
     errors.extend(validate_revision_binding(receipt, "logo selection receipt"))
 
     selection = receipt.get("operator_selection")
-    if not isinstance(selection, dict) or selection.get("direction") != "Agent Smith Palette transparent safe fill across all plugin logo fields":
-        errors.append("logo selection receipt must identify the transparent Agent Smith Palette safe-fill direction")
-    elif selection.get("status") != "locked" or selection.get("selection_scope") != "public_release_v0.1.4":
-        errors.append("logo selection receipt must remain locked to public release v0.1.4")
+    if not isinstance(selection, dict) or selection.get("direction") != "Silver Satin full-bleed":
+        errors.append("logo selection receipt must identify the silver satin full-bleed direction")
+    elif selection.get("status") != "locked" or selection.get("selection_scope") != "existing_marketplace_v0.1.6":
+        errors.append("logo selection receipt must remain locked to the existing v0.1.6 listing")
 
     source = receipt.get("canonical_source")
-    expected_source = "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Master 220826.png"
+    expected_source = "plugins/prompt-optimizer/assets/Prompt Optimizer Silver Satin Master 240826.png"
     if not isinstance(source, dict) or source.get("path") != expected_source:
         errors.append("logo selection receipt canonical source path is invalid")
     else:
         source_path = ROOT / expected_source
         if not source_path.is_file() or source.get("sha256") != file_sha256(source_path):
             errors.append("logo selection receipt canonical source hash is stale")
-        if source.get("source_type") != "deterministic_transparent_derivative" or source.get("local_edit_status") != "background_extraction_and_safe_fill_only":
-            errors.append("logo selection receipt must preserve the approved transparent derivative boundary")
-        if source.get("opaque_parent_sha256") != "a31f873f3b13869d50b4deaa9f247c827a7ca19ec9b8ac66bf4367952c875914":
-            errors.append("logo selection receipt opaque parent binding is stale")
+        if source.get("source_type") != "operator_selected_generated_png" or source.get("local_edit_status") != "none":
+            errors.append("logo selection receipt must preserve the selected unedited generated source")
+        if source.get("source_background_policy") != "preserve_opaque_source" or source.get("full_bleed_required") is not True:
+            errors.append("logo selection receipt must preserve the opaque full-bleed source")
+        if source.get("corner_alpha") != [255, 255, 255, 255]:
+            errors.append("logo selection receipt must record fully opaque corners")
 
     provenance = receipt.get("provenance")
     expected_provenance = {
-        "source_receipt_path": "plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Source Receipt 220826.md",
+        "source_receipt_path": "plugins/prompt-optimizer/assets/Prompt Optimizer Silver Satin Source Receipt 240826.md",
         "manifest_path": "plugins/prompt-optimizer/assets/Logo Generation Manifest 200826.json",
     }
     if not isinstance(provenance, dict):
@@ -674,8 +691,8 @@ def validate_logo_selection_evidence() -> list[str]:
     derivatives = packaging.get("derivatives") if isinstance(packaging, dict) else None
     if not isinstance(packaging, dict) or any(packaging.get(flag) is not False for flag in ("geometry_changed", "redraw_used", "recolor_used", "inpainting_used")):
         errors.append("logo selection receipt must record source-only packaging")
-    if not isinstance(packaging, dict) or packaging.get("host_facing_logo_backgrounds") != "transparent":
-        errors.append("logo selection receipt must require transparent host-facing logo backgrounds")
+    elif packaging.get("background_removed") is not False or packaging.get("full_bleed_background") is not True:
+        errors.append("logo selection receipt must retain the full-bleed background")
     if not isinstance(derivatives, dict) or not derivatives:
         errors.append("logo selection receipt derivative hashes are missing")
     else:
@@ -691,16 +708,6 @@ def validate_logo_selection_evidence() -> list[str]:
         qa_path = ROOT / str(actual_size.get("path", ""))
         if not qa_path.is_file() or actual_size.get("sha256") != file_sha256(qa_path):
             errors.append("logo selection actual-size QA hash is stale")
-
-    plugin_fields_qa = receipt.get("plugin_logo_fields_qa")
-    if not isinstance(plugin_fields_qa, dict) or plugin_fields_qa.get("status") != "pass":
-        errors.append("plugin logo fields QA must pass")
-    else:
-        qa_path = ROOT / str(plugin_fields_qa.get("path", ""))
-        if not qa_path.is_file() or plugin_fields_qa.get("sha256") != file_sha256(qa_path):
-            errors.append("plugin logo fields QA hash is stale")
-        if plugin_fields_qa.get("fields") != ["composerIcon", "logo", "logoDark"]:
-            errors.append("plugin logo fields QA must cover composerIcon, logo, and logoDark")
 
     functional_delta = receipt.get("functional_delta")
     if not isinstance(functional_delta, dict) or functional_delta.get("compiler_behavior_changed") is not False:
@@ -833,8 +840,8 @@ def validate_package_evidence() -> list[str]:
     except (OSError, json.JSONDecodeError) as exc:
         return [f"package evidence failed: {exc}"]
     errors: list[str] = []
-    if receipt.get("candidate") != "prompt-optimizer 0.1.5" or receipt.get("status") != "pass":
-        errors.append("package verification must pass for prompt-optimizer 0.1.5")
+    if receipt.get("candidate") != "prompt-optimizer 0.1.6" or receipt.get("status") != "pass":
+        errors.append("package verification must pass for prompt-optimizer 0.1.6")
     checks = receipt.get("checks")
     if not isinstance(checks, list) or len(checks) < 7 or any(item.get("status") != "pass" for item in checks if isinstance(item, dict)):
         errors.append("package verification must record all clean-install and installed-command checks as passing")
@@ -856,7 +863,7 @@ def validate_eval_evidence() -> list[str]:
     except (OSError, json.JSONDecodeError) as exc:
         return [f"eval evidence failed: {exc}"]
     errors: list[str] = []
-    if result.get("suite_id") != "prompt-optimizer-public-candidate-v0.1.5":
+    if result.get("suite_id") != "prompt-optimizer-public-candidate-v0.1.6":
         errors.append("eval suite_id is invalid")
     if result.get("pass") is not True or result.get("score") != 1.0:
         errors.append("native prompt-agent eval must pass at score 1.0")
@@ -1158,7 +1165,7 @@ def run_validation() -> dict[str, Any]:
     }
     return {
         "status": "pass" if not errors else "fail",
-        "candidate": "prompt-optimizer 0.1.5",
+        "candidate": "prompt-optimizer 0.1.6",
         "product_revision_sha256": current_product_revision(),
         "root": ".",
         "checks": {name: "pass" if not group else "fail" for name, group in check_errors.items()},

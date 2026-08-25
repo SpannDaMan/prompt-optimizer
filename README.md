@@ -2,7 +2,7 @@
 
 Keep long requests intact.
 
-> **Current release.** Prompt Optimizer `v0.1.5` makes its automatic more-than-three-relevant-sentences trigger explicit, preserves the operator-directed long-request example, and retains the genuine-transparent, larger safe-fill Agent Smith Palette identity across every plugin logo field.
+> **Current release.** Prompt Optimizer `v0.1.6` makes its automatic more-than-three-relevant-sentences trigger explicit, preserves the operator-directed long-request example, and retains the genuine-transparent, larger safe-fill Agent Smith Palette identity across every plugin logo field.
 
 Prompt Optimizer turns long or messy requests into reviewable instructions while preserving explicit requirements, separating assumptions, and flagging scope drift. Its local **Requirement Custody Ledger** shows what was preserved without claiming that a model will perform better.
 
@@ -155,11 +155,11 @@ Install in Claude Code from GitHub:
 
 See [Codex installation](docs/CODEX-INSTALL.md), [Claude Code installation](docs/CLAUDE-INSTALL.md), and the [OpenAI submission packet](docs/OPENAI-PLUGIN-SUBMISSION.md).
 
-## Why Prompt Optimizer comes before Agent Smith Router
+## Why Prompt Optimizer comes before Local Model Route Planner
 
 Prompt Optimizer turns an unstructured request into a validated packet containing the outcome, constraints, authorization boundary, evidence requirements, and task shape. A future routing plugin can use those fields as cleaner routing inputs.
 
-That can reduce ambiguity; it does not guarantee that a router will make a better decision. Current capability, cost, risk, availability, and verification evidence still matter. Read the [Prompt Optimizer to Agent Smith Router bridge](docs/AGENT-SMITH-ROUTER-BRIDGE.md).
+That can reduce ambiguity; it does not guarantee that a route planner will make a better decision. Current capability, cost, risk, availability, and verification evidence still matter. Read the [Prompt Optimizer to Local Model Route Planner bridge](docs/AGENT-SMITH-ROUTER-BRIDGE.md).
 
 ## Support and sustainability
 
@@ -182,7 +182,7 @@ Read [SECURITY.md](SECURITY.md) and [THREAT-MODEL.md](THREAT-MODEL.md) before in
 
 ## Status
 
-`v0.1.5` is the current public candidate. It preserves the accepted all-transparent `v0.1.4` logo packaging and compiler-only behavior while rewriting provider metadata around the automatic long-request trigger, first useful output, approval-boundary custody, and no-execution boundary. Local custody, package, plugin, schema, review, and visual gates are revision-bound; public Git-source installation and directory review states remain separate from local package validity. The 30-day maintainer pilot continues after release without rewriting public history. See [PUBLICATION-GATE.md](PUBLICATION-GATE.md).
+`v0.1.6` is the current public candidate. It preserves the accepted all-transparent `v0.1.4` logo packaging and compiler-only behavior while rewriting provider metadata around the automatic long-request trigger, first useful output, approval-boundary custody, and no-execution boundary. Local custody, package, plugin, schema, review, and visual gates are revision-bound; public Git-source installation and directory review states remain separate from local package validity. The 30-day maintainer pilot continues after release without rewriting public history. See [PUBLICATION-GATE.md](PUBLICATION-GATE.md).
 
 ## Contributing
 

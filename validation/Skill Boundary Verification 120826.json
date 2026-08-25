@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
-  "candidate": "prompt-optimizer 0.1.5",
-  "product_revision_sha256": "0773024932fee10e11d427161e5ce1a1a97a69bf6fd7079e6aa555526086910e",
+  "candidate": "prompt-optimizer 0.1.6",
+  "product_revision_sha256": "b3c1ef08bddf2d94310995eb20e18405bb9470833e71c322df0e7526425a85f7",
   "status": "pass",
   "verification_type": "controlled_static_replay",
   "skill_path": "plugins/prompt-optimizer/skills/prompt-optimizer/SKILL.md",

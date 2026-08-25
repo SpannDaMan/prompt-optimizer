@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "candidate": "prompt-optimizer 0.1.6",
+  "product_revision_sha256": "b3c1ef08bddf2d94310995eb20e18405bb9470833e71c322df0e7526425a85f7",
+  "review_type": "operator_selected_opaque_visual_promotion",
+  "status": "pass",
+  "operator_selection": {
+    "direction": "Silver Satin full-bleed",
+    "status": "locked",
+    "selection_scope": "existing_marketplace_v0.1.6"
+  },
+  "canonical_source": {
+    "path": "plugins/prompt-optimizer/assets/Prompt Optimizer Silver Satin Master 240826.png",
+    "sha256": "d57daeec37aced97bc9f1fb2a0bfd947cc2f5834d2344127bee933380ae60fdd",
+    "source_type": "operator_selected_generated_png",
+    "local_edit_status": "none",
+    "source_background_policy": "preserve_opaque_source",
+    "full_bleed_required": true,
+    "corner_alpha": [
+      255,
+      255,
+      255,
+      255
+    ]
+  },
+  "provenance": {
+    "source_receipt_path": "plugins/prompt-optimizer/assets/Prompt Optimizer Silver Satin Source Receipt 240826.md",
+    "source_receipt_sha256": "b99e61415b7221e3425892784bba8c1f41117ae7c56e5b8a6739c3c8818cf75b",
+    "manifest_path": "plugins/prompt-optimizer/assets/Logo Generation Manifest 200826.json",
+    "manifest_sha256": "1c805123807ed9cd9774cfcd11dbc55c022505c4a5ebc9522ff6037fe0dff3cc"
+  },
+  "source_only_packaging": {
+    "geometry_changed": false,
+    "redraw_used": false,
+    "recolor_used": false,
+    "inpainting_used": false,
+    "background_removed": false,
+    "full_bleed_background": true,
+    "safe_fill_centered": true,
+    "derivatives": {
+      "plugins/prompt-optimizer/assets/icon.png": "9f7e76d7a29ee0e8088ad291d4aeda16d55ff14d3a0842584e863a928f56469a",
+      "plugins/prompt-optimizer/assets/logo.png": "e7bb10e54c365a0e3d863d3760b9ca5eb0eb7bc006a6978cc52fbde3ef9e92a9",
+      "plugins/prompt-optimizer/assets/logo-dark.png": "e7bb10e54c365a0e3d863d3760b9ca5eb0eb7bc006a6978cc52fbde3ef9e92a9",
+      "plugins/prompt-optimizer/assets/screenshot1.png": "107f98a1a5e8e48e8a8c381d65fc1651b8ae46785eeb553dde0d6fb9cce82ef8",
+      "plugins/prompt-optimizer/assets/social-preview.png": "11043c515b6c15e4effb7669478e624434e026fdfa60d8fd65bdb9e5a9d92546"
+    }
+  },
+  "actual_size_qa": {
+    "status": "pass",
+    "path": "validation/Prompt Optimizer Silver Satin Asset QA 240826.png",
+    "sha256": "85d506bf5934cfde358009a7308c07fc25dc08961d9bf9b9e49e3d148a415781",
+    "sizes_px": [
+      16,
+      24,
+      32,
+      64,
+      128
+    ],
+    "surfaces": [
+      "light",
+      "dark"
+    ]
+  },
+  "functional_delta": {
+    "compiler_behavior_changed": false
+  },
+  "publication_action": "none"
+}

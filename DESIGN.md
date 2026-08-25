@@ -28,6 +28,8 @@ Use Inter, ui-sans-serif, or a system sans for product surfaces. Use a platform 
 
 The core mark uses a stable microphone capsule, a thick waveform, and rounded horizontal prompt bars that form one continuous silhouette. Cards use 12-pixel radii and subtle borders; avoid glossy glass, heavy shadows, or neon bloom.
 
+The marketplace logo uses one full-bleed silver satin field. The silver is part of the locked logo artwork, not a theme-dependent container. Do not add white, dark, transparent, or nested-square padding around it; let the marketplace apply its own rounded-corner mask.
+
 ## Components
 
 - Source card: deep navy border and the exact Agent Smith Palette mark.
@@ -48,14 +50,15 @@ Use `Compile clearly. Verify locally.` as the primary tagline. Do not use `Same 
 
 ## Asset authority
 
-- Canonical source: `plugins/prompt-optimizer/assets/Prompt Optimizer Transparent Master 220826.png`.
+- Canonical source: `plugins/prompt-optimizer/assets/Prompt Optimizer Silver Satin Master 240826.png`.
 - Provenance and immutable hash: `plugins/prompt-optimizer/assets/Logo Generation Manifest 200826.json`.
-- `icon.png`, `logo.png`, and `logo-dark.png` are transparent, large-safe-fill host-facing derivatives. `screenshot1.png` and `social-preview.png` are opaque presentation-surface derivatives. All five use the full manifest-bound source without redrawing or recoloring it.
+- `icon.png`, `logo.png`, and `logo-dark.png` are full-square opaque derivatives with the silver field touching every edge; `screenshot1.png` and `social-preview.png` place the same unmodified source in presentation layouts.
 - No SVG or local geometry reconstruction is a production source.
 
 ## Do
 
 - Use the voice-or-text-to-structured-prompt metaphor and the selected deep navy, signal blue, and electric cyan palette.
+- Preserve the selected silver satin marketplace background across light and dark host themes.
 - Keep icons geometric and readable without text.
 - Show the no-model-call boundary near first-run examples.
 
