@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "candidate": "prompt-optimizer 0.1.6",
-  "product_revision_sha256": "b3c1ef08bddf2d94310995eb20e18405bb9470833e71c322df0e7526425a85f7",
+  "product_revision_sha256": "eddbc6909c86a53c4f95d2716cb22e2ca1bd415450d0a3c91955361bc34d3c44",
   "review_type": "operator_selected_opaque_visual_promotion",
   "status": "pass",
   "operator_selection": {
@@ -25,7 +25,7 @@
   },
   "provenance": {
     "source_receipt_path": "plugins/prompt-optimizer/assets/Prompt Optimizer Silver Satin Source Receipt 240826.md",
-    "source_receipt_sha256": "b99e61415b7221e3425892784bba8c1f41117ae7c56e5b8a6739c3c8818cf75b",
+    "source_receipt_sha256": "55181db766e952bbd112b5c50599f85798e80a63baf7b6a9e7612c4d16f34ace",
     "manifest_path": "plugins/prompt-optimizer/assets/Logo Generation Manifest 200826.json",
     "manifest_sha256": "1c805123807ed9cd9774cfcd11dbc55c022505c4a5ebc9522ff6037fe0dff3cc"
   },
