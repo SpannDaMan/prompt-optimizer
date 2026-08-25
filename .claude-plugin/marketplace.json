@@ -9,7 +9,7 @@
       "name": "prompt-optimizer",
       "source": "./plugins/prompt-optimizer",
       "description": "Use when a request has more than three relevant sentences or explicitly needs optimization; return a clear brief without losing requirements or approval limits.",
-      "version": "0.1.6",
+      "version": "0.1.7",
       "category": "productivity",
       "keywords": ["long prompts", "prompt optimization", "requirements", "scope drift", "agent briefs"],
       "tags": ["prompts", "productivity", "validation", "local"]

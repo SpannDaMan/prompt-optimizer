@@ -12,7 +12,7 @@
   "privacy_policy_url": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/PRIVACY.md",
   "terms_url": "https://github.com/SpannDaMan/prompt-optimizer/blob/main/TERMS.md",
   "starter_prompts": [
-    "I need you to research the market and build a launch plan for our new AI automation service. Keep the budget under $5,000 and show milestones, owners, risks, and success metrics. Do not publish, contact anyone, or spend money without my approval. Return one execution-ready brief…"
+    "Plan our AI service launch. Keep it under $5K. Include milestones, owners, risks, and metrics. Do not publish or spend…"
   ],
   "positive_tests": [
     {
@@ -70,6 +70,6 @@
     "requested_regions": [],
     "decision": "deferred_until_submission"
   },
-  "release_notes": "Version 0.1.6 adds the operator-approved natural four-sentence launch request and the locked full-bleed Silver Satin logo family while preserving the automatic more-than-three-relevant-sentences trigger, compiler-only boundary, and no credential or network dependency.",
+  "release_notes": "Version 0.1.7 adds the operator-approved natural four-sentence launch request and the locked full-bleed Silver Satin logo family while preserving the automatic more-than-three-relevant-sentences trigger, compiler-only boundary, and no credential or network dependency.",
   "publication_action": "none"
 }

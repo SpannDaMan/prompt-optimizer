@@ -1,6 +1,6 @@
 # Prompt Optimizer silver satin source receipt
 
-The current `v0.1.6` package uses `Prompt Optimizer Silver Satin Master 240826.png` as its operator-selected canonical marketplace raster.
+The current `v0.1.7` package uses `Prompt Optimizer Silver Satin Master 240826.png` as its operator-selected canonical marketplace raster.
 
 - Canonical master SHA-256: `d57daeec37aced97bc9f1fb2a0bfd947cc2f5834d2344127bee933380ae60fdd`
 - Dimensions: 1254×1254 opaque RGB PNG
