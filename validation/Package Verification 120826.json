@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0",
-  "candidate": "prompt-optimizer 0.1.5",
-  "product_revision_sha256": "0773024932fee10e11d427161e5ce1a1a97a69bf6fd7079e6aa555526086910e",
+  "candidate": "prompt-optimizer 0.1.6",
+  "product_revision_sha256": "eddbc6909c86a53c4f95d2716cb22e2ca1bd415450d0a3c91955361bc34d3c44",
   "status": "pass",
   "python_version": "3.12",
   "install_source": ".",
   "runtime_dependencies": [],
   "wheel": {
-    "filename": "prompt_optimizer-0.1.5-py3-none-any.whl",
-    "sha256": "b22242c49e9eec0198c655c3f437a4719f41379f267513ad97200001c7153d7b",
-    "bytes": 16656
+    "filename": "prompt_optimizer-0.1.6-py3-none-any.whl",
+    "sha256": "ef9b2299e73b9f2391a355a9477b661f2cbdd20acfb72b2135a72d2a4de4bd82",
+    "bytes": 16665
   },
   "checks": [
     {
@@ -24,7 +24,7 @@
     {
       "name": "installed_cli_version",
       "status": "pass",
-      "result": "prompt-optimizer 0.1.5"
+      "result": "prompt-optimizer 0.1.6"
     },
     {
       "name": "installed_cli_analyze",

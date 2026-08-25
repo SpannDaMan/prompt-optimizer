@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "lock_id": "prompt-optimizer-silver-satin-marketplace-logo-20260824",
+  "status": "locked_for_future_existing_listing_update",
+  "locked_at": "2026-08-24T21:20:00-04:00",
+  "timezone": "New York Eastern Time (America/New_York)",
+  "product": "Prompt Optimizer",
+  "package_name": "prompt-optimizer",
+  "current_published_version": "0.1.5",
+  "current_openai_plugin_id": "plugins_6a8ba7ae50288191a3908e3ee269f78f",
+  "current_directory_url": "https://chatgpt.com/plugins/plugins_6a8ba7ae50288191a3908e3ee269f78f",
+  "operator_decision": "Use the selected Silver Satin full-bleed logo family when the existing Prompt Optimizer listing is next updated. Do not upload a new draft or version until the separate example-prompt task has finalized its copy, so the next provider submission can consolidate the prompt and logo changes.",
+  "canonical_source": {
+    "path": "plugins/prompt-optimizer/assets/Prompt Optimizer Silver Satin Master 240826.png",
+    "sha256": "d57daeec37aced97bc9f1fb2a0bfd947cc2f5834d2344127bee933380ae60fdd",
+    "bytes": 1850495,
+    "dimensions": [1254, 1254],
+    "format": "PNG",
+    "background": "opaque full-bleed silver satin",
+    "corner_alpha": [255, 255, 255, 255]
+  },
+  "native_authority": {
+    "design_contract": {
+      "path": "DESIGN.md",
+      "sha256": "5fb8df9cd0f02a31620bdedbed966e9ce609ee9d221dba531b113cd153e8e621"
+    },
+    "generation_manifest": {
+      "path": "plugins/prompt-optimizer/assets/Logo Generation Manifest 200826.json",
+      "sha256": "907cc559dcb7ee8cd95d0a001700a685af21e241d6b200f4ea767a5d09abe2af"
+    },
+    "source_receipt": {
+      "path": "plugins/prompt-optimizer/assets/Prompt Optimizer Silver Satin Source Receipt 240826.md",
+      "sha256": "ad41d8722bc20640e0e4668e241dce3a7423b4a21ab345f8416994bcfd33c723"
+    },
+    "promotion_closeout": {
+      "path": "validation/Silver Satin Local Promotion Closeout 240826.json",
+      "sha256": "f4e70f58d3eaaf3eddb738be7d42b066af1e065b10a6b4d09adaa648d7f12e47",
+      "product_revision_sha256": "bd5fb464059147f7a0029935a840d3c2d088ef8ac977e1a1326b69da49f950c4"
+    }
+  },
+  "locked_derivatives": {
+    "plugins/prompt-optimizer/assets/icon.png": "9f7e76d7a29ee0e8088ad291d4aeda16d55ff14d3a0842584e863a928f56469a",
+    "plugins/prompt-optimizer/assets/logo.png": "e7bb10e54c365a0e3d863d3760b9ca5eb0eb7bc006a6978cc52fbde3ef9e92a9",
+    "plugins/prompt-optimizer/assets/logo-dark.png": "e7bb10e54c365a0e3d863d3760b9ca5eb0eb7bc006a6978cc52fbde3ef9e92a9",
+    "plugins/prompt-optimizer/assets/screenshot1.png": "107f98a1a5e8e48e8a8c381d65fc1651b8ae46785eeb553dde0d6fb9cce82ef8",
+    "plugins/prompt-optimizer/assets/social-preview.png": "11043c515b6c15e4effb7669478e624434e026fdfa60d8fd65bdb9e5a9d92546"
+  },
+  "provider_binding": {
+    "manifest_path": "plugins/prompt-optimizer/.codex-plugin/plugin.json",
+    "composer_icon_field": "interface.composerIcon -> ./assets/icon.png",
+    "light_logo_field": "interface.logo -> ./assets/logo.png",
+    "dark_logo_field": "interface.logoDark -> ./assets/logo-dark.png",
+    "required_listing_behavior": "The silver field must touch all four image edges and light/dark logo bytes must remain identical so the marketplace theme cannot leak through."
+  },
+  "future_task_contract": {
+    "required_read_before_packaging": true,
+    "reuse_exact_hashes": true,
+    "create_new_plugin_listing": false,
+    "create_provider_draft_now": false,
+    "upload_provider_package_now": false,
+    "wait_for_example_prompt_task": true,
+    "next_provider_action": "After example prompts are frozen, prepare one consolidated update draft/version for the existing plugin identity and verify that the directory URL remains unchanged.",
+    "stop_if": [
+      "the portal route would create a second Prompt Optimizer plugin id",
+      "the package contains different logo hashes",
+      "the silver background is padded, transparent, cropped, recolored, or theme-dependent",
+      "the example prompts are not frozen"
+    ]
+  },
+  "portal_research_state": {
+    "released_version_readback": "Viewing the released version. Only draft versions can be edited.",
+    "released_row_actions": ["View", "Download", "Unpublish"],
+    "logo_only_in_place_edit_proven": false,
+    "official_docs_url": "https://developers.openai.com/plugins/deploy/submission",
+    "official_docs_summary": "OpenAI documents initial submissions and updates with release notes describing changes since the prior version. No official logo-only mutation path was found for an already released version.",
+    "research_hold": "No upload or draft creation occurred."
+  },
+  "publication_action": "none"
+}

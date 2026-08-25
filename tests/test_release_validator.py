@@ -22,6 +22,21 @@ SPEC.loader.exec_module(release_validator)
 class ReleaseValidatorTests(unittest.TestCase):
     """Prove the release validator fails closed without hiding root causes."""
 
+    def test_silver_logo_pngs_have_only_the_bounded_two_megabyte_exception(self) -> None:
+        """Keep the selected high-quality silver assets without widening the package."""
+
+        for relative in release_validator.LARGE_LOGO_PNGS:
+            self.assertEqual(release_validator.max_file_bytes_for(relative), 2_000_000)
+        self.assertEqual(
+            release_validator.max_file_bytes_for(Path("plugins/prompt-optimizer/assets/icon.png")),
+            1_000_000,
+        )
+
+    def test_unrelated_png_does_not_inherit_the_logo_size_exception(self) -> None:
+        """Prevent a visual exception from becoming a generic package bypass."""
+
+        self.assertEqual(release_validator.max_file_bytes_for(Path("docs/oversized.png")), 1_000_000)
+
     def test_run_validation_executes_each_check_once(self) -> None:
         """Run every component once and preserve its specific failure category."""
 
@@ -84,22 +99,6 @@ class ReleaseValidatorTests(unittest.TestCase):
                 errors = release_validator.validate_png(path, (512, 512, False))
         self.assertEqual(errors, ["icon.png: expected 512x512, got 256x512"])
 
-    def test_transparent_plugin_logo_rejects_opaque_corners(self) -> None:
-        """Reject a host-facing logo variant that paints its own background."""
-
-        with tempfile.TemporaryDirectory() as temp_dir:
-            root = Path(temp_dir)
-            path = root / "logo-dark.png"
-            path.touch()
-            opaque_row = bytes((0, 0, 0, 255)) * 1024
-            rows = [opaque_row] * 1024
-            with (
-                mock.patch.object(release_validator, "ROOT", root),
-                mock.patch.object(release_validator, "decode_png_rgba", return_value=(1024, 1024, rows)),
-            ):
-                errors = release_validator.validate_png(path, (1024, 1024, True))
-        self.assertIn("logo-dark.png: transparent asset corners have incorrect alpha", errors)
-
     def test_missing_metadata_prerequisites_return_structured_error(self) -> None:
         """Return one stable metadata error when prerequisites are absent."""
 
@@ -135,7 +134,7 @@ class ReleaseValidatorTests(unittest.TestCase):
             (root / "submission").mkdir()
             (plugin / "skills" / "prompt-optimizer").mkdir(parents=True)
             (root / ".github" / "FUNDING.yml").write_text("github: [SomeoneElse]\n", encoding="utf-8")
-            (root / "README.md").write_text("OpenAI/Codex Claude Code Agent Smith Router FUNDING.yml", encoding="utf-8")
+            (root / "README.md").write_text("OpenAI/Codex Claude Code Local Model Route Planner FUNDING.yml", encoding="utf-8")
             (root / "PRIVACY.md").write_text("does not send prompts; does not include telemetry", encoding="utf-8")
             (root / "TERMS.md").write_text("does not prove semantic equivalence", encoding="utf-8")
             (root / "docs" / "AGENT-SMITH-ROUTER-BRIDGE.md").write_text("does not guarantee a better route", encoding="utf-8")

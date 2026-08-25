@@ -1,7 +1,6 @@
 param(
     [string]$Root = (Split-Path -Parent $PSScriptRoot),
     [string]$QaOutputPath = '',
-    [string]$LogoFieldsQaOutputPath = '',
     [string]$MasterPath = ''
 )
 
@@ -24,7 +23,7 @@ foreach ($required in @('canonical_master', 'master_sha256', 'master_width', 'ma
         throw "Logo generation manifest is missing '$required'."
     }
 }
-if ($manifest.source_type -notin @('original_browser_download', 'operator_supplied_visualization_png', 'deterministic_transparent_derivative')) {
+if ($manifest.source_type -notin @('original_browser_download', 'operator_supplied_visualization_png', 'deterministic_transparent_derivative', 'operator_selected_generated_png')) {
     throw "Unsupported canonical logo source type '$($manifest.source_type)'."
 }
 if ($manifest.local_edit_status -notin @('none', 'background_extraction_and_safe_fill_only')) {
@@ -67,7 +66,20 @@ try {
         if (@($cornerAlpha | Where-Object { $_ -ne 0 }).Count -gt 0) {
             throw "Transparent canonical master must have transparent corners; got $($cornerAlpha -join ',')."
         }
-    } elseif ($manifest.source_background_policy -ne 'preserve_opaque_source') {
+    } elseif ($manifest.source_background_policy -eq 'preserve_opaque_source') {
+        $cornerAlpha = @(
+            $master.GetPixel(0, 0).A,
+            $master.GetPixel($master.Width - 1, 0).A,
+            $master.GetPixel(0, $master.Height - 1).A,
+            $master.GetPixel($master.Width - 1, $master.Height - 1).A
+        )
+        if (@($cornerAlpha | Where-Object { $_ -ne 255 }).Count -gt 0) {
+            throw "Opaque canonical master must fill every corner; got alpha $($cornerAlpha -join ',')."
+        }
+        if ($manifest.full_bleed_required -ne $true) {
+            throw 'Opaque canonical master must declare full_bleed_required=true.'
+        }
+    } else {
         throw "Unsupported source background policy '$($manifest.source_background_policy)'."
     }
 
@@ -151,17 +163,26 @@ try {
         Save-Png $canvas[0] (Join-Path $assetDir 'icon.png')
     } finally { $canvas[1].Dispose(); $canvas[0].Dispose() }
 
-    # Plugin logo fields must stay host-surface neutral. Both variants retain
-    # genuine alpha so Codex can place the same accepted mark on light or dark UI.
-    foreach ($variant in @(
-        @{ Name = 'logo.png'; Background = 'transparent' },
-        @{ Name = 'logo-dark.png'; Background = 'transparent' }
-    )) {
-        $canvas = New-Canvas 1024 1024 $variant.Background
+    # An opaque full-bleed source is theme-independent. Generate it once and
+    # copy the exact bytes so light/dark host themes cannot tint edge pixels.
+    if ($manifest.source_background_policy -eq 'preserve_opaque_source') {
+        $canvas = New-Canvas 1024 1024 ([string]$cfg.light_background)
         try {
             Place-Master $canvas[1] $master 0 0 1024
-            Save-Png $canvas[0] (Join-Path $assetDir $variant.Name)
+            Save-Png $canvas[0] (Join-Path $assetDir 'logo.png')
         } finally { $canvas[1].Dispose(); $canvas[0].Dispose() }
+        Copy-Item -LiteralPath (Join-Path $assetDir 'logo.png') -Destination (Join-Path $assetDir 'logo-dark.png') -Force
+    } else {
+        foreach ($variant in @(
+            @{ Name = 'logo.png'; Background = [string]$cfg.light_background },
+            @{ Name = 'logo-dark.png'; Background = [string]$cfg.dark_background }
+        )) {
+            $canvas = New-Canvas 1024 1024 $variant.Background
+            try {
+                Place-Master $canvas[1] $master 96 96 832
+                Save-Png $canvas[0] (Join-Path $assetDir $variant.Name)
+            } finally { $canvas[1].Dispose(); $canvas[0].Dispose() }
+        }
     }
 
     # Repository screenshot. Layout and text are derivative packaging; the logo pixels come only from the master.
@@ -204,7 +225,7 @@ try {
     if ($QaOutputPath) {
         if (-not [System.IO.Path]::IsPathRooted($QaOutputPath)) { $QaOutputPath = Join-Path $Root $QaOutputPath }
         [System.IO.Directory]::CreateDirectory((Split-Path -Parent $QaOutputPath)) | Out-Null
-        $canvas = New-Canvas 1100 390 ([string]$cfg.light_background)
+        $canvas = New-Canvas 1100 470 ([string]$cfg.light_background)
         try {
             $g = $canvas[1]
             Write-Text $g "$($cfg.product_name) actual-size source QA" 36 20 30 ([string]$cfg.dark_text) $false $true
@@ -213,52 +234,16 @@ try {
                 $lightBrush = [System.Drawing.SolidBrush]::new([System.Drawing.ColorTranslator]::FromHtml([string]$cfg.light_background))
                 $darkBrush = [System.Drawing.SolidBrush]::new([System.Drawing.ColorTranslator]::FromHtml([string]$cfg.dark_background))
                 try {
-                    $g.FillRectangle($lightBrush, $x, 80, 180, 112)
-                    $g.FillRectangle($darkBrush, $x, 205, 180, 112)
+                    $g.FillRectangle($lightBrush, $x, 80, 180, 150)
+                    $g.FillRectangle($darkBrush, $x, 245, 180, 150)
                 } finally { $lightBrush.Dispose(); $darkBrush.Dispose() }
                 $imageX = $x + [int]((180 - $size) / 2)
-                Place-Master $g $master $imageX (80 + [int]((112 - $size) / 2)) $size
-                Place-Master $g $master $imageX (205 + [int]((112 - $size) / 2)) $size
-                Write-Text $g "$size px" ($x + 56) 330 18 ([string]$cfg.dark_text) $true $true
+                Place-Master $g $master $imageX (80 + [int]((150 - $size) / 2)) $size
+                Place-Master $g $master $imageX (245 + [int]((150 - $size) / 2)) $size
+                Write-Text $g "$size px" ($x + 56) 420 18 ([string]$cfg.dark_text) $true $true
                 $x += 208
             }
             Save-Png $canvas[0] $QaOutputPath
-        } finally { $canvas[1].Dispose(); $canvas[0].Dispose() }
-    }
-
-    if ($LogoFieldsQaOutputPath) {
-        if (-not [System.IO.Path]::IsPathRooted($LogoFieldsQaOutputPath)) { $LogoFieldsQaOutputPath = Join-Path $Root $LogoFieldsQaOutputPath }
-        [System.IO.Directory]::CreateDirectory((Split-Path -Parent $LogoFieldsQaOutputPath)) | Out-Null
-        $canvas = New-Canvas 1500 700 ([string]$cfg.light_background)
-        try {
-            $g = $canvas[1]
-            Write-Text $g "$($cfg.product_name) plugin logo fields QA" 42 24 32 ([string]$cfg.dark_text) $false $true
-            $x = 42
-            foreach ($variant in @(
-                @{ Label = 'composerIcon'; Name = 'icon.png' },
-                @{ Label = 'logo'; Name = 'logo.png' },
-                @{ Label = 'logoDark'; Name = 'logo-dark.png' }
-            )) {
-                Write-Text $g $variant.Label ($x + 118) 74 22 ([string]$cfg.dark_text) $true $true
-                $lightBrush = [System.Drawing.SolidBrush]::new([System.Drawing.ColorTranslator]::FromHtml([string]$cfg.light_background))
-                $darkBrush = [System.Drawing.SolidBrush]::new([System.Drawing.ColorTranslator]::FromHtml([string]$cfg.dark_background))
-                try {
-                    $g.FillRectangle($lightBrush, $x, 112, 430, 235)
-                    $g.FillRectangle($darkBrush, $x, 395, 430, 235)
-                } finally { $lightBrush.Dispose(); $darkBrush.Dispose() }
-                $assetPath = Join-Path $assetDir $variant.Name
-                $asset = [System.Drawing.Bitmap]::FromFile($assetPath)
-                try {
-                    $lightDestination = [System.Drawing.Rectangle]::new($x + 112, 125, 210, 210)
-                    $darkDestination = [System.Drawing.Rectangle]::new($x + 112, 408, 210, 210)
-                    $g.DrawImage($asset, $lightDestination)
-                    $g.DrawImage($asset, $darkDestination)
-                } finally { $asset.Dispose() }
-                Write-Text $g 'light surface' ($x + 145) 350 16 ([string]$cfg.dark_text) $true
-                Write-Text $g 'dark surface' ($x + 150) 638 16 ([string]$cfg.dark_text) $true
-                $x += 485
-            }
-            Save-Png $canvas[0] $LogoFieldsQaOutputPath
         } finally { $canvas[1].Dispose(); $canvas[0].Dispose() }
     }
 
@@ -268,7 +253,7 @@ try {
     }
     [ordered]@{
         status = 'ok'
-        source_policy = 'accepted_transparent_master_only'
+        source_policy = 'immutable_operator_selected_full_bleed_master_only'
         master_path = (Resolve-Path -LiteralPath $MasterPath).Path
         master_sha256 = $actualHash
         outputs = $outputs

@@ -133,7 +133,7 @@ def main() -> int:
             "Package Verification 120826.json",
             {
                 "schema_version": "1.0",
-                "candidate": "prompt-optimizer 0.1.5",
+                "candidate": "prompt-optimizer 0.1.6",
                 "product_revision_sha256": revision,
                 "status": "pass",
                 "python_version": f"{sys.version_info.major}.{sys.version_info.minor}",
@@ -165,7 +165,7 @@ def main() -> int:
         "Codex Plugin Verification 120826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.5",
+            "candidate": "prompt-optimizer 0.1.6",
             "product_revision_sha256": revision,
             "status": "pass",
             "exit_code": plugin_run.returncode,
@@ -197,7 +197,7 @@ def main() -> int:
         "Claude Plugin Verification 200826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.5",
+            "candidate": "prompt-optimizer 0.1.6",
             "product_revision_sha256": revision,
             "status": "pass",
             "validated_paths": [".", "plugins/prompt-optimizer"],
@@ -245,7 +245,7 @@ def main() -> int:
         "JSON Schema Verification 120826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.5",
+            "candidate": "prompt-optimizer 0.1.6",
             "product_revision_sha256": revision,
             "status": "pass",
             "exit_code": schema_run.returncode,
@@ -284,7 +284,7 @@ def main() -> int:
         "Skill Boundary Verification 120826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.5",
+            "candidate": "prompt-optimizer 0.1.6",
             "product_revision_sha256": revision,
             "status": "pass",
             "verification_type": "controlled_static_replay",
@@ -302,34 +302,35 @@ def main() -> int:
         },
     )
 
-    master = PLUGIN / "assets" / "Prompt Optimizer Transparent Master 220826.png"
-    source_receipt = PLUGIN / "assets" / "Prompt Optimizer Transparent Source Receipt 220826.md"
+    master = PLUGIN / "assets" / "Prompt Optimizer Silver Satin Master 240826.png"
+    source_receipt = PLUGIN / "assets" / "Prompt Optimizer Silver Satin Source Receipt 240826.md"
     manifest = PLUGIN / "assets" / "Logo Generation Manifest 200826.json"
-    qa = VALIDATION / "Prompt Optimizer Transparent Asset QA 220826.png"
-    plugin_fields_qa = VALIDATION / "Prompt Optimizer Plugin Logo Fields QA 230826.png"
+    qa = VALIDATION / "Prompt Optimizer Silver Satin Asset QA 240826.png"
     derivatives = {
         f"plugins/prompt-optimizer/assets/{name}": file_sha256(PLUGIN / "assets" / name)
         for name in ("icon.png", "logo.png", "logo-dark.png", "screenshot1.png", "social-preview.png")
     }
     write_json(
-        "Transparent Icon Promotion 220826.json",
+        "Silver Satin Logo Promotion 240826.json",
         {
             "schema_version": "1.0",
-            "candidate": "prompt-optimizer 0.1.5",
+            "candidate": "prompt-optimizer 0.1.6",
             "product_revision_sha256": revision,
-            "review_type": "operator_selected_transparent_plugin_logo_promotion",
+            "review_type": "operator_selected_opaque_visual_promotion",
             "status": "pass",
             "operator_selection": {
-                "direction": "Agent Smith Palette transparent safe fill across all plugin logo fields",
+                "direction": "Silver Satin full-bleed",
                 "status": "locked",
-                "selection_scope": "public_release_v0.1.4",
+                "selection_scope": "existing_marketplace_v0.1.6",
             },
             "canonical_source": {
                 "path": master.relative_to(ROOT).as_posix(),
                 "sha256": file_sha256(master),
-                "source_type": "deterministic_transparent_derivative",
-                "local_edit_status": "background_extraction_and_safe_fill_only",
-                "opaque_parent_sha256": "a31f873f3b13869d50b4deaa9f247c827a7ca19ec9b8ac66bf4367952c875914",
+                "source_type": "operator_selected_generated_png",
+                "local_edit_status": "none",
+                "source_background_policy": "preserve_opaque_source",
+                "full_bleed_required": True,
+                "corner_alpha": [255, 255, 255, 255],
             },
             "provenance": {
                 "source_receipt_path": source_receipt.relative_to(ROOT).as_posix(),
@@ -342,9 +343,9 @@ def main() -> int:
                 "redraw_used": False,
                 "recolor_used": False,
                 "inpainting_used": False,
-                "background_removed": True,
+                "background_removed": False,
+                "full_bleed_background": True,
                 "safe_fill_centered": True,
-                "host_facing_logo_backgrounds": "transparent",
                 "derivatives": derivatives,
             },
             "actual_size_qa": {
@@ -352,13 +353,6 @@ def main() -> int:
                 "path": qa.relative_to(ROOT).as_posix(),
                 "sha256": file_sha256(qa),
                 "sizes_px": [16, 24, 32, 64, 128],
-                "surfaces": ["transparent", "light", "dark"],
-            },
-            "plugin_logo_fields_qa": {
-                "status": "pass",
-                "path": plugin_fields_qa.relative_to(ROOT).as_posix(),
-                "sha256": file_sha256(plugin_fields_qa),
-                "fields": ["composerIcon", "logo", "logoDark"],
                 "surfaces": ["light", "dark"],
             },
             "functional_delta": {"compiler_behavior_changed": False},

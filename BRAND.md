@@ -16,7 +16,7 @@ The microphone is an input metaphor: Prompt Optimizer compiles the text supplied
 
 ## Canonical image source
 
-`Prompt Optimizer Transparent Master 220826.png` is the accepted transparent derivative named and hashed in `Logo Generation Manifest 200826.json`. It preserves the operator-selected mark and palette while removing the pale source background. Local tools may verify, resize, and place it; they may not originate, trace, recolor, inpaint, reconstruct a background, or change the mark.
+`Prompt Optimizer Silver Satin Master 240826.png` is the operator-selected immutable marketplace source named and hashed in `Logo Generation Manifest 200826.json`. Its restrained silver satin background is intentional artwork and must remain fully opaque and flush to all four edges in every composer, light, dark, and marketplace logo derivative. Local tools may verify and resize the complete square; they may not remove the background, add a second plate, originate, trace, recolor, inpaint, crop, or reconstruct the mark.
 
 ## Voice
 
