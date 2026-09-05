@@ -1,15 +1,15 @@
 {
   "schema_version": "1.0",
   "candidate": "prompt-optimizer 0.1.7",
-  "product_revision_sha256": "bac0bd1c8b4636a4aeb450127a8004952e5a4ef1c4ba595011671044b4e7efe7",
+  "product_revision_sha256": "0a2c2c26486a7239d63ef26a08ac703933e3e9c8c0dee7c62a0021d82b327353",
   "status": "pass",
-  "python_version": "3.12",
+  "python_version": "3.11",
   "install_source": ".",
   "runtime_dependencies": [],
   "wheel": {
     "filename": "prompt_optimizer-0.1.7-py3-none-any.whl",
-    "sha256": "4ff1e69fe2c530379ef1bcd32367fb02cb05ee8509a3cf82a892f6738073de56",
-    "bytes": 16662
+    "sha256": "2b366e0cd850c5604f39db6c0b17b4a7250a610cd4da925cd2592b2c6093e660",
+    "bytes": 16901
   },
   "checks": [
     {

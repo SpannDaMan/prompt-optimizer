@@ -1,11 +1,11 @@
 {
   "schema_version": "1.0",
   "candidate": "prompt-optimizer 0.1.7",
-  "product_revision_sha256": "bac0bd1c8b4636a4aeb450127a8004952e5a4ef1c4ba595011671044b4e7efe7",
+  "product_revision_sha256": "0a2c2c26486a7239d63ef26a08ac703933e3e9c8c0dee7c62a0021d82b327353",
   "status": "pass",
   "verification_type": "controlled_static_replay",
   "skill_path": "plugins/prompt-optimizer/skills/prompt-optimizer/SKILL.md",
-  "skill_sha256": "00f1164b84c5dce63f5d62e0c49a2630381303e94a3317c048284f007828aeab",
+  "skill_sha256": "058f084c31792791f2b3a3116a27a2d9bbd391adbe22b51251ea997840079495",
   "transcript_path": "validation/Skill Boundary Transcript 120826.md",
   "transcript_sha256": "b186e83eaeab171f990f0cb86e6cb3dfc22cb6092c7b58d904a3f1f4039e45b7",
   "compiled_artifact_returned": true,

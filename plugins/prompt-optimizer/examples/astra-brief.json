@@ -1,0 +1,140 @@
+{
+  "schema_version": "1.0",
+  "status": "ready",
+  "source_sha256": "3a72bc3f8035dbce25c6d53449893849d99d2df028b56d28efce582aa4c8f775",
+  "original_prompt": "Fix the date-formatting defect in the existing report exporter.\nTarget GPT-6 Astra in Codex.\nPreserve the report layout and existing user changes.\nComplete the authorized local fix without asking again about routine details.\nKeep publishing and credential changes gated.\nRun the checks for changed behavior, and repeat them only for changed bytes, failures, or an unresolved concern.\nReturn a detailed explanation with a comparison table.\n",
+  "sentence_count": 7,
+  "trigger_decision": "optimize",
+  "skip_reason": "",
+  "target_surface": "codex",
+  "candidate_constraints": [
+    "Target GPT-6 Astra in Codex.",
+    "Preserve the report layout and existing user changes.",
+    "Complete the authorized local fix without asking again about routine details.",
+    "Keep publishing and credential changes gated.",
+    "Run the checks for changed behavior, and repeat them only for changed bytes, failures, or an unresolved concern.",
+    "Return a detailed explanation with a comparison table."
+  ],
+  "compiled_prompt": {
+    "sections": [
+      {
+        "id": "outcome",
+        "decision": "include",
+        "content": "Fix the date-formatting defect in the existing report exporter.",
+        "reason": ""
+      },
+      {
+        "id": "relevant_context",
+        "decision": "include",
+        "content": "Target GPT-6 Astra in Codex.",
+        "reason": ""
+      },
+      {
+        "id": "must_preserve_constraints",
+        "decision": "include",
+        "content": "Preserve the report layout and existing user changes.\nComplete the authorized local fix without asking again about routine details.\nKeep publishing and credential changes gated.",
+        "reason": ""
+      },
+      {
+        "id": "evidence_and_success",
+        "decision": "omit",
+        "content": "",
+        "reason": "The final verification section supplies the required evidence."
+      },
+      {
+        "id": "output_contract",
+        "decision": "include",
+        "content": "Return a detailed explanation with a comparison table.",
+        "reason": ""
+      },
+      {
+        "id": "task_shape_routing",
+        "decision": "omit",
+        "content": "",
+        "reason": "One coherent local fix needs no delegation or orchestration instructions."
+      },
+      {
+        "id": "final_verification",
+        "decision": "include",
+        "content": "Run the checks for changed behavior, and repeat them only for changed bytes, failures, or an unresolved concern.",
+        "reason": ""
+      }
+    ],
+    "text": "Fix the date-formatting defect in the existing report exporter.\n\nTarget GPT-6 Astra in Codex.\n\nPreserve the report layout and existing user changes.\nComplete the authorized local fix without asking again about routine details.\nKeep publishing and credential changes gated.\n\nReturn a detailed explanation with a comparison table.\n\nRun the checks for changed behavior, and repeat them only for changed bytes, failures, or an unresolved concern."
+  },
+  "must_preserve_constraints": [
+    "Target GPT-6 Astra in Codex.",
+    "Preserve the report layout and existing user changes.",
+    "Complete the authorized local fix without asking again about routine details.",
+    "Keep publishing and credential changes gated.",
+    "Run the checks for changed behavior, and repeat them only for changed bytes, failures, or an unresolved concern.",
+    "Return a detailed explanation with a comparison table."
+  ],
+  "constraint_map": [
+    {
+      "id": "constraint-1",
+      "source_text": "Target GPT-6 Astra in Codex.",
+      "disposition": "verbatim",
+      "compiled_text": "Target GPT-6 Astra in Codex.",
+      "compiled_section": "relevant_context"
+    },
+    {
+      "id": "constraint-2",
+      "source_text": "Preserve the report layout and existing user changes.",
+      "disposition": "verbatim",
+      "compiled_text": "Preserve the report layout and existing user changes.",
+      "compiled_section": "must_preserve_constraints"
+    },
+    {
+      "id": "constraint-3",
+      "source_text": "Complete the authorized local fix without asking again about routine details.",
+      "disposition": "verbatim",
+      "compiled_text": "Complete the authorized local fix without asking again about routine details.",
+      "compiled_section": "must_preserve_constraints"
+    },
+    {
+      "id": "constraint-4",
+      "source_text": "Keep publishing and credential changes gated.",
+      "disposition": "verbatim",
+      "compiled_text": "Keep publishing and credential changes gated.",
+      "compiled_section": "must_preserve_constraints"
+    },
+    {
+      "id": "constraint-5",
+      "source_text": "Run the checks for changed behavior, and repeat them only for changed bytes, failures, or an unresolved concern.",
+      "disposition": "verbatim",
+      "compiled_text": "Run the checks for changed behavior, and repeat them only for changed bytes, failures, or an unresolved concern.",
+      "compiled_section": "final_verification"
+    },
+    {
+      "id": "constraint-6",
+      "source_text": "Return a detailed explanation with a comparison table.",
+      "disposition": "verbatim",
+      "compiled_text": "Return a detailed explanation with a comparison table.",
+      "compiled_section": "output_contract"
+    }
+  ],
+  "authorization_boundary": {
+    "local_reversible_execution": "allowed",
+    "external_actions": "gated",
+    "scope_expansion": "gated",
+    "gated_actions": [
+      "publishing",
+      "credential changes",
+      "scope expansion"
+    ],
+    "approval_evidence": [
+      {
+        "id": "local-fix",
+        "boundary": "local_reversible_execution",
+        "action_text": "local fix",
+        "source_text": "Complete the authorized local fix without asking again about routine details."
+      }
+    ]
+  },
+  "validation_plan": [
+    "Check exact source identity and all six material constraints.",
+    "Validate the packet before rendering; the compiler does not execute the report fix.",
+    "Use downstream model comparisons before claiming performance improvement."
+  ]
+}

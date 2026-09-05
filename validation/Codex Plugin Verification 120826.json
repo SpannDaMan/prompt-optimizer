@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "candidate": "prompt-optimizer 0.1.7",
-  "product_revision_sha256": "bac0bd1c8b4636a4aeb450127a8004952e5a4ef1c4ba595011671044b4e7efe7",
+  "product_revision_sha256": "0a2c2c26486a7239d63ef26a08ac703933e3e9c8c0dee7c62a0021d82b327353",
   "status": "pass",
   "exit_code": 0,
   "validated_plugin_path": "plugins/prompt-optimizer",
@@ -15,8 +15,8 @@
   "tool": {
     "name": "Codex plugin-creator validate_plugin.py",
     "identity": "sha256",
-    "sha256": "7a75b3339396402ad9a40ddc1e037e01c54e71a53a3bfb22a01b1ca235c50206",
-    "bytes": 22172
+    "sha256": "1e6cb914505b458856c2cfab7d18a224731c743ef47e0c9d78afe64f35b67f7c",
+    "bytes": 22396
   },
   "output": "Plugin validation passed: plugins/prompt-optimizer",
   "publication_action": "none"

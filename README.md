@@ -58,6 +58,19 @@ prompt-optimizer ledger --prompt-file plugins/prompt-optimizer/examples/long-req
 
 The JSON trace includes each source constraint, its verbatim or semantic disposition, compiled text, destination section, authorization boundary, and a reminder that structural validation is not proof of semantic equivalence.
 
+## Targeting GPT-6 Astra
+
+The development branch includes an [Astra prompting profile](plugins/prompt-optimizer/skills/prompt-optimizer/references/gpt-6-astra.md) based on OpenAI's official guidance. It covers authorized follow-through, instruction conflicts, writing style, selective delegation and proportionate verification. The existing packet schema and compiler-only boundary stay the same.
+
+Validate and inspect the [Astra example](plugins/prompt-optimizer/examples/astra-brief.json) locally:
+
+```bash
+python plugins/prompt-optimizer/scripts/prompt_optimizer.py validate --prompt-file plugins/prompt-optimizer/examples/astra-request.txt --brief-file plugins/prompt-optimizer/examples/astra-brief.json
+python plugins/prompt-optimizer/scripts/prompt_optimizer.py render --prompt-file plugins/prompt-optimizer/examples/astra-request.txt --brief-file plugins/prompt-optimizer/examples/astra-brief.json
+```
+
+The example demonstrates requirement custody; it does not establish a model-performance improvement.
+
 ## What it catches
 
 - A compiled prompt that no longer matches its ordered sections.
