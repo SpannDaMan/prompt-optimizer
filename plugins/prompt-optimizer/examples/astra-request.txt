@@ -1,0 +1,7 @@
+Fix the date-formatting defect in the existing report exporter.
+Target GPT-6 Astra in Codex.
+Preserve the report layout and existing user changes.
+Complete the authorized local fix without asking again about routine details.
+Keep publishing and credential changes gated.
+Run the checks for changed behavior, and repeat them only for changed bytes, failures, or an unresolved concern.
+Return a detailed explanation with a comparison table.

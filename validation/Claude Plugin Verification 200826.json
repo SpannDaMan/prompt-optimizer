@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "candidate": "prompt-optimizer 0.1.7",
-  "product_revision_sha256": "bac0bd1c8b4636a4aeb450127a8004952e5a4ef1c4ba595011671044b4e7efe7",
+  "product_revision_sha256": "0a2c2c26486a7239d63ef26a08ac703933e3e9c8c0dee7c62a0021d82b327353",
   "status": "pass",
   "validated_paths": [
     ".",
@@ -22,9 +22,9 @@
   "tool": {
     "name": "Claude Code CLI",
     "identity": "sha256",
-    "path": "claude.cmd",
-    "sha256": "7999fba95dbffe167d9e0a043f29057979a0518ebe89b60c4fcfc6401ea8c424",
-    "bytes": 160
+    "path": "claude",
+    "sha256": "c1800a0ae51b5a4c7b33be6a32d62b6169d93f6174119b2eeb6896cf0cd5d7e6",
+    "bytes": 231196368
   },
   "publication_action": "none"
 }

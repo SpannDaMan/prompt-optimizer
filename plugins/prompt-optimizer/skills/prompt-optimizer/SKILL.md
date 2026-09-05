@@ -20,12 +20,18 @@ Create a smaller execution prompt without changing what the user authorized or w
 
 Use this skill when the user explicitly asks for prompt optimization or the request contains more than three relevant sentences. Ignore fenced code, blockquotes, and explicitly labeled quoted transcript blocks when counting. If the user says not to optimize, rewrite, or redraft the request, preserve it unchanged.
 
+## Model-specific guidance
+
+When the user selects GPT-6 Astra, read [the Astra prompting profile](references/gpt-6-astra.md). Keep the selected model and surface explicit without inventing runtime settings. The profile tunes the prompt produced for a later executor; it does not authorize this compiler to execute anything.
+
+Apply its guidance only where it changes the task. Preserve required detail, approvals, source constraints and the host's instruction hierarchy. Reuse instructions already supplied by the host instead of repeating them in every packet. Other models keep the existing provider-neutral workflow and schema.
+
 ## Workflow
 
 1. Keep the source prompt byte-for-byte in `original_prompt`.
 2. Run `analyze` or apply the same trigger rules.
-3. Resolve the target surface: `codex`, `chatgpt`, `openai_api`, `other`, or `unknown`.
-4. Identify the outcome, only the context needed to act, must-preserve constraints, success evidence, output contract, any truly material task-shape route, and final verification.
+3. Resolve the target surface: `codex`, `chatgpt`, `openai_api`, `other`, or `unknown`. Preserve an explicit model selection in the existing context or constraint fields; do not add undeclared schema fields.
+4. Identify the outcome, only the context needed to act, must-preserve constraints, success evidence, output contract, any truly material task-shape route, and final verification. Resolve relevant instruction conflicts under the host hierarchy; current user instructions take precedence over skill guidelines within system/developer authority.
 5. Create all seven canonical section records in order. Include only material sections; omit the rest with a concrete reason.
 6. Put every scope, safety, approval, deliverable, source, deadline, and acceptance instruction whose loss changes the task into `must_preserve_constraints`.
 7. Map every must-preserve item exactly once in `constraint_map`. Use `verbatim` when wording itself matters; otherwise use `semantic` and retain the same meaning.

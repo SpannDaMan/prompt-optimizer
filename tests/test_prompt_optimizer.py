@@ -29,6 +29,38 @@ class PromptOptimizerTests(unittest.TestCase):
         cls.prompt = cls.prompt_path.read_text(encoding="utf-8")
         cls.brief = json.loads(cls.brief_path.read_text(encoding="utf-8"))
 
+
+    def test_astra_example_preserves_all_requirements_and_requested_detail(self) -> None:
+        prompt = (PLUGIN / "examples/astra-request.txt").read_text(encoding="utf-8")
+        brief = json.loads((PLUGIN / "examples/astra-brief.json").read_text(encoding="utf-8"))
+        result = prompt_optimizer.validate_brief(prompt, brief)
+        self.assertTrue(result.valid, result.errors)
+        rendered = prompt_optimizer.render_brief(prompt, brief)
+        for constraint in brief["must_preserve_constraints"]:
+            self.assertEqual(rendered.count(constraint), 1)
+        self.assertIn("Target GPT-6 Astra in Codex.", rendered)
+        self.assertIn("detailed explanation with a comparison table", rendered)
+        self.assertEqual(brief["authorization_boundary"]["external_actions"], "gated")
+        self.assertEqual(brief["authorization_boundary"]["scope_expansion"], "gated")
+        self.assertEqual(next(s for s in brief["compiled_prompt"]["sections"] if s["id"] == "task_shape_routing")["decision"], "omit")
+
+    def test_astra_example_cannot_drop_a_mapped_requirement(self) -> None:
+        prompt = (PLUGIN / "examples/astra-request.txt").read_text(encoding="utf-8")
+        original = json.loads((PLUGIN / "examples/astra-brief.json").read_text(encoding="utf-8"))
+        for row in original["constraint_map"]:
+            with self.subTest(constraint=row["id"]):
+                brief = copy.deepcopy(original)
+                for section in brief["compiled_prompt"]["sections"]:
+                    section["content"] = section["content"].replace(row["compiled_text"], "")
+                brief["compiled_prompt"]["text"] = "\n\n".join(s["content"] for s in brief["compiled_prompt"]["sections"] if s["decision"] == "include")
+                self.assertFalse(prompt_optimizer.validate_brief(prompt, brief).valid)
+
+    def test_astra_example_rejects_unapproved_external_execution(self) -> None:
+        prompt = (PLUGIN / "examples/astra-request.txt").read_text(encoding="utf-8")
+        brief = json.loads((PLUGIN / "examples/astra-brief.json").read_text(encoding="utf-8"))
+        brief["authorization_boundary"]["external_actions"] = "explicitly_authorized"
+        self.assertFalse(prompt_optimizer.validate_brief(prompt, brief).valid)
+
     def test_sentence_count_ignores_fenced_code_and_quotes(self) -> None:
         prompt = "One. Two.\n```\nFake. Fake.\n```\n> Quoted.\nThree. Four."
         self.assertEqual(prompt_optimizer.count_sentences(prompt), 4)

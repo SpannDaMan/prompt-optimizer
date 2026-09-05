@@ -2,6 +2,13 @@
 
 All notable changes to Prompt Optimizer will be documented here.
 
+## Unreleased
+
+- Added an optional GPT-6 Astra prompting profile grounded in official OpenAI documentation.
+- Preserved source authority, compiler-only execution, requested detail, existing model support and packet schema.
+- Added a complete Astra example with custody, authorization and schema regression coverage.
+- Kept model/API settings separate from prompt wording and made performance claims require actual comparison evidence.
+
 ## 0.1.7 — OpenAI starter-prompt limit compliance
 
 - Tightened the approved four-sentence automatic-trigger example to 119 characters for OpenAI's 128-character store limit.
